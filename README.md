@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-0.2.0-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
@@ -68,7 +68,7 @@ npm run dev
 
 ## 📦 Atualizações Recentes
 
-### v0.2.0 (Março 2024)
+### v1.0.0 (Março 2024)
 - ✨ Implementação do carrossel de eventos em destaque
 - 🌐 Suporte completo para internacionalização (i18n)
 - 🎨 Tema escuro/claro com persistência

@@ -5,7 +5,7 @@ Todas as alterações notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
-## [0.2.0] - 2024-03-14
+## [1.0.0] - 2024-03-14
 
 ### Adicionado
 - Implementação do carrossel de eventos em destaque usando Swiper
