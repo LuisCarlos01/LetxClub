@@ -21,18 +21,19 @@
   },
   "plugins": [
     "react",
+    "react-hooks",
     "@typescript-eslint",
     "prettier"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "prettier/prettier": "error",
+    "react/prop-types": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-explicit-any": "warn"
+    "prettier/prettier": "error"
   },
   "settings": {
     "react": {
       "version": "detect"
     }
   }
-}
+} 

@@ -5,24 +5,23 @@ module.exports = {
       2,
       'always',
       [
-        'feat',     // Novas funcionalidades
-        'fix',      // Correções de bugs
-        'docs',     // Documentação
-        'style',    // Formatação, ponto e vírgula faltando, etc
-        'refactor', // Refatoração de código
-        'test',     // Adição ou modificação de testes
-        'chore',    // Atualizações de tarefas de build, configs, etc
-        'perf',     // Melhorias de performance
-        'ci',       // Configuração de CI
-        'build',    // Alterações no sistema de build
-        'revert'    // Reverter commits
+        'build',
+        'chore',
+        'ci',
+        'docs',
+        'feat',
+        'fix',
+        'perf',
+        'refactor',
+        'revert',
+        'style',
+        'test'
       ]
     ],
     'type-case': [2, 'always', 'lower-case'],
-    'type-empty': [2, 'never'],
-    'scope-empty': [2, 'never'],
+    'subject-case': [2, 'always', 'lower-case'],
     'subject-empty': [2, 'never'],
-    'subject-full-stop': [2, 'never', '.'],
-    'header-max-length': [2, 'always', 72]
+    'type-empty': [2, 'never'],
+    'subject-full-stop': [2, 'never', '.']
   }
 }; 

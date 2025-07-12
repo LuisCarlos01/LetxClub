@@ -1,34 +1,42 @@
 {
-  "name": "letx-club",
+  "name": "letxclub",
   "version": "1.0.0",
-  "private": true,
+  "description": "Plataforma digital para corredores e entusiastas do running, oferecendo informações sobre provas, calendário de eventos, dicas e conteúdos multimídia.",
   "scripts": {
     "prepare": "husky install",
-    "commit": "git-cz",
-    "lint": "eslint . --ext .ts,.tsx",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/cz-commitlint"
-    }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisCarlos01/LetxClub.git"
   },
+  "keywords": [
+    "running",
+    "sports",
+    "events",
+    "calendar",
+    "community"
+  ],
+  "author": "Luis Carlos V. Neto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LuisCarlos01/LetxClub/issues"
+  },
+  "homepage": "https://github.com/LuisCarlos01/LetxClub#readme",
   "devDependencies": {
-    "@commitlint/cli": "^17.0.0",
-    "@commitlint/config-conventional": "^17.0.0",
-    "@commitlint/cz-commitlint": "^17.0.0",
-    "commitizen": "^4.2.4",
-    "husky": "^8.0.0",
-    "eslint": "^8.0.0",
-    "prettier": "^2.8.0",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.0.0",
-    "typescript": "^4.0.0",
-    "eslint-plugin-react": "^7.0.0",
-    "eslint-plugin-react-hooks": "^4.0.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-config-prettier": "^8.0.0"
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@typescript-eslint/eslint-plugin": "^8.36.0",
+    "@typescript-eslint/parser": "^8.36.0",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.6.2"
   }
 }
