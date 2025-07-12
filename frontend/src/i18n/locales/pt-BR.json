@@ -1,0 +1,87 @@
+{
+  "navigation": {
+    "home": "HOME",
+    "calendar": "CALENDÁRIO",
+    "tips": "DICAS"
+  },
+  "hero": {
+    "slide1": {
+      "title": "CORRIDA É",
+      "highlight": "VIVER BEM",
+      "description": "Acompanhe os melhores eventos de corrida"
+    },
+    "slide2": {
+      "title": "TREINE COM",
+      "highlight": "PROPÓSITO",
+      "description": "Encontre os melhores eventos para sua preparação"
+    },
+    "slide3": {
+      "title": "SUPERE SEUS",
+      "highlight": "LIMITES",
+      "description": "Descubra seu verdadeiro potencial"
+    }
+  },
+  "buttons": {
+    "register": "INSCREVA-SE",
+    "darkMode": "Alternar modo escuro",
+    "language": "Idioma"
+  },
+  "eventCard": {
+    "date": "Data",
+    "location": "Local",
+    "distance": "Distância",
+    "register": "Inscrever-se"
+  },
+  "shopAndTips": {
+    "runningShoes": {
+      "title": "Tênis para Corrida",
+      "description": "Encontre o tênis perfeito para sua pisada e estilo de corrida"
+    },
+    "beginnersTips": {
+      "title": "Dicas para Iniciantes",
+      "description": "Guia completo para quem está começando a correr"
+    },
+    "essentialAccessories": {
+      "title": "Acessórios Essenciais",
+      "description": "Equipamentos que todo corredor precisa ter"
+    },
+    "nutrition": {
+      "title": "Nutrição na Corrida",
+      "description": "Aprenda sobre alimentação antes, durante e após os treinos"
+    },
+    "buttons": {
+      "shop": "Comprar",
+      "readMore": "Ler mais"
+    }
+  },
+  "aceBanner": {
+    "title": "Parceria ACE",
+    "description": "A LetxClub tem orgulho de ser parceira da ACE (Associação de Corredores de Elite), promovendo o desenvolvimento do atletismo e apoiando atletas em sua jornada.",
+    "button": "Saiba mais sobre a ACE"
+  },
+  "featuredEvents": {
+    "title": "Eventos em Destaque",
+    "events": {
+      "saopaulo": {
+        "title": "Maratona de São Paulo",
+        "location": "São Paulo, SP",
+        "distance": "42km"
+      },
+      "rio": {
+        "title": "Meia Maratona do Rio",
+        "location": "Rio de Janeiro, RJ",
+        "distance": "21km"
+      },
+      "brasilia": {
+        "title": "Corrida de Brasília",
+        "location": "Brasília, DF",
+        "distance": "10km"
+      },
+      "salvador": {
+        "title": "Night Run Salvador",
+        "location": "Salvador, BA",
+        "distance": "5km"
+      }
+    }
+  }
+} 

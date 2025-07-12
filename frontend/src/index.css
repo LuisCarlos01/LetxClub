@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos para o carrossel de eventos em destaque */
+.swiper {
+  padding-bottom: 50px !important;
+}
+
+.swiper-pagination {
+  bottom: 0 !important;
+}
+
+.swiper-pagination-bullet {
+  background: theme('colors.letx-green-water');
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background: theme('colors.letx-neon');
+  opacity: 1;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: theme('colors.letx-neon');
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: theme('colors.letx-green-water');
+}
+
+/* Modo escuro */
+.dark .swiper-pagination-bullet {
+  background: theme('colors.letx-blue');
+  opacity: 0.5;
+}
+
+.dark .swiper-pagination-bullet-active {
+  background: theme('colors.letx-neon');
+  opacity: 1;
+}
+
+.dark .swiper-button-next,
+.dark .swiper-button-prev {
+  color: theme('colors.letx-neon');
+}
+
+.dark .swiper-button-next:hover,
+.dark .swiper-button-prev:hover {
+  color: theme('colors.letx-blue');
+}
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900;
+  }
+} 

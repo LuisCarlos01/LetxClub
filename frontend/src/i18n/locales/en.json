@@ -1,0 +1,87 @@
+{
+  "navigation": {
+    "home": "HOME",
+    "calendar": "CALENDAR",
+    "tips": "TIPS"
+  },
+  "hero": {
+    "slide1": {
+      "title": "RUNNING IS",
+      "highlight": "LIVING WELL",
+      "description": "Follow the best running events"
+    },
+    "slide2": {
+      "title": "TRAIN WITH",
+      "highlight": "PURPOSE",
+      "description": "Find the best events for your preparation"
+    },
+    "slide3": {
+      "title": "EXCEED YOUR",
+      "highlight": "LIMITS",
+      "description": "Discover your true potential"
+    }
+  },
+  "buttons": {
+    "register": "REGISTER",
+    "darkMode": "Toggle dark mode",
+    "language": "Language"
+  },
+  "eventCard": {
+    "date": "Date",
+    "location": "Location",
+    "distance": "Distance",
+    "register": "Register"
+  },
+  "shopAndTips": {
+    "runningShoes": {
+      "title": "Running Shoes",
+      "description": "Find the perfect shoes for your stride and running style"
+    },
+    "beginnersTips": {
+      "title": "Tips for Beginners",
+      "description": "Complete guide for those starting to run"
+    },
+    "essentialAccessories": {
+      "title": "Essential Accessories",
+      "description": "Equipment every runner needs to have"
+    },
+    "nutrition": {
+      "title": "Running Nutrition",
+      "description": "Learn about nutrition before, during, and after training"
+    },
+    "buttons": {
+      "shop": "Shop",
+      "readMore": "Read more"
+    }
+  },
+  "aceBanner": {
+    "title": "ACE Partnership",
+    "description": "LetxClub is proud to be a partner of ACE (Elite Runners Association), promoting the development of athletics and supporting athletes in their journey.",
+    "button": "Learn more about ACE"
+  },
+  "featuredEvents": {
+    "title": "Featured Events",
+    "events": {
+      "saopaulo": {
+        "title": "São Paulo Marathon",
+        "location": "São Paulo, SP",
+        "distance": "42km"
+      },
+      "rio": {
+        "title": "Rio Half Marathon",
+        "location": "Rio de Janeiro, RJ",
+        "distance": "21km"
+      },
+      "brasilia": {
+        "title": "Brasília Run",
+        "location": "Brasília, DF",
+        "distance": "10km"
+      },
+      "salvador": {
+        "title": "Salvador Night Run",
+        "location": "Salvador, BA",
+        "distance": "5km"
+      }
+    }
+  }
+} 

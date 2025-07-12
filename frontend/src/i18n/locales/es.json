@@ -1,0 +1,87 @@
+{
+  "navigation": {
+    "home": "INICIO",
+    "calendar": "CALENDARIO",
+    "tips": "CONSEJOS"
+  },
+  "hero": {
+    "slide1": {
+      "title": "CORRER ES",
+      "highlight": "VIVIR BIEN",
+      "description": "Sigue los mejores eventos de carrera"
+    },
+    "slide2": {
+      "title": "ENTRENA CON",
+      "highlight": "PROPÓSITO",
+      "description": "Encuentra los mejores eventos para tu preparación"
+    },
+    "slide3": {
+      "title": "SUPERA TUS",
+      "highlight": "LÍMITES",
+      "description": "Descubre tu verdadero potencial"
+    }
+  },
+  "buttons": {
+    "register": "REGÍSTRATE",
+    "darkMode": "Alternar modo oscuro",
+    "language": "Idioma"
+  },
+  "eventCard": {
+    "date": "Fecha",
+    "location": "Ubicación",
+    "distance": "Distancia",
+    "register": "Inscribirse"
+  },
+  "shopAndTips": {
+    "runningShoes": {
+      "title": "Zapatillas de Running",
+      "description": "Encuentra las zapatillas perfectas para tu pisada y estilo de carrera"
+    },
+    "beginnersTips": {
+      "title": "Consejos para Principiantes",
+      "description": "Guía completa para quienes empiezan a correr"
+    },
+    "essentialAccessories": {
+      "title": "Accesorios Esenciales",
+      "description": "Equipamiento que todo corredor necesita tener"
+    },
+    "nutrition": {
+      "title": "Nutrición en la Carrera",
+      "description": "Aprende sobre alimentación antes, durante y después del entrenamiento"
+    },
+    "buttons": {
+      "shop": "Comprar",
+      "readMore": "Leer más"
+    }
+  },
+  "aceBanner": {
+    "title": "Asociación ACE",
+    "description": "LetxClub se enorgullece de ser socio de ACE (Asociación de Corredores de Elite), promoviendo el desarrollo del atletismo y apoyando a los atletas en su trayectoria.",
+    "button": "Más información sobre ACE"
+  },
+  "featuredEvents": {
+    "title": "Eventos Destacados",
+    "events": {
+      "saopaulo": {
+        "title": "Maratón de São Paulo",
+        "location": "São Paulo, SP",
+        "distance": "42km"
+      },
+      "rio": {
+        "title": "Media Maratón de Río",
+        "location": "Rio de Janeiro, RJ",
+        "distance": "21km"
+      },
+      "brasilia": {
+        "title": "Carrera de Brasília",
+        "location": "Brasília, DF",
+        "distance": "10km"
+      },
+      "salvador": {
+        "title": "Night Run Salvador",
+        "location": "Salvador, BA",
+        "distance": "5km"
+      }
+    }
+  }
+} 

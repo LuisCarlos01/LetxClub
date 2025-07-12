@@ -1,0 +1,31 @@
+/* Estilos personalizados para o Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #CFF350 !important; /* Verde neon */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.swiper-pagination-bullet {
+  background: #F8FAEF !important; /* Branco */
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background: #CFF350 !important; /* Verde neon */
+  opacity: 1;
+}
+
+/* Efeito de fade personalizado */
+.swiper-fade .swiper-slide {
+  transition: opacity 1s ease;
+}
+
+/* Ajustes para modo escuro */
+:root[class~="dark"] .swiper-button-next,
+:root[class~="dark"] .swiper-button-prev {
+  color: #CFF350 !important; /* Mantém verde neon no modo escuro */
+}
+
+:root[class~="dark"] .swiper-pagination-bullet-active {
+  background: #CFF350 !important; /* Mantém verde neon no modo escuro */
+} 
