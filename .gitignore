@@ -1,57 +1,106 @@
 # Dependencies
 node_modules/
-.pnp/
+/.pnp
 .pnp.js
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
 # Testing
-coverage/
+/coverage
+*.lcov
+.nyc_output
 
 # Production
-build/
-dist/
-out/
+/build
+/dist
+/out
+*.tsbuildinfo
 
-# Environment variables
+# Environment Variables
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.env*.local
 
 # Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# IDE
-.idea/
-.vscode/
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 *.swp
 *.swo
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Temporary files
+*.tmp
+*.temp
+.cache
+.temp
+
+# Debug
+debug.log
+dev-debug.log
+
+# Build tools
+.eslintcache
+.stylelintcache
+.rollup.cache
+stats.html
+
+# Misc
 .DS_Store
-Thumbs.db 
+*.pem
+.vercel
+.netlify
+.history/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# dotenv environment variable files
+.env*.local
+
+# Storybook
+storybook-static/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+
+# PWA
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map 
