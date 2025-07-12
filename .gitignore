@@ -103,4 +103,12 @@ cypress/screenshots/
 **/public/worker-*.js
 **/public/sw.js.map
 **/public/workbox-*.js.map
-**/public/worker-*.js.map 
+**/public/worker-*.js.map
+
+# Project specific
+/.cursor
+/.roo
+/figma
+commitlint.config.js
+.roomodes
+/.taskmaster 
