@@ -34,7 +34,7 @@ const YouTubeVideos: FC = () => {
   };
 
   return (
-    <section className="py-16 bg-letx-green-water dark:bg-letx-blue transition-colors duration-300">
+    <section className="py-16 bg-[#CFF350] dark:bg-letx-green-dark transition-colors duration-300">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-letx-green-dark dark:text-letx-neon mb-4">
