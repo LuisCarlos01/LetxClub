@@ -33,6 +33,31 @@
     "distance": "Distance",
     "register": "Register"
   },
+  "featuredEvents": {
+    "title": "Featured Events",
+    "events": {
+      "saopaulo": {
+        "title": "São Paulo Marathon",
+        "location": "São Paulo, SP",
+        "distance": "42km"
+      },
+      "rio": {
+        "title": "Rio Half Marathon",
+        "location": "Rio de Janeiro, RJ",
+        "distance": "21km"
+      },
+      "brasilia": {
+        "title": "Brasília Run",
+        "location": "Brasília, DF",
+        "distance": "10km"
+      },
+      "salvador": {
+        "title": "Night Run Salvador",
+        "location": "Salvador, BA",
+        "distance": "5km"
+      }
+    }
+  },
   "admin": {
     "login": {
       "title": "Administrative Area",

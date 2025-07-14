@@ -33,6 +33,40 @@
     "distance": "Distância",
     "register": "Inscrever-se"
   },
+  "featuredEvents": {
+    "title": "Eventos Destacados",
+    "events": {
+      "saopaulo": {
+        "title": "Maratona de São Paulo",
+        "location": "São Paulo, SP",
+        "distance": "42km"
+      },
+      "rio": {
+        "title": "Meia Maratona do Rio",
+        "location": "Rio de Janeiro, RJ",
+        "distance": "21km"
+      },
+      "brasilia": {
+        "title": "Corrida de Brasília",
+        "location": "Brasília, DF",
+        "distance": "10km"
+      },
+      "salvador": {
+        "title": "Night Run Salvador",
+        "location": "Salvador, BA",
+        "distance": "5km"
+      }
+    }
+  },
+  "calendar": {
+    "title": "ENCONTRE SEU PRÓXIMO EVENTO",
+    "subtitle": "Explore o Calendário Completo.",
+    "searchPlaceholder": "Procurar uma corrida...",
+    "cityPlaceholder": "Cidade",
+    "typePlaceholder": "Tipo",
+    "searchButton": "BUSCAR",
+    "bestEvents": "MELHORES EVENTOS!"
+  },
   "admin": {
     "login": {
       "title": "Área Administrativa",
