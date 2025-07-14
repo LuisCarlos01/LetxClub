@@ -50,11 +50,47 @@
       "sponsored": "Patrocinado",
       "active": "Ativo",
       "profileInfo": "Informações do perfil serão expandidas em versões futuras.",
+      "eventCreated": "Evento criado com sucesso!",
       "table": {
         "event": "Evento",
         "city": "Cidade",
         "date": "Data",
-        "status": "Status"
+        "status": "Status",
+        "actions": "Ações"
+      }
+    },
+    "createEvent": {
+      "title": "Nova Corrida",
+      "fields": {
+        "title": "Nome do Evento",
+        "description": "Descrição",
+        "city": "Cidade",
+        "date": "Data",
+        "time": "Horário",
+        "eventType": "Tipo de Evento",
+        "image": "Imagem do Evento"
+      },
+      "placeholders": {
+        "title": "Digite o nome da corrida",
+        "description": "Descreva o evento",
+        "city": "Ex: São Paulo"
+      },
+      "eventTypes": {
+        "street": "Corrida de Rua",
+        "trail": "Trail Running",
+        "kids": "Corrida Kids"
+      },
+      "errors": {
+        "titleRequired": "Nome do evento é obrigatório",
+        "descriptionRequired": "Descrição é obrigatória",
+        "cityRequired": "Cidade é obrigatória",
+        "dateRequired": "Data é obrigatória",
+        "timeRequired": "Horário é obrigatório",
+        "imageRequired": "Imagem é obrigatória"
+      },
+      "buttons": {
+        "cancel": "Cancelar",
+        "create": "Criar Corrida"
       }
     }
   },
@@ -104,33 +140,20 @@
     "readMore": "Ler mais"
   },
   "aceBanner": {
-    "title": "Parceria ACE",
-    "description": "A LetxClub tem orgulho de ser parceira da ACE (Associação de Corredores de Elite), promovendo o desenvolvimento do atletismo e apoiando atletas em sua jornada.",
-    "button": "Saiba mais sobre a ACE"
+    "title": "DOMINE A CORRIDA",
+    "subtitle": "Transforme sua paixão em performance com nossos produtos exclusivos",
+    "button": "ADQUIRIR"
   },
-  "featuredEvents": {
-    "title": "Eventos em Destaque",
-    "events": {
-      "saopaulo": {
-        "title": "Maratona de São Paulo",
-        "location": "São Paulo, SP",
-        "distance": "42km"
-      },
-      "rio": {
-        "title": "Meia Maratona do Rio",
-        "location": "Rio de Janeiro, RJ",
-        "distance": "21km"
-      },
-      "brasilia": {
-        "title": "Corrida de Brasília",
-        "location": "Brasília, DF",
-        "distance": "10km"
-      },
-      "salvador": {
-        "title": "Night Run Salvador",
-        "location": "Salvador, BA",
-        "distance": "5km"
-      }
-    }
+  "newsletter": {
+    "title": "RECEBA ATUALIZAÇÕES",
+    "subtitle": "Fique por dentro das novidades do mundo da corrida",
+    "emailPlaceholder": "Digite seu e-mail",
+    "button": "INSCREVER-SE"
+  },
+  "tips": {
+    "title": "DICAS PARA CORREDORES",
+    "subtitle": "Tudo o que você precisa saber para melhorar sua performance",
+    "videosTitle": "VÍDEOS SOBRE CORRIDA",
+    "videosSubtitle": "Aprenda com especialistas e melhore sua técnica"
   }
 } 

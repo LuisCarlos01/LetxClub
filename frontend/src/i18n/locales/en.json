@@ -50,11 +50,47 @@
       "sponsored": "Sponsored",
       "active": "Active",
       "profileInfo": "Profile information will be expanded in future versions.",
+      "eventCreated": "Event created successfully!",
       "table": {
         "event": "Event",
         "city": "City",
         "date": "Date",
-        "status": "Status"
+        "status": "Status",
+        "actions": "Actions"
+      }
+    },
+    "createEvent": {
+      "title": "New Event",
+      "fields": {
+        "title": "Event Name",
+        "description": "Description",
+        "city": "City",
+        "date": "Date",
+        "time": "Time",
+        "eventType": "Event Type",
+        "image": "Event Image"
+      },
+      "placeholders": {
+        "title": "Enter the event name",
+        "description": "Describe the event",
+        "city": "Ex: New York"
+      },
+      "eventTypes": {
+        "street": "Street Running",
+        "trail": "Trail Running",
+        "kids": "Kids Running"
+      },
+      "errors": {
+        "titleRequired": "Event name is required",
+        "descriptionRequired": "Description is required",
+        "cityRequired": "City is required",
+        "dateRequired": "Date is required",
+        "timeRequired": "Time is required",
+        "imageRequired": "Image is required"
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "create": "Create Event"
       }
     }
   },
@@ -113,20 +149,20 @@
     "readMore": "Read more"
   },
   "aceBanner": {
-    "title": "DOMINE A CORRIDA",
-    "subtitle": "Transforme sua paixão em performance com nossos produtos exclusivos",
-    "button": "ADQUIRIR"
+    "title": "MASTER THE RUN",
+    "subtitle": "Transform your passion into performance with our exclusive products",
+    "button": "GET NOW"
   },
   "newsletter": {
-    "title": "RECEBA ATUALIZAÇÕES",
-    "subtitle": "Fique por dentro das novidades do mundo da corrida",
-    "emailPlaceholder": "Digite seu e-mail",
-    "button": "INSCREVER-SE"
+    "title": "GET UPDATES",
+    "subtitle": "Stay updated with the latest running news",
+    "emailPlaceholder": "Enter your email",
+    "button": "SUBSCRIBE"
   },
   "tips": {
-    "title": "DICAS PARA CORREDORES",
-    "subtitle": "Tudo o que você precisa saber para melhorar sua performance",
-    "videosTitle": "VÍDEOS SOBRE CORRIDA",
-    "videosSubtitle": "Aprenda com especialistas e melhore sua técnica"
+    "title": "RUNNING TIPS",
+    "subtitle": "Everything you need to know to improve your performance",
+    "videosTitle": "RUNNING VIDEOS",
+    "videosSubtitle": "Learn from experts and improve your technique"
   }
 } 

@@ -1,16 +1,25 @@
 import { FC, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useTranslation } from 'react-i18next';
-import { FaPlus, FaCalendarAlt, FaUser, FaCrown, FaSignOutAlt, FaBars, FaTimes } from 'react-icons/fa';
+import { FaPlus, FaCalendarAlt, FaUser, FaCrown, FaSignOutAlt, FaBars, FaTimes, FaEdit, FaTrash } from 'react-icons/fa';
+import CreateEventModal from '../components/CreateEventModal';
 
 const AdminDashboard: FC = () => {
   const { t } = useTranslation();
   const { user, logout } = useAuth();
   const [activeTab, setActiveTab] = useState<'events' | 'profile'>('events');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
+  };
+
+  const handleCreateEvent = (eventData: any) => {
+    // TODO: Implementar integração com backend
+    console.log('Criando evento:', eventData);
+    // Simular criação bem-sucedida
+    alert(t('admin.dashboard.eventCreated', 'Evento criado com sucesso!'));
   };
 
   const mockEvents = [
@@ -106,7 +115,10 @@ const AdminDashboard: FC = () => {
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                   {t('admin.dashboard.myEvents', 'Minhas Corridas')}
                 </h2>
-                <button className="bg-letx-blue hover:bg-letx-blue-dark text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors">
+                <button 
+                  onClick={() => setIsCreateModalOpen(true)}
+                  className="bg-letx-blue hover:bg-letx-blue-dark text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors"
+                >
                   <FaPlus className="w-4 h-4" />
                   <span>{t('admin.dashboard.newEvent', 'Nova Corrida')}</span>
                 </button>
@@ -128,6 +140,9 @@ const AdminDashboard: FC = () => {
                         </th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                           {t('admin.dashboard.table.status', 'Status')}
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                          {t('admin.dashboard.table.actions', 'Ações')}
                         </th>
                       </tr>
                     </thead>
@@ -159,6 +174,16 @@ const AdminDashboard: FC = () => {
                                 {t('admin.dashboard.active', 'Ativo')}
                               </span>
                             )}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <div className="flex items-center space-x-2">
+                              <button className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 p-1 rounded">
+                                <FaEdit className="w-4 h-4" />
+                              </button>
+                              <button className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-1 rounded">
+                                <FaTrash className="w-4 h-4" />
+                              </button>
+                            </div>
                           </td>
                         </tr>
                       ))}
@@ -196,6 +221,13 @@ const AdminDashboard: FC = () => {
           )}
         </main>
       </div>
+
+      {/* Create Event Modal */}
+      <CreateEventModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+        onSubmit={handleCreateEvent}
+      />
 
       {/* Sidebar Overlay */}
       {sidebarOpen && (
