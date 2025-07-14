@@ -4,6 +4,8 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 import Home from './pages/Home';
+import Calendar from './pages/Calendar';
+import Tips from './pages/Tips';
 
 const App: FC = () => {
   return (
@@ -12,6 +14,8 @@ const App: FC = () => {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/calendario" element={<Calendar />} />
+            <Route path="/dicas" element={<Tips />} />
           </Routes>
         </Router>
       </ThemeProvider>
