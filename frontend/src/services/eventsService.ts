@@ -13,18 +13,62 @@ export interface Event {
   updatedAt?: string;
 }
 
-// Mock data for development
-let mockEvents: Event[] = [];
+// Storage key for localStorage
+const STORAGE_KEY = 'letxclub_events';
+
+// Initialize events from localStorage or empty array
+const loadEventsFromStorage = (): Event[] => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
+  } catch (error) {
+    console.error('Error loading events from localStorage:', error);
+    return [];
+  }
+};
+
+// Save events to localStorage
+const saveEventsToStorage = (events: Event[]): void => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(events));
+  } catch (error) {
+    console.error('Error saving events to localStorage:', error);
+  }
+};
+
+// Mock data for development with localStorage persistence
+let mockEvents: Event[] = loadEventsFromStorage();
 
 // Generate mock ID
 const generateId = () => Math.random().toString(36).substr(2, 9);
+
+// Event listeners for real-time updates
+const eventListeners: ((events: Event[]) => void)[] = [];
+
+// Subscribe to events changes
+const subscribeToEvents = (callback: (events: Event[]) => void): (() => void) => {
+  eventListeners.push(callback);
+  
+  // Return unsubscribe function
+  return () => {
+    const index = eventListeners.indexOf(callback);
+    if (index > -1) {
+      eventListeners.splice(index, 1);
+    }
+  };
+};
+
+// Notify all listeners about events changes
+const notifyListeners = () => {
+  eventListeners.forEach(callback => callback([...mockEvents]));
+};
 
 export const eventsService = {
   // Get all events
   async getEvents(): Promise<Event[]> {
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 500));
-    return mockEvents;
+    return [...mockEvents];
   },
 
   // Create new event
@@ -39,6 +83,9 @@ export const eventsService = {
     };
     
     mockEvents.push(newEvent);
+    saveEventsToStorage(mockEvents);
+    notifyListeners();
+    
     return newEvent;
   },
 
@@ -57,6 +104,9 @@ export const eventsService = {
       updatedAt: new Date().toISOString()
     };
     
+    saveEventsToStorage(mockEvents);
+    notifyListeners();
+    
     return mockEvents[index];
   },
 
@@ -70,6 +120,8 @@ export const eventsService = {
     }
     
     mockEvents.splice(index, 1);
+    saveEventsToStorage(mockEvents);
+    notifyListeners();
   },
 
   // Get event by ID
@@ -77,5 +129,15 @@ export const eventsService = {
     await new Promise(resolve => setTimeout(resolve, 200));
     
     return mockEvents.find(event => event.id === id) || null;
+  },
+
+  // Subscribe to events changes for real-time updates
+  subscribeToEvents,
+
+  // Clear all events (for testing purposes)
+  async clearAllEvents(): Promise<void> {
+    mockEvents = [];
+    saveEventsToStorage(mockEvents);
+    notifyListeners();
   }
 }; 

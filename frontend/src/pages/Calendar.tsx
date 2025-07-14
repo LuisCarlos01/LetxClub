@@ -1,8 +1,9 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { FaSearch, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
+import { eventsService, Event as AdminEvent } from '../services/eventsService';
 
 interface Event {
   id: string;
@@ -10,6 +11,8 @@ interface Event {
   date: string;
   image: string;
   time?: string;
+  city?: string;
+  eventType?: string;
 }
 
 const Calendar: FC = () => {
@@ -18,36 +21,89 @@ const Calendar: FC = () => {
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedType, setSelectedType] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [adminEvents, setAdminEvents] = useState<AdminEvent[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Mock events data - This would typically come from an API
-  const events: Event[] = [
+  // Load events from admin service and subscribe to updates
+  useEffect(() => {
+    const loadAdminEvents = async () => {
+      try {
+        const events = await eventsService.getEvents();
+        setAdminEvents(events);
+      } catch (error) {
+        console.error('Erro ao carregar eventos do admin:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadAdminEvents();
+
+    // Subscribe to events changes for real-time updates
+    const unsubscribe = eventsService.subscribeToEvents((events) => {
+      setAdminEvents(events);
+    });
+
+    // Cleanup subscription on unmount
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  // Mock events data as fallback
+  const staticEvents: Event[] = [
     {
-      id: '1',
+      id: 'static-1',
       title: 'CORRIDA KIDS TURMA DO DINOSSAURO',
       date: '18/09/2025',
-      // Temporarily using a placeholder image
       image: 'https://placehold.co/400x400/2434BA/CFF350?text=Corrida+Kids',
     },
     {
-      id: '2',
+      id: 'static-2',
       title: 'I CORRIDA KIDS MINIMUNDO',
       date: '05/10/2025',
       image: 'https://placehold.co/400x400/2434BA/CFF350?text=Minimundo',
     },
     {
-      id: '3',
+      id: 'static-3',
       title: 'CORRIDA',
       date: '05/10/2025',
       time: '20:00',
       image: 'https://placehold.co/400x400/2434BA/CFF350?text=Corrida',
     },
     {
-      id: '4',
+      id: 'static-4',
       title: 'JANJAO',
       date: '17/07/2025',
       image: 'https://placehold.co/400x400/2434BA/CFF350?text=Janjao',
     },
   ];
+
+  // Convert admin events to display format
+  const convertAdminEvent = (adminEvent: AdminEvent): Event => ({
+    id: adminEvent.id,
+    title: adminEvent.title,
+    date: new Date(adminEvent.date).toLocaleDateString('pt-BR'),
+    image: `https://placehold.co/400x400/2434BA/CFF350?text=${encodeURIComponent(adminEvent.title)}`,
+    time: adminEvent.time || undefined,
+    city: adminEvent.city,
+    eventType: adminEvent.eventType
+  });
+
+  // Combine admin events with static events
+  const allEvents = [
+    ...adminEvents.map(convertAdminEvent),
+    ...staticEvents
+  ];
+
+  // Filter events based on search criteria
+  const filteredEvents = allEvents.filter(event => {
+    const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCity = !selectedCity || event.city?.toLowerCase() === selectedCity.toLowerCase();
+    const matchesType = !selectedType || event.eventType?.toLowerCase().includes(selectedType.toLowerCase());
+    
+    return matchesSearch && matchesCity && matchesType;
+  });
 
   const handleSearch = () => {
     setIsLoading(true);
@@ -103,6 +159,8 @@ const Calendar: FC = () => {
                     <option value="porto-alegre">Porto Alegre</option>
                     <option value="canoas">Canoas</option>
                     <option value="gramado">Gramado</option>
+                    <option value="são paulo">São Paulo</option>
+                    <option value="rio de janeiro">Rio de Janeiro</option>
                   </select>
                 </div>
 
@@ -118,6 +176,8 @@ const Calendar: FC = () => {
                     <option value="10k">10K</option>
                     <option value="21k">21K</option>
                     <option value="42k">42K</option>
+                    <option value="street">Street</option>
+                    <option value="trail">Trail</option>
                   </select>
                 </div>
 
@@ -143,28 +203,46 @@ const Calendar: FC = () => {
               {t('calendar.bestEvents', 'MELHORES EVENTOS!')}
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {events.map(event => (
-                <div
-                  key={event.id}
-                  className="bg-letx-blue-dark rounded-xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300 shadow-lg"
-                >
-                  <div className="relative aspect-square">
-                    <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-white mb-2">{event.title}</h3>
-                        <div className="flex items-center text-letx-neon gap-2">
-                          <FaCalendarAlt className="w-4 h-4" />
-                          <span>{event.date}</span>
-                          {event.time && <span className="ml-2">{event.time}</span>}
+            {loading ? (
+              <div className="text-center text-letx-green-dark dark:text-letx-neon">
+                Carregando eventos...
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {filteredEvents.map(event => (
+                  <div
+                    key={event.id}
+                    className="bg-letx-blue-dark rounded-xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300 shadow-lg"
+                  >
+                    <div className="relative aspect-square">
+                      <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
+                        <div>
+                          <h3 className="text-xl font-bold text-white mb-2">{event.title}</h3>
+                          <div className="flex items-center text-letx-neon gap-2">
+                            <FaCalendarAlt className="w-4 h-4" />
+                            <span>{event.date}</span>
+                            {event.time && <span className="ml-2">{event.time}</span>}
+                          </div>
+                          {event.city && (
+                            <div className="flex items-center text-letx-green-water gap-2 mt-1">
+                              <FaMapMarkerAlt className="w-3 h-3" />
+                              <span className="text-sm">{event.city}</span>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
+
+            {!loading && filteredEvents.length === 0 && (
+              <div className="text-center text-gray-500 dark:text-gray-400 py-12">
+                {t('calendar.noEvents', 'Nenhum evento encontrado com os filtros selecionados.')}
+              </div>
+            )}
           </div>
         </section>
       </main>
