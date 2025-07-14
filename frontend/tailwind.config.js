@@ -16,6 +16,8 @@ export default {
         'letx-orange': '#F35C03',
         'letx-white': '#F8FAEF',
         'letx-black': '#000000',
+        'letx-purple': '#4A148C',
+        'letx-purple-dark': '#311B92',
       },
     },
   },

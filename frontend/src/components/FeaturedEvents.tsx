@@ -85,7 +85,7 @@ const FeaturedEvents: FC = () => {
                 spaceBetween: 50,
               },
             }}
-            className="!pb-12"
+            className="featured-events-swiper"
           >
             {events.map(event => (
               <SwiperSlide key={event.id}>

@@ -3,52 +3,60 @@
 @tailwind utilities;
 
 /* Estilos para o carrossel de eventos em destaque */
-.swiper {
-  padding-bottom: 50px !important;
+.featured-events-swiper {
+  padding-bottom: 0 !important;
 }
 
-.swiper-pagination {
+.featured-events-swiper .swiper-pagination {
   bottom: 0 !important;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+  padding: 20px 0 8px;
+  margin: 0;
 }
 
-.swiper-pagination-bullet {
+.featured-events-swiper .swiper-pagination-bullet {
   background: theme('colors.letx-green-water');
-  opacity: 0.5;
+  opacity: 0.7;
+  width: 8px !important;
+  height: 8px !important;
+  margin: 0 4px !important;
 }
 
-.swiper-pagination-bullet-active {
+.featured-events-swiper .swiper-pagination-bullet-active {
   background: theme('colors.letx-neon');
   opacity: 1;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
+.featured-events-swiper .swiper-button-next,
+.featured-events-swiper .swiper-button-prev {
   color: theme('colors.letx-neon');
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
+.featured-events-swiper .swiper-button-next:hover,
+.featured-events-swiper .swiper-button-prev:hover {
   color: theme('colors.letx-green-water');
 }
 
 /* Modo escuro */
-.dark .swiper-pagination-bullet {
+.dark .featured-events-swiper .swiper-pagination-bullet {
   background: theme('colors.letx-blue');
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
-.dark .swiper-pagination-bullet-active {
+.dark .featured-events-swiper .swiper-pagination-bullet-active {
   background: theme('colors.letx-neon');
   opacity: 1;
 }
 
-.dark .swiper-button-next,
-.dark .swiper-button-prev {
+.dark .featured-events-swiper .swiper-button-next,
+.dark .featured-events-swiper .swiper-button-prev {
   color: theme('colors.letx-neon');
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.dark .swiper-button-next:hover,
-.dark .swiper-button-prev:hover {
+.dark .featured-events-swiper .swiper-button-next:hover,
+.dark .featured-events-swiper .swiper-button-prev:hover {
   color: theme('colors.letx-blue');
 }
 
