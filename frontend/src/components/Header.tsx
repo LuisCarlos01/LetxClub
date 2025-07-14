@@ -4,7 +4,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import { useTranslation } from 'react-i18next';
 import logoLight from '../assets/images/Logotipo.png';
 import logoDark from '../assets/images/logotipo-dark.png';
-import { FaSun, FaMoon, FaGlobe, FaBars, FaTimes } from 'react-icons/fa';
+import { FaSun, FaMoon, FaGlobe, FaBars, FaTimes, FaUserShield } from 'react-icons/fa';
 
 const Header: FC = () => {
   const { t, i18n } = useTranslation();
@@ -80,6 +80,13 @@ const Header: FC = () => {
           >
             {t('navigation.tips')}
           </Link>
+          <Link
+            to="/admin/login"
+            className="flex items-center space-x-1 text-letx-green-dark dark:text-white hover:text-letx-blue dark:hover:text-letx-neon transition-colors"
+          >
+            <FaUserShield className="w-4 h-4" />
+            <span>{t('navigation.admin')}</span>
+          </Link>
         </nav>
 
         {/* Theme and Language Toggles (Desktop) */}
@@ -130,6 +137,14 @@ const Header: FC = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('navigation.tips')}
+              </Link>
+              <Link
+                to="/admin/login"
+                className="flex items-center space-x-2 text-letx-green-dark dark:text-white hover:text-letx-blue dark:hover:text-letx-neon transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <FaUserShield className="w-4 h-4" />
+                <span>{t('navigation.admin')}</span>
               </Link>
               <div className="flex items-center justify-between pt-4 border-t border-letx-green-dark/20 dark:border-white/20">
                 <button

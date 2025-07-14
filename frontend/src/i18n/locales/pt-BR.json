@@ -2,7 +2,8 @@
   "navigation": {
     "home": "HOME",
     "calendar": "CALENDÁRIO",
-    "tips": "DICAS"
+    "tips": "DICAS",
+    "admin": "ADMIN"
   },
   "hero": {
     "slide1": {
@@ -32,6 +33,31 @@
     "distance": "Distância",
     "register": "Inscrever-se"
   },
+  "admin": {
+    "login": {
+      "title": "Área Administrativa",
+      "subtitle": "Acesse o painel de controle do LetxClub",
+      "googleButton": "Entrar com Google",
+      "loading": "Autenticando...",
+      "info": "Apenas administradores autorizados podem acessar"
+    },
+    "dashboard": {
+      "title": "Painel Administrativo",
+      "logout": "Sair",
+      "myEvents": "Minhas Corridas",
+      "profile": "Perfil",
+      "newEvent": "Nova Corrida",
+      "sponsored": "Patrocinado",
+      "active": "Ativo",
+      "profileInfo": "Informações do perfil serão expandidas em versões futuras.",
+      "table": {
+        "event": "Evento",
+        "city": "Cidade",
+        "date": "Data",
+        "status": "Status"
+      }
+    }
+  },
   "shopAndTips": {
     "title": "Loja e Dicas",
     "subtitle": "Descubra produtos essenciais para sua corrida e acesse dicas valiosas para melhorar sua performance",
@@ -48,29 +74,34 @@
       "description": "Equipamentos que todo corredor precisa ter"
     },
     "nutrition": {
-      "title": "Nutrição na Corrida",
-      "description": "Aprenda sobre alimentação antes, durante e após os treinos"
+      "title": "Nutrição Esportiva",
+      "description": "Alimentos e suplementos para melhorar sua performance"
+    },
+    "trainingPlans": {
+      "title": "Planos de Treino",
+      "description": "Programas de treino personalizados para diferentes níveis"
+    },
+    "recovery": {
+      "title": "Recuperação",
+      "description": "Técnicas e equipamentos para recuperação pós-treino"
     },
     "sportswear": {
       "title": "Roupas Esportivas",
-      "description": "Vestuário técnico para máximo conforto e performance"
+      "description": "Vestuário adequado para corrida e treinos"
     },
     "trainingTips": {
       "title": "Dicas de Treino",
-      "description": "Estratégias eficazes para melhorar sua performance"
+      "description": "Estratégias para melhorar sua performance na corrida"
     },
     "supplements": {
       "title": "Suplementos",
-      "description": "Suplementação esportiva para otimizar seus resultados"
+      "description": "Suplementos para apoiar seu treino e recuperação"
     },
     "recoveryTips": {
-      "title": "Recuperação",
-      "description": "Técnicas essenciais para recuperação pós-treino"
+      "title": "Dicas de Recuperação",
+      "description": "Como se recuperar adequadamente após treinos intensos"
     },
-    "buttons": {
-      "shop": "Comprar",
-      "readMore": "Ler mais"
-    }
+    "readMore": "Ler mais"
   },
   "aceBanner": {
     "title": "Parceria ACE",

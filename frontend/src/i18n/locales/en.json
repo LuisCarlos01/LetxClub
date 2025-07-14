@@ -2,7 +2,8 @@
   "navigation": {
     "home": "HOME",
     "calendar": "CALENDAR",
-    "tips": "TIPS"
+    "tips": "TIPS",
+    "admin": "ADMIN"
   },
   "hero": {
     "slide1": {
@@ -32,6 +33,31 @@
     "distance": "Distance",
     "register": "Register"
   },
+  "admin": {
+    "login": {
+      "title": "Administrative Area",
+      "subtitle": "Access the LetxClub control panel",
+      "googleButton": "Sign in with Google",
+      "loading": "Authenticating...",
+      "info": "Only authorized administrators can access"
+    },
+    "dashboard": {
+      "title": "Administrative Panel",
+      "logout": "Logout",
+      "myEvents": "My Events",
+      "profile": "Profile",
+      "newEvent": "New Event",
+      "sponsored": "Sponsored",
+      "active": "Active",
+      "profileInfo": "Profile information will be expanded in future versions.",
+      "table": {
+        "event": "Event",
+        "city": "City",
+        "date": "Date",
+        "status": "Status"
+      }
+    }
+  },
   "calendar": {
     "title": "FIND YOUR NEXT EVENT",
     "subtitle": "Explore the Complete Calendar.",
@@ -49,66 +75,58 @@
       "description": "Find the perfect shoes for your stride and running style"
     },
     "beginnersTips": {
-      "title": "Tips for Beginners",
+      "title": "Beginner's Tips",
       "description": "Complete guide for those starting to run"
     },
     "essentialAccessories": {
       "title": "Essential Accessories",
-      "description": "Equipment that every runner needs to have"
+      "description": "Equipment every runner needs to have"
     },
     "nutrition": {
-      "title": "Running Nutrition",
-      "description": "Learn about nutrition before, during and after workouts"
+      "title": "Sports Nutrition",
+      "description": "Foods and supplements to improve your performance"
+    },
+    "trainingPlans": {
+      "title": "Training Plans",
+      "description": "Personalized training programs for different levels"
+    },
+    "recovery": {
+      "title": "Recovery",
+      "description": "Techniques and equipment for post-training recovery"
     },
     "sportswear": {
       "title": "Sportswear",
-      "description": "Technical clothing for maximum comfort and performance"
+      "description": "Proper clothing for running and training"
     },
     "trainingTips": {
       "title": "Training Tips",
-      "description": "Effective strategies to improve your performance"
+      "description": "Strategies to improve your running performance"
     },
     "supplements": {
       "title": "Supplements",
-      "description": "Sports supplementation to optimize your results"
+      "description": "Supplements to support your training and recovery"
     },
     "recoveryTips": {
-      "title": "Recovery",
-      "description": "Essential techniques for post-workout recovery"
+      "title": "Recovery Tips",
+      "description": "How to properly recover after intense training"
     },
-    "buttons": {
-      "shop": "Shop",
-      "readMore": "Read more"
-    }
+    "readMore": "Read more"
   },
   "aceBanner": {
-    "title": "ACE Partnership",
-    "description": "LetxClub is proud to be a partner of ACE (Elite Runners Association), promoting athletics development and supporting athletes in their journey.",
-    "button": "Learn more about ACE"
+    "title": "DOMINE A CORRIDA",
+    "subtitle": "Transforme sua paixão em performance com nossos produtos exclusivos",
+    "button": "ADQUIRIR"
   },
-  "featuredEvents": {
-    "title": "Featured Events",
-    "events": {
-      "saopaulo": {
-        "title": "São Paulo Marathon",
-        "location": "São Paulo, SP",
-        "distance": "42km"
-      },
-      "rio": {
-        "title": "Rio Half Marathon",
-        "location": "Rio de Janeiro, RJ",
-        "distance": "21km"
-      },
-      "brasilia": {
-        "title": "Brasília Run",
-        "location": "Brasília, DF",
-        "distance": "10km"
-      },
-      "salvador": {
-        "title": "Night Run Salvador",
-        "location": "Salvador, BA",
-        "distance": "5km"
-      }
-    }
+  "newsletter": {
+    "title": "RECEBA ATUALIZAÇÕES",
+    "subtitle": "Fique por dentro das novidades do mundo da corrida",
+    "emailPlaceholder": "Digite seu e-mail",
+    "button": "INSCREVER-SE"
+  },
+  "tips": {
+    "title": "DICAS PARA CORREDORES",
+    "subtitle": "Tudo o que você precisa saber para melhorar sua performance",
+    "videosTitle": "VÍDEOS SOBRE CORRIDA",
+    "videosSubtitle": "Aprenda com especialistas e melhore sua técnica"
   }
 } 
