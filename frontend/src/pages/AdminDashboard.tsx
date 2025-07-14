@@ -1,8 +1,11 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useTranslation } from 'react-i18next';
 import { FaPlus, FaCalendarAlt, FaUser, FaCrown, FaSignOutAlt, FaBars, FaTimes, FaEdit, FaTrash } from 'react-icons/fa';
 import CreateEventModal from '../components/CreateEventModal';
+import { Toast } from '../components/ui/Toast';
+import { useToast } from '../hooks/useToast';
+import { eventsService, Event } from '../services/eventsService';
 
 const AdminDashboard: FC = () => {
   const { t } = useTranslation();
@@ -10,16 +13,61 @@ const AdminDashboard: FC = () => {
   const [activeTab, setActiveTab] = useState<'events' | 'profile'>('events');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { toast, showSuccess, showError, hideToast } = useToast();
+
+  // Load events on component mount
+  useEffect(() => {
+    loadEvents();
+  }, []);
+
+  const loadEvents = async () => {
+    try {
+      setLoading(true);
+      const eventsData = await eventsService.getEvents();
+      setEvents(eventsData);
+    } catch (error) {
+      showError(t('admin.dashboard.errorLoading', 'Erro ao carregar eventos'));
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleLogout = () => {
     logout();
   };
 
-  const handleCreateEvent = (eventData: any) => {
-    // TODO: Implementar integração com backend
-    console.log('Criando evento:', eventData);
-    // Simular criação bem-sucedida
-    alert(t('admin.dashboard.eventCreated', 'Evento criado com sucesso!'));
+  const handleCreateEvent = async (eventData: any) => {
+    try {
+      const newEvent = await eventsService.createEvent({
+        ...eventData,
+        createdBy: user?.email || 'admin'
+      });
+      
+      setEvents(prev => [...prev, newEvent]);
+      setIsCreateModalOpen(false);
+      showSuccess(t('admin.dashboard.eventCreated', 'Evento criado com sucesso!'));
+    } catch (error) {
+      showError(t('admin.dashboard.errorCreating', 'Erro ao criar evento'));
+    }
+  };
+
+  const handleEditEvent = (eventId: string) => {
+    // TODO: Implementar modal de edição
+    showError(t('admin.dashboard.editNotImplemented', 'Funcionalidade de edição em desenvolvimento'));
+  };
+
+  const handleDeleteEvent = async (eventId: string) => {
+    if (window.confirm(t('admin.dashboard.confirmDelete', 'Tem certeza que deseja excluir este evento?'))) {
+      try {
+        await eventsService.deleteEvent(eventId);
+        setEvents(prev => prev.filter(event => event.id !== eventId));
+        showSuccess(t('admin.dashboard.eventDeleted', 'Evento excluído com sucesso!'));
+      } catch (error) {
+        showError(t('admin.dashboard.errorDeleting', 'Erro ao excluir evento'));
+      }
+    }
   };
 
   const mockEvents = [
@@ -43,6 +91,14 @@ const AdminDashboard: FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+      {/* Toast Notification */}
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        isVisible={toast.isVisible}
+        onClose={hideToast}
+      />
+
       {/* Header */}
       <header className="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-gray-700">
         <div className="px-4 sm:px-6 lg:px-8">
@@ -125,71 +181,87 @@ const AdminDashboard: FC = () => {
               </div>
 
               <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden">
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead className="bg-gray-50 dark:bg-gray-700">
-                      <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          {t('admin.dashboard.table.event', 'Evento')}
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          {t('admin.dashboard.table.city', 'Cidade')}
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          {t('admin.dashboard.table.date', 'Data')}
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          {t('admin.dashboard.table.status', 'Status')}
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                          {t('admin.dashboard.table.actions', 'Ações')}
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                      {mockEvents.map((event) => (
-                        <tr key={event.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm font-medium text-gray-900 dark:text-white">
-                              {event.title}
-                            </div>
-                            <div className="text-sm text-gray-500 dark:text-gray-400">
-                              {event.eventType}
-                            </div>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                            {event.city}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                            {new Date(event.date).toLocaleDateString('pt-BR')}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            {event.sponsored ? (
-                              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
-                                <FaCrown className="w-3 h-3 mr-1" />
-                                {t('admin.dashboard.sponsored', 'Patrocinado')}
-                              </span>
-                            ) : (
-                              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                {t('admin.dashboard.active', 'Ativo')}
-                              </span>
-                            )}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <div className="flex items-center space-x-2">
-                              <button className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 p-1 rounded">
-                                <FaEdit className="w-4 h-4" />
-                              </button>
-                              <button className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-1 rounded">
-                                <FaTrash className="w-4 h-4" />
-                              </button>
-                            </div>
-                          </td>
+                {loading ? (
+                  <div className="p-8 text-center text-gray-500 dark:text-gray-400">
+                    {t('admin.dashboard.loading', 'Carregando eventos...')}
+                  </div>
+                ) : events.length === 0 ? (
+                  <div className="p-8 text-center text-gray-500 dark:text-gray-400">
+                    {t('admin.dashboard.noEvents', 'Nenhum evento encontrado')}
+                  </div>
+                ) : (
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead className="bg-gray-50 dark:bg-gray-700">
+                        <tr>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                            {t('admin.dashboard.table.event', 'Evento')}
+                          </th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                            {t('admin.dashboard.table.city', 'Cidade')}
+                          </th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                            {t('admin.dashboard.table.date', 'Data')}
+                          </th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                            {t('admin.dashboard.table.status', 'Status')}
+                          </th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                            {t('admin.dashboard.table.actions', 'Ações')}
+                          </th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                      </thead>
+                      <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                        {events.map((event) => (
+                          <tr key={event.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <div className="text-sm font-medium text-gray-900 dark:text-white">
+                                {event.title}
+                              </div>
+                              <div className="text-sm text-gray-500 dark:text-gray-400">
+                                {event.eventType}
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                              {event.city}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                              {new Date(event.date).toLocaleDateString('pt-BR')}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              {event.sponsored ? (
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+                                  <FaCrown className="w-3 h-3 mr-1" />
+                                  {t('admin.dashboard.sponsored', 'Patrocinado')}
+                                </span>
+                              ) : (
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                                  {t('admin.dashboard.active', 'Ativo')}
+                                </span>
+                              )}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                              <div className="flex items-center space-x-2">
+                                <button 
+                                  onClick={() => handleEditEvent(event.id)}
+                                  className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 p-1 rounded"
+                                >
+                                  <FaEdit className="w-4 h-4" />
+                                </button>
+                                <button 
+                                  onClick={() => handleDeleteEvent(event.id)}
+                                  className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-1 rounded"
+                                >
+                                  <FaTrash className="w-4 h-4" />
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
               </div>
             </div>
           )}

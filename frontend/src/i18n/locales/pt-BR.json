@@ -68,23 +68,35 @@
     "bestEvents": "MELHORES EVENTOS!"
   },
   "admin": {
+    "title": "Administração",
     "login": {
-      "title": "Área Administrativa",
-      "subtitle": "Acesse o painel de controle do LetxClub",
-      "googleButton": "Entrar com Google",
-      "loading": "Autenticando...",
-      "info": "Apenas administradores autorizados podem acessar"
+      "title": "Login Administrativo",
+      "subtitle": "Acesse o painel de controle",
+      "googleLogin": "Entrar com Google",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Senha",
+      "loginButton": "Entrar",
+      "forgotPassword": "Esqueceu a senha?",
+      "backToHome": "Voltar ao Início"
     },
     "dashboard": {
       "title": "Painel Administrativo",
-      "logout": "Sair",
       "myEvents": "Minhas Corridas",
       "profile": "Perfil",
       "newEvent": "Nova Corrida",
+      "logout": "Sair",
       "sponsored": "Patrocinado",
       "active": "Ativo",
-      "profileInfo": "Informações do perfil serão expandidas em versões futuras.",
       "eventCreated": "Evento criado com sucesso!",
+      "eventDeleted": "Evento excluído com sucesso!",
+      "errorLoading": "Erro ao carregar eventos",
+      "errorCreating": "Erro ao criar evento",
+      "errorDeleting": "Erro ao excluir evento",
+      "editNotImplemented": "Funcionalidade de edição em desenvolvimento",
+      "confirmDelete": "Tem certeza que deseja excluir este evento?",
+      "loading": "Carregando eventos...",
+      "noEvents": "Nenhum evento encontrado",
+      "profileInfo": "Informações do perfil serão expandidas em versões futuras.",
       "table": {
         "event": "Evento",
         "city": "Cidade",
@@ -94,38 +106,28 @@
       }
     },
     "createEvent": {
-      "title": "Nova Corrida",
-      "fields": {
-        "title": "Nome do Evento",
-        "description": "Descrição",
-        "city": "Cidade",
-        "date": "Data",
-        "time": "Horário",
-        "eventType": "Tipo de Evento",
-        "image": "Imagem do Evento"
-      },
-      "placeholders": {
-        "title": "Digite o nome da corrida",
-        "description": "Descreva o evento",
-        "city": "Ex: São Paulo"
-      },
-      "eventTypes": {
+      "title": "Criar Nova Corrida",
+      "titleField": "Título",
+      "titlePlaceholder": "Nome da corrida",
+      "descriptionField": "Descrição",
+      "descriptionPlaceholder": "Descrição do evento",
+      "cityField": "Cidade",
+      "cityPlaceholder": "Cidade onde será realizada",
+      "dateField": "Data",
+      "timeField": "Horário",
+      "eventTypeField": "Tipo de Evento",
+      "eventTypeOptions": {
         "street": "Corrida de Rua",
-        "trail": "Trail Running",
-        "kids": "Corrida Kids"
+        "trail": "Trail",
+        "marathon": "Maratona",
+        "halfMarathon": "Meia Maratona",
+        "5k": "5K",
+        "10k": "10K"
       },
-      "errors": {
-        "titleRequired": "Nome do evento é obrigatório",
-        "descriptionRequired": "Descrição é obrigatória",
-        "cityRequired": "Cidade é obrigatória",
-        "dateRequired": "Data é obrigatória",
-        "timeRequired": "Horário é obrigatório",
-        "imageRequired": "Imagem é obrigatória"
-      },
-      "buttons": {
-        "cancel": "Cancelar",
-        "create": "Criar Corrida"
-      }
+      "sponsoredField": "Evento Patrocinado",
+      "cancelButton": "Cancelar",
+      "createButton": "Criar Evento",
+      "required": "Campo obrigatório"
     }
   },
   "shopAndTips": {
