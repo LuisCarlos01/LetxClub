@@ -43,10 +43,10 @@ const Tips: FC = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-letx-green-dark dark:text-letx-neon mb-3">
-                    Técnica de Corrida
+                    Primeiros Passos na Corrida
                   </h3>
                   <p className="text-gray-600 dark:text-letx-green-water mb-4">
-                    Melhore sua postura, passada e biomecânica para correr de forma mais eficiente e sem lesões.
+                    Guia completo para iniciantes: como começar a correr de forma segura e progressiva.
                   </p>
                   <button className="text-letx-blue dark:text-letx-neon hover:underline">
                     Ler mais →
@@ -63,10 +63,10 @@ const Tips: FC = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-letx-green-dark dark:text-letx-neon mb-3">
-                    Nutrição e Hidratação
+                    Técnica de Corrida
                   </h3>
                   <p className="text-gray-600 dark:text-letx-green-water mb-4">
-                    Estratégias alimentares e de hidratação para otimizar seu desempenho antes, durante e após a corrida.
+                    Melhore sua postura, passada e biomecânica para correr de forma mais eficiente e sem lesões.
                   </p>
                   <button className="text-letx-blue dark:text-letx-neon hover:underline">
                     Ler mais →
@@ -83,10 +83,10 @@ const Tips: FC = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-letx-green-dark dark:text-letx-neon mb-3">
-                    Prevenção de Lesões
+                    Nutrição e Hidratação
                   </h3>
                   <p className="text-gray-600 dark:text-letx-green-water mb-4">
-                    Exercícios de fortalecimento, aquecimento e alongamento para manter-se livre de lesões na corrida.
+                    Estratégias alimentares e de hidratação para otimizar seu desempenho antes, durante e após a corrida.
                   </p>
                   <button className="text-letx-blue dark:text-letx-neon hover:underline">
                     Ler mais →

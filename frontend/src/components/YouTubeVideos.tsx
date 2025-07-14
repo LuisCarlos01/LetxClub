@@ -11,21 +11,21 @@ const YouTubeVideos: FC = () => {
   const videos: Video[] = [
     {
       id: '1',
-      title: 'Como Melhorar sua Técnica de Corrida - Postura e Passada',
-      thumbnail: '/images/videos/video1-thumb.jpg',
-      embedUrl: 'https://www.youtube.com/embed/brFqKJSG7kE'
+      title: 'Como Começar a Correr: Guia Completo para Iniciantes',
+      thumbnail: 'https://img.youtube.com/vi/kVnyY17VS9Y/maxresdefault.jpg',
+      embedUrl: 'https://www.youtube.com/embed/kVnyY17VS9Y'
     },
     {
       id: '2', 
-      title: 'Nutrição e Hidratação para Corredores - O que Comer Antes e Depois',
-      thumbnail: '/images/videos/video2-thumb.jpg',
-      embedUrl: 'https://www.youtube.com/embed/oNVbO8Z0x8k'
+      title: 'Técnica de Corrida: Como Melhorar sua Postura e Passada',
+      thumbnail: 'https://img.youtube.com/vi/zSIDRHUWlVo/maxresdefault.jpg',
+      embedUrl: 'https://www.youtube.com/embed/zSIDRHUWlVo'
     },
     {
       id: '3',
-      title: 'Como Prevenir Lesões na Corrida - Aquecimento e Fortalecimento',
-      thumbnail: '/images/videos/video3-thumb.jpg',
-      embedUrl: 'https://www.youtube.com/embed/L3Z0U5P-ACM'
+      title: 'Nutrição para Corredores: O que Comer Antes e Depois da Corrida',
+      thumbnail: 'https://img.youtube.com/vi/Phl82D57P58/maxresdefault.jpg',
+      embedUrl: 'https://www.youtube.com/embed/Phl82D57P58'
     }
   ];
 
@@ -53,14 +53,31 @@ const YouTubeVideos: FC = () => {
               onClick={() => handleVideoClick(video.embedUrl)}
             >
               <div className="relative">
-                <div className="bg-letx-green-water dark:bg-letx-blue h-48 flex items-center justify-center">
+                <img
+                  src={video.thumbnail}
+                  alt={video.title}
+                  className="w-full h-48 object-cover"
+                  onError={(e) => {
+                    // Fallback se a thumbnail não carregar
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                <div className="hidden bg-letx-green-water dark:bg-letx-blue h-48 flex items-center justify-center">
                   <div className="text-letx-green-dark dark:text-letx-neon">
                     <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z"/>
                     </svg>
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-black bg-opacity-20 hover:bg-opacity-10 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-black bg-opacity-20 hover:bg-opacity-10 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="text-white">
+                    <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-bold text-letx-green-dark dark:text-letx-neon mb-2 line-clamp-2">
