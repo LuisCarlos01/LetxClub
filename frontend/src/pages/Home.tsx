@@ -11,7 +11,7 @@ const Home: FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-letx-white dark:bg-letx-green-dark transition-colors duration-300">
       <Header />
-      <main>
+      <main className="flex-1">
         <HeroSection />
         <FeaturedEvents />
         <div className="py-16 bg-white dark:bg-letx-green-dark transition-colors duration-300">
