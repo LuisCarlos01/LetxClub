@@ -6,7 +6,7 @@ const NewsletterCard: FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle newsletter subscription
-    console.log('Email submitted:', email);
+    // TODO: Implement newsletter subscription logic
   };
 
   return (
