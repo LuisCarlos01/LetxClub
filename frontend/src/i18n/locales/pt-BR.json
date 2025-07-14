@@ -33,6 +33,8 @@
     "register": "Inscrever-se"
   },
   "shopAndTips": {
+    "title": "Loja e Dicas",
+    "subtitle": "Descubra produtos essenciais para sua corrida e acesse dicas valiosas para melhorar sua performance",
     "runningShoes": {
       "title": "Tênis para Corrida",
       "description": "Encontre o tênis perfeito para sua pisada e estilo de corrida"
@@ -48,6 +50,22 @@
     "nutrition": {
       "title": "Nutrição na Corrida",
       "description": "Aprenda sobre alimentação antes, durante e após os treinos"
+    },
+    "sportswear": {
+      "title": "Roupas Esportivas",
+      "description": "Vestuário técnico para máximo conforto e performance"
+    },
+    "trainingTips": {
+      "title": "Dicas de Treino",
+      "description": "Estratégias eficazes para melhorar sua performance"
+    },
+    "supplements": {
+      "title": "Suplementos",
+      "description": "Suplementação esportiva para otimizar seus resultados"
+    },
+    "recoveryTips": {
+      "title": "Recuperação",
+      "description": "Técnicas essenciais para recuperação pós-treino"
     },
     "buttons": {
       "shop": "Comprar",

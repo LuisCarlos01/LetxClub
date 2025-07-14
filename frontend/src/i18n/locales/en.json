@@ -32,7 +32,18 @@
     "distance": "Distance",
     "register": "Register"
   },
+  "calendar": {
+    "title": "FIND YOUR NEXT EVENT",
+    "subtitle": "Explore the Complete Calendar.",
+    "searchPlaceholder": "Search for a race...",
+    "cityPlaceholder": "City",
+    "typePlaceholder": "Type",
+    "searchButton": "SEARCH",
+    "bestEvents": "BEST EVENTS!"
+  },
   "shopAndTips": {
+    "title": "Shop and Tips",
+    "subtitle": "Discover essential products for your running and access valuable tips to improve your performance",
     "runningShoes": {
       "title": "Running Shoes",
       "description": "Find the perfect shoes for your stride and running style"
@@ -43,11 +54,27 @@
     },
     "essentialAccessories": {
       "title": "Essential Accessories",
-      "description": "Equipment every runner needs to have"
+      "description": "Equipment that every runner needs to have"
     },
     "nutrition": {
       "title": "Running Nutrition",
-      "description": "Learn about nutrition before, during, and after training"
+      "description": "Learn about nutrition before, during and after workouts"
+    },
+    "sportswear": {
+      "title": "Sportswear",
+      "description": "Technical clothing for maximum comfort and performance"
+    },
+    "trainingTips": {
+      "title": "Training Tips",
+      "description": "Effective strategies to improve your performance"
+    },
+    "supplements": {
+      "title": "Supplements",
+      "description": "Sports supplementation to optimize your results"
+    },
+    "recoveryTips": {
+      "title": "Recovery",
+      "description": "Essential techniques for post-workout recovery"
     },
     "buttons": {
       "shop": "Shop",
@@ -56,7 +83,7 @@
   },
   "aceBanner": {
     "title": "ACE Partnership",
-    "description": "LetxClub is proud to be a partner of ACE (Elite Runners Association), promoting the development of athletics and supporting athletes in their journey.",
+    "description": "LetxClub is proud to be a partner of ACE (Elite Runners Association), promoting athletics development and supporting athletes in their journey.",
     "button": "Learn more about ACE"
   },
   "featuredEvents": {
@@ -78,7 +105,7 @@
         "distance": "10km"
       },
       "salvador": {
-        "title": "Salvador Night Run",
+        "title": "Night Run Salvador",
         "location": "Salvador, BA",
         "distance": "5km"
       }
