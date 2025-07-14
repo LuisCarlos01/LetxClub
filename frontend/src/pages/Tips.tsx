@@ -11,7 +11,7 @@ const Tips: FC = () => {
       <Header />
       <main>
         {/* Hero Section para Dicas */}
-        <section className="bg-letx-green-water dark:bg-letx-blue py-20">
+<section className="bg-white dark:bg-letx-blue py-20">
           <div className="container mx-auto px-4">
             <div className="text-center">
               <h1 className="text-4xl md:text-6xl font-bold text-letx-green-dark dark:text-letx-neon mb-6">
