@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useTranslation } from 'react-i18next';
 import { FaPlus, FaCalendarAlt, FaUser, FaCrown, FaSignOutAlt, FaBars, FaTimes, FaEdit, FaTrash } from 'react-icons/fa';
 import CreateEventModal from '../components/CreateEventModal';
+import EditEventModal from '../components/EditEventModal';
 import { Toast } from '../components/ui/Toast';
 import { useToast } from '../hooks/useToast';
 import { eventsService, Event } from '../services/eventsService';
@@ -13,6 +14,8 @@ const AdminDashboard: FC = () => {
   const [activeTab, setActiveTab] = useState<'events' | 'profile'>('events');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editingEvent, setEditingEvent] = useState<Event | null>(null);
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast, showSuccess, showError, hideToast } = useToast();
@@ -54,8 +57,28 @@ const AdminDashboard: FC = () => {
   };
 
   const handleEditEvent = (eventId: string) => {
-    // TODO: Implementar modal de edição
-    showError(t('admin.dashboard.editNotImplemented', 'Funcionalidade de edição em desenvolvimento'));
+    const event = events.find(e => e.id === eventId);
+    if (event) {
+      setEditingEvent(event);
+      setIsEditModalOpen(true);
+    }
+  };
+
+  const handleUpdateEvent = async (eventData: Partial<Event>) => {
+    try {
+      if (!eventData.id) return;
+      
+      const updatedEvent = await eventsService.updateEvent(eventData.id, eventData);
+      setEvents(prev => prev.map(event => 
+        event.id === eventData.id ? updatedEvent : event
+      ));
+      
+      setIsEditModalOpen(false);
+      setEditingEvent(null);
+      showSuccess(t('admin.dashboard.eventUpdated', 'Evento atualizado com sucesso!'));
+    } catch (error) {
+      showError(t('admin.dashboard.errorUpdating', 'Erro ao atualizar evento'));
+    }
   };
 
   const handleDeleteEvent = async (eventId: string) => {
@@ -300,6 +323,14 @@ const AdminDashboard: FC = () => {
         onClose={() => setIsCreateModalOpen(false)}
         onSubmit={handleCreateEvent}
       />
+
+              {/* Edit Event Modal */}
+        <EditEventModal
+          event={editingEvent}
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          onSubmit={handleUpdateEvent}
+        />
 
       {/* Sidebar Overlay */}
       {sidebarOpen && (

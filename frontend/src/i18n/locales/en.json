@@ -78,12 +78,13 @@
       "logout": "Logout",
       "sponsored": "Sponsored",
       "active": "Active",
-      "eventCreated": "Event created successfully!",
-      "eventDeleted": "Event deleted successfully!",
-      "errorLoading": "Error loading events",
-      "errorCreating": "Error creating event",
-      "errorDeleting": "Error deleting event",
-      "editNotImplemented": "Edit functionality under development",
+              "eventCreated": "Event created successfully!",
+        "eventUpdated": "Event updated successfully!",
+        "eventDeleted": "Event deleted successfully!",
+        "errorLoading": "Error loading events",
+        "errorCreating": "Error creating event",
+        "errorUpdating": "Error updating event",
+        "errorDeleting": "Error deleting event",
       "confirmDelete": "Are you sure you want to delete this event?",
       "loading": "Loading events...",
       "noEvents": "No events found",
@@ -115,11 +116,15 @@
         "5k": "5K",
         "10k": "10K"
       },
-      "sponsoredField": "Sponsored Event",
-      "cancelButton": "Cancel",
-      "createButton": "Create Event",
-      "required": "Required field"
-    }
+              "sponsoredField": "Sponsored Event",
+        "cancelButton": "Cancel",
+        "createButton": "Create Event",
+        "required": "Required field"
+      },
+      "editEvent": {
+        "title": "Edit Race",
+        "updateButton": "Update Event"
+      }
   },
   "calendar": {
     "title": "FIND YOUR NEXT EVENT",

@@ -87,12 +87,13 @@
       "logout": "Sair",
       "sponsored": "Patrocinado",
       "active": "Ativo",
-      "eventCreated": "Evento criado com sucesso!",
-      "eventDeleted": "Evento excluído com sucesso!",
-      "errorLoading": "Erro ao carregar eventos",
-      "errorCreating": "Erro ao criar evento",
-      "errorDeleting": "Erro ao excluir evento",
-      "editNotImplemented": "Funcionalidade de edição em desenvolvimento",
+              "eventCreated": "Evento criado com sucesso!",
+        "eventUpdated": "Evento atualizado com sucesso!",
+        "eventDeleted": "Evento excluído com sucesso!",
+        "errorLoading": "Erro ao carregar eventos",
+        "errorCreating": "Erro ao criar evento",
+        "errorUpdating": "Erro ao atualizar evento",
+        "errorDeleting": "Erro ao excluir evento",
       "confirmDelete": "Tem certeza que deseja excluir este evento?",
       "loading": "Carregando eventos...",
       "noEvents": "Nenhum evento encontrado",
@@ -124,11 +125,15 @@
         "5k": "5K",
         "10k": "10K"
       },
-      "sponsoredField": "Evento Patrocinado",
-      "cancelButton": "Cancelar",
-      "createButton": "Criar Evento",
-      "required": "Campo obrigatório"
-    }
+              "sponsoredField": "Evento Patrocinado",
+        "cancelButton": "Cancelar",
+        "createButton": "Criar Evento",
+        "required": "Campo obrigatório"
+      },
+      "editEvent": {
+        "title": "Editar Corrida",
+        "updateButton": "Atualizar Evento"
+      }
   },
   "shopAndTips": {
     "title": "Loja e Dicas",
