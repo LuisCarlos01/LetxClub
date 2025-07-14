@@ -6,7 +6,6 @@ interface Card {
   link: string;
   type: 'shop' | 'tip';
   image?: string;
-  price?: string;
   category?: string;
   rating?: number;
   badge?: string;
@@ -21,7 +20,6 @@ const ShopAndTips: FC = () => {
       link: '/shop/running-shoes',
       type: 'shop',
       image: '/images/shop/tenis.png',
-      price: 'R$ 299 - R$ 799',
       category: 'Calçados',
       rating: 5,
       badge: 'Bestseller'
@@ -40,7 +38,6 @@ const ShopAndTips: FC = () => {
       link: '/shop/accessories',
       type: 'shop',
       image: '/images/shop/acessorios.png',
-      price: 'R$ 59 - R$ 299',
       category: 'Acessórios',
       rating: 4,
       badge: 'Novidade'
@@ -59,7 +56,6 @@ const ShopAndTips: FC = () => {
       link: '/shop/clothing',
       type: 'shop',
       image: '/images/shop/roupas.png',
-      price: 'R$ 89 - R$ 399',
       category: 'Roupas',
       rating: 4,
       badge: 'Promoção'
@@ -78,7 +74,6 @@ const ShopAndTips: FC = () => {
       link: '/shop/supplements',
       type: 'shop',
       image: '/images/shop/suplementos.png',
-      price: 'R$ 49 - R$ 199',
       category: 'Suplementos',
       rating: 4,
       badge: 'Recomendado'
@@ -164,15 +159,6 @@ const ShopAndTips: FC = () => {
                       </span>
                     </div>
                   )}
-
-                  {/* Preço para itens de shop */}
-                  {card.price && (
-                    <div className="absolute bottom-3 right-3">
-                      <span className="bg-black/70 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
-                        {card.price}
-                      </span>
-                    </div>
-                  )}
                 </div>
               </div>
               
@@ -216,7 +202,7 @@ const ShopAndTips: FC = () => {
                   className="inline-flex items-center justify-center w-full px-6 py-3 bg-letx-blue text-white rounded-xl hover:bg-letx-blue-dark transition-all duration-300 font-semibold gap-2 group-hover:scale-105"
                 >
                   <span>
-                    {t(`shopAndTips.buttons.${card.type === 'shop' ? 'shop' : 'readMore'}`)}
+                    {t('shopAndTips.buttons.readMore', 'Ler mais')}
                   </span>
                   <svg
                     className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
