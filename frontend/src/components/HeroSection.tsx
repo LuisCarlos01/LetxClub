@@ -27,7 +27,7 @@ const HeroSection: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="relative w-full h-screen max-h-screen min-h-[600px]">
+    <section className="relative w-full h-[60vh] max-h-[600px] min-h-[400px]">
       <Swiper
         modules={[Autoplay, Navigation, Pagination, EffectFade]}
         effect="fade"
