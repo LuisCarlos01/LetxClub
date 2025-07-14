@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes, FaImage } from 'react-icons/fa';
 import { Event } from '../services/eventsService';
 
 interface EditEventModalProps {
@@ -24,8 +24,11 @@ const EditEventModal: React.FC<EditEventModalProps> = ({
     date: '',
     time: '',
     eventType: '',
-    sponsored: false
+    sponsored: false,
+    image: null as File | null
   });
+
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   // Update form when event changes
   useEffect(() => {
@@ -37,18 +40,45 @@ const EditEventModal: React.FC<EditEventModalProps> = ({
         date: event.date,
         time: event.time,
         eventType: event.eventType,
-        sponsored: event.sponsored
+        sponsored: event.sponsored,
+        image: null
       });
+      
+      // Set current image as preview
+      setImagePreview(event.imageUrl || null);
     }
   }, [event]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFormData(prev => ({ ...prev, image: file }));
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImagePreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!event) return;
     
+    // Process image if changed
+    let imageUrl = event.imageUrl; // Keep current image by default
+    if (formData.image instanceof File) {
+      imageUrl = await new Promise<string>((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target?.result as string);
+        reader.readAsDataURL(formData.image!);
+      });
+    }
+    
     onSubmit({
       id: event.id,
-      ...formData
+      ...formData,
+      imageUrl: imageUrl
     });
   };
 
@@ -184,6 +214,28 @@ const EditEventModal: React.FC<EditEventModalProps> = ({
             <label className="ml-2 block text-sm text-gray-900 dark:text-white">
               {t('admin.createEvent.sponsoredField', 'Evento Patrocinado')}
             </label>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <FaImage className="inline w-4 h-4 mr-1" />
+              {t('admin.createEvent.fields.image', 'Imagem do Evento')}
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-letx-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+            />
+            {imagePreview && (
+              <div className="mt-2">
+                <img
+                  src={imagePreview}
+                  alt="Preview"
+                  className="w-full h-32 object-cover rounded-lg border border-gray-300 dark:border-gray-600"
+                />
+              </div>
+            )}
           </div>
 
           <div className="flex justify-end space-x-4 pt-4">

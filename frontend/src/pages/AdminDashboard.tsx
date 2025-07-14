@@ -43,8 +43,25 @@ const AdminDashboard: FC = () => {
 
   const handleCreateEvent = async (eventData: any) => {
     try {
+      // Process image if present
+      let imageUrl = '';
+      if (eventData.image && eventData.image instanceof File) {
+        imageUrl = await new Promise<string>((resolve) => {
+          const reader = new FileReader();
+          reader.onload = (e) => resolve(e.target?.result as string);
+          reader.readAsDataURL(eventData.image);
+        });
+      }
+
       const newEvent = await eventsService.createEvent({
-        ...eventData,
+        title: eventData.title,
+        description: eventData.description,
+        city: eventData.city,
+        date: eventData.date,
+        time: eventData.time,
+        eventType: eventData.eventType,
+        sponsored: false, // Default value
+        imageUrl: imageUrl, // Save processed image
         createdBy: user?.email || 'admin'
       });
       

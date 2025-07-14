@@ -84,7 +84,7 @@ const Calendar: FC = () => {
     id: adminEvent.id,
     title: adminEvent.title,
     date: new Date(adminEvent.date).toLocaleDateString('pt-BR'),
-    image: `https://placehold.co/400x400/2434BA/CFF350?text=${encodeURIComponent(adminEvent.title)}`,
+    image: adminEvent.imageUrl || `https://placehold.co/400x400/2434BA/CFF350?text=${encodeURIComponent(adminEvent.title)}`,
     time: adminEvent.time || undefined,
     city: adminEvent.city,
     eventType: adminEvent.eventType

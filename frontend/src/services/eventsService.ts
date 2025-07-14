@@ -9,6 +9,7 @@ export interface Event {
   eventType: string;
   sponsored: boolean;
   createdBy: string;
+  imageUrl?: string; // URL da imagem (base64 ou URL externa)
   createdAt?: string;
   updatedAt?: string;
 }

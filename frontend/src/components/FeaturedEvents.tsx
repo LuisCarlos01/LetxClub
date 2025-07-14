@@ -87,7 +87,7 @@ const FeaturedEvents: FC = () => {
     date: adminEvent.date,
     location: adminEvent.city,
     distance: adminEvent.eventType, // Using eventType as distance for now
-    imageUrl: undefined // No image in admin events yet
+    imageUrl: adminEvent.imageUrl // Use the saved image URL
   });
 
   // Combine admin events with static events
