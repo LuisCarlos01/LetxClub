@@ -11,21 +11,21 @@ const YouTubeVideos: FC = () => {
   const videos: Video[] = [
     {
       id: '1',
-      title: 'Como começar a correr: Guia completo para iniciantes',
+      title: 'Como Melhorar sua Técnica de Corrida - Postura e Passada',
       thumbnail: '/images/videos/video1-thumb.jpg',
-      embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      embedUrl: 'https://www.youtube.com/embed/brFqKJSG7kE'
     },
     {
-      id: '2',
-      title: 'Técnicas de respiração para corrida',
+      id: '2', 
+      title: 'Nutrição e Hidratação para Corredores - O que Comer Antes e Depois',
       thumbnail: '/images/videos/video2-thumb.jpg',
-      embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      embedUrl: 'https://www.youtube.com/embed/oNVbO8Z0x8k'
     },
     {
       id: '3',
-      title: 'Aquecimento e alongamento para corredores',
+      title: 'Como Prevenir Lesões na Corrida - Aquecimento e Fortalecimento',
       thumbnail: '/images/videos/video3-thumb.jpg',
-      embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      embedUrl: 'https://www.youtube.com/embed/L3Z0U5P-ACM'
     }
   ];
 

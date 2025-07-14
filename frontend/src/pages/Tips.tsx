@@ -43,10 +43,10 @@ const Tips: FC = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-letx-green-dark dark:text-letx-neon mb-3">
-                    Técnicas de Respiração
+                    Técnica de Corrida
                   </h3>
                   <p className="text-gray-600 dark:text-letx-green-water mb-4">
-                    Aprenda a respirar corretamente durante a corrida para melhorar seu desempenho e resistência.
+                    Melhore sua postura, passada e biomecânica para correr de forma mais eficiente e sem lesões.
                   </p>
                   <button className="text-letx-blue dark:text-letx-neon hover:underline">
                     Ler mais →
@@ -63,10 +63,10 @@ const Tips: FC = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-letx-green-dark dark:text-letx-neon mb-3">
-                    Planejamento de Treinos
+                    Nutrição e Hidratação
                   </h3>
                   <p className="text-gray-600 dark:text-letx-green-water mb-4">
-                    Como estruturar seus treinos para alcançar seus objetivos na corrida de rua.
+                    Estratégias alimentares e de hidratação para otimizar seu desempenho antes, durante e após a corrida.
                   </p>
                   <button className="text-letx-blue dark:text-letx-neon hover:underline">
                     Ler mais →
@@ -83,10 +83,10 @@ const Tips: FC = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-letx-green-dark dark:text-letx-neon mb-3">
-                    Nutrição para Corredores
+                    Prevenção de Lesões
                   </h3>
                   <p className="text-gray-600 dark:text-letx-green-water mb-4">
-                    Alimentação adequada antes, durante e após os treinos e competições.
+                    Exercícios de fortalecimento, aquecimento e alongamento para manter-se livre de lesões na corrida.
                   </p>
                   <button className="text-letx-blue dark:text-letx-neon hover:underline">
                     Ler mais →
