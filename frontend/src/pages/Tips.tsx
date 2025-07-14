@@ -35,61 +35,121 @@ const Tips: FC = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Card 1 */}
-              <article className="bg-letx-white dark:bg-letx-blue-dark rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                <div className="bg-letx-green-water dark:bg-letx-blue h-48 flex items-center justify-center">
-                  <svg className="w-16 h-16 text-letx-green-dark dark:text-letx-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <article className="bg-letx-white dark:bg-letx-blue-dark rounded-2xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 border border-letx-green-water/20">
+                <div className="bg-gradient-to-br from-letx-green-water to-letx-blue h-48 flex items-center justify-center relative">
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-white/20 backdrop-blur-sm text-letx-green-dark dark:text-letx-neon px-3 py-1 rounded-full text-sm font-medium">
+                      Iniciante
+                    </span>
+                  </div>
+                  <svg className="w-20 h-20 text-letx-green-dark dark:text-letx-neon drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
                 <div className="p-6">
+                  <div className="flex items-center mb-2">
+                    <div className="flex text-yellow-400 mr-2">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <span className="text-sm text-gray-600 dark:text-letx-green-water ml-1">Básico</span>
+                    </div>
+                    <span className="text-sm text-gray-500 dark:text-letx-green-water/70">• 5 min leitura</span>
+                  </div>
                   <h3 className="text-xl font-bold text-letx-green-dark dark:text-letx-neon mb-3">
                     Primeiros Passos na Corrida
                   </h3>
-                  <p className="text-gray-600 dark:text-letx-green-water mb-4">
-                    Guia completo para iniciantes: como começar a correr de forma segura e progressiva.
+                  <p className="text-gray-600 dark:text-letx-green-water mb-4 line-clamp-3">
+                    Guia completo para iniciantes: como começar a correr de forma segura e progressiva, com dicas de equipamentos e planejamento.
                   </p>
-                  <button className="text-letx-blue dark:text-letx-neon hover:underline">
-                    Ler mais →
+                  <button className="inline-flex items-center text-letx-blue dark:text-letx-neon hover:underline font-medium transition-colors">
+                    <span>Ler guia completo</span>
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
                   </button>
                 </div>
               </article>
 
               {/* Card 2 */}
-              <article className="bg-letx-white dark:bg-letx-blue-dark rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                <div className="bg-letx-green-water dark:bg-letx-blue h-48 flex items-center justify-center">
-                  <svg className="w-16 h-16 text-letx-green-dark dark:text-letx-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <article className="bg-letx-white dark:bg-letx-blue-dark rounded-2xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 border border-letx-green-water/20">
+                <div className="bg-gradient-to-br from-letx-blue to-letx-green-water h-48 flex items-center justify-center relative">
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-white/20 backdrop-blur-sm text-letx-green-dark dark:text-letx-neon px-3 py-1 rounded-full text-sm font-medium">
+                      Intermediário
+                    </span>
+                  </div>
+                  <svg className="w-20 h-20 text-letx-green-dark dark:text-letx-neon drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div className="p-6">
+                  <div className="flex items-center mb-2">
+                    <div className="flex text-yellow-400 mr-2">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <span className="text-sm text-gray-600 dark:text-letx-green-water ml-1">Intermediário</span>
+                    </div>
+                    <span className="text-sm text-gray-500 dark:text-letx-green-water/70">• 8 min leitura</span>
+                  </div>
                   <h3 className="text-xl font-bold text-letx-green-dark dark:text-letx-neon mb-3">
                     Técnica de Corrida
                   </h3>
-                  <p className="text-gray-600 dark:text-letx-green-water mb-4">
-                    Melhore sua postura, passada e biomecânica para correr de forma mais eficiente e sem lesões.
+                  <p className="text-gray-600 dark:text-letx-green-water mb-4 line-clamp-3">
+                    Melhore sua postura, passada e biomecânica para correr de forma mais eficiente e sem lesões. Aprenda sobre cadência ideal e pisada.
                   </p>
-                  <button className="text-letx-blue dark:text-letx-neon hover:underline">
-                    Ler mais →
+                  <button className="inline-flex items-center text-letx-blue dark:text-letx-neon hover:underline font-medium transition-colors">
+                    <span>Ler guia completo</span>
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
                   </button>
                 </div>
               </article>
 
               {/* Card 3 */}
-              <article className="bg-letx-white dark:bg-letx-blue-dark rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
-                <div className="bg-letx-green-water dark:bg-letx-blue h-48 flex items-center justify-center">
-                  <svg className="w-16 h-16 text-letx-green-dark dark:text-letx-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <article className="bg-letx-white dark:bg-letx-blue-dark rounded-2xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 border border-letx-green-water/20">
+                <div className="bg-gradient-to-br from-letx-green-water via-letx-blue to-letx-green-water h-48 flex items-center justify-center relative">
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-white/20 backdrop-blur-sm text-letx-green-dark dark:text-letx-neon px-3 py-1 rounded-full text-sm font-medium">
+                      Avançado
+                    </span>
+                  </div>
+                  <svg className="w-20 h-20 text-letx-green-dark dark:text-letx-neon drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
                 </div>
                 <div className="p-6">
+                  <div className="flex items-center mb-2">
+                    <div className="flex text-yellow-400 mr-2">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <span className="text-sm text-gray-600 dark:text-letx-green-water ml-1">Avançado</span>
+                    </div>
+                    <span className="text-sm text-gray-500 dark:text-letx-green-water/70">• 12 min leitura</span>
+                  </div>
                   <h3 className="text-xl font-bold text-letx-green-dark dark:text-letx-neon mb-3">
                     Nutrição e Hidratação
                   </h3>
-                  <p className="text-gray-600 dark:text-letx-green-water mb-4">
-                    Estratégias alimentares e de hidratação para otimizar seu desempenho antes, durante e após a corrida.
+                  <p className="text-gray-600 dark:text-letx-green-water mb-4 line-clamp-3">
+                    Estratégias alimentares e de hidratação para otimizar seu desempenho antes, durante e após a corrida. Inclui suplementação esportiva.
                   </p>
-                  <button className="text-letx-blue dark:text-letx-neon hover:underline">
-                    Ler mais →
+                  <button className="inline-flex items-center text-letx-blue dark:text-letx-neon hover:underline font-medium transition-colors">
+                    <span>Ler guia completo</span>
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
                   </button>
                 </div>
               </article>
