@@ -246,50 +246,82 @@ const Calendar: FC = () => {
               {t('calendar.bestEvents', 'MELHORES EVENTOS!')}
             </h2>
 
-            {allEvents.length === 0 && (
+            {filteredEvents.length === 0 && (
               <div className="text-center text-gray-500 dark:text-gray-400 py-12">
                 {t('calendar.noEvents', 'Nenhum evento encontrado com os filtros selecionados.')}
               </div>
             )}
-            {filteredEvents.map(event => (
-              <div
-                key={event.id}
-                className="bg-letx-blue-dark rounded-xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300 shadow-lg"
-              >
-                <div className="relative aspect-square">
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2">{event.title}</h3>
-                      <div className="flex items-center text-letx-neon gap-2">
-                        <FaCalendarAlt className="w-4 h-4" />
-                        <span>{event.date}</span>
-                        {event.time && <span className="ml-2">{event.time}</span>}
+            
+            {/* Events List */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredEvents.map(event => (
+                <div
+                  key={event.id}
+                  className="bg-white dark:bg-letx-blue-dark rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                  {/* Event Image */}
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Badge de destaque no canto superior esquerdo */}
+                    <div className="absolute top-3 left-3">
+                      <EventBadge 
+                        featuredStandard={event.featuredStandard}
+                        featuredPremium={event.featuredPremium}
+                        featuredUltimate={event.featuredUltimate}
+                      />
+                    </div>
+                    
+                    {/* Event Info Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                      <h3 className="text-white font-bold text-lg mb-2 line-clamp-2">
+                        {event.title}
+                      </h3>
+                      
+                      <div className="flex items-center text-letx-neon mb-2">
+                        <FaCalendarAlt className="w-4 h-4 mr-2" />
+                        <span className="text-sm">{event.date}</span>
+                        {event.time && <span className="text-sm ml-2">• {event.time}</span>}
                       </div>
+                      
                       {event.city && (
-                        <div className="flex items-center text-letx-green-water gap-2 mt-1">
-                          <FaMapMarkerAlt className="w-3 h-3" />
+                        <div className="flex items-center text-letx-green-water mb-3">
+                          <FaMapMarkerAlt className="w-4 h-4 mr-2" />
                           <span className="text-sm">{event.city}</span>
                         </div>
                       )}
+                      
+                      {/* Event Type and Distance */}
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-4">
+                          {event.eventType && (
+                            <div className="flex items-center text-white/80">
+                              <FaRunning className="w-3 h-3 mr-1" />
+                              <span className="text-xs capitalize">{event.eventType.replace('-', ' ')}</span>
+                            </div>
+                          )}
+                          
+                          {event.distance && (
+                            <div className="flex items-center text-white/80">
+                              <FaRulerHorizontal className="w-3 h-3 mr-1" />
+                              <span className="text-xs">{event.distance}</span>
+                            </div>
+                          )}
+                        </div>
+                        
+                        {/* Register Button */}
+                        <button className="bg-letx-neon hover:bg-letx-neon/90 text-letx-blue-dark font-bold py-1 px-3 rounded-md text-xs transition-all duration-300 shadow-md hover:shadow-lg">
+                          {t('events.register', 'INSCREVER-SE')}
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  
-                  {/* Badge de destaque no canto superior esquerdo */}
-                  <div className="absolute top-3 left-3">
-                    <EventBadge 
-                      featuredStandard={event.featuredStandard}
-                      featuredPremium={event.featuredPremium}
-                      featuredUltimate={event.featuredUltimate}
-                    />
-                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
       </main>
