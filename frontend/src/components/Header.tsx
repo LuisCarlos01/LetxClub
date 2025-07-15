@@ -6,6 +6,8 @@ import logoLight from '../assets/images/Logotipo.png';
 import logoDark from '../assets/images/logotipo-dark.png';
 import { FaSun, FaMoon, FaGlobe, FaBars, FaTimes, FaUserShield } from 'react-icons/fa';
 
+// 🚀 Deploy automático teste - $(date)
+
 const Header: FC = () => {
   const { t, i18n } = useTranslation();
   const { isDarkMode, toggleDarkMode } = useTheme();
