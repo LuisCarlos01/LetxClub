@@ -1,11 +1,34 @@
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaTimes, FaCalendarAlt, FaMapMarkerAlt, FaImage, FaRunning } from 'react-icons/fa';
+import {
+  FaTimes,
+  FaCalendarAlt,
+  FaMapMarkerAlt,
+  FaImage,
+  FaRunning,
+  FaStar,
+  FaCrown,
+  FaFire,
+  FaCreditCard,
+} from 'react-icons/fa';
+import PaymentModal from './PaymentModal';
+
+interface EventData {
+  title: string;
+  description: string;
+  city: string;
+  date: string;
+  time: string;
+  eventType: 'Street' | 'Trail' | 'Kids';
+  image: File | null;
+  featuredType: 'none' | 'standard' | 'premium' | 'ultimate';
+  featuredPrice: number;
+}
 
 interface CreateEventModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (eventData: any) => void;
+  onSubmit: (eventData: EventData) => void;
 }
 
 const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit }) => {
@@ -18,10 +41,25 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
     time: '',
     eventType: 'Street' as 'Street' | 'Trail' | 'Kids',
     image: null as File | null,
+    featuredType: 'none' as 'none' | 'standard' | 'premium' | 'ultimate',
+    featuredPrice: 0,
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+
+  const featuredOptions = [
+    { value: 'none', label: 'Sem Destaque', price: 0, icon: null, color: 'gray' },
+    { value: 'standard', label: 'Destaque Padrão', price: 50, icon: FaStar, color: 'blue' },
+    { value: 'premium', label: 'Destaque Premium', price: 100, icon: FaCrown, color: 'purple' },
+    { value: 'ultimate', label: 'Destaque Ultimate', price: 200, icon: FaFire, color: 'orange' },
+  ];
+
+  const calculateFeaturedPrice = (type: string) => {
+    const option = featuredOptions.find(opt => opt.value === type);
+    return option ? option.price : 0;
+  };
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -55,9 +93,18 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      onSubmit(formData);
-      handleClose();
+      if (formData.featuredType !== 'none' && formData.featuredPrice > 0) {
+        setShowPaymentModal(true);
+      } else {
+        onSubmit(formData);
+        handleClose();
+      }
     }
+  };
+
+  const handlePaymentSuccess = () => {
+    onSubmit(formData);
+    handleClose();
   };
 
   const handleClose = () => {
@@ -69,6 +116,8 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
       time: '',
       eventType: 'Street',
       image: null,
+      featuredType: 'none',
+      featuredPrice: 0,
     });
     setErrors({});
     setImagePreview(null);
@@ -85,6 +134,15 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleFeaturedTypeChange = (type: string) => {
+    const price = calculateFeaturedPrice(type);
+    setFormData(prev => ({
+      ...prev,
+      featuredType: type as 'none' | 'standard' | 'premium' | 'ultimate',
+      featuredPrice: price,
+    }));
   };
 
   if (!isOpen) return null;
@@ -221,6 +279,66 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
             </select>
           </div>
 
+          {/* Destaque Pago */}
+          <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
+              <FaCrown className="inline w-4 h-4 mr-1" />
+              {t('admin.createEvent.fields.featured', 'Destaque na Página Principal')}
+            </label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {featuredOptions.map(option => {
+                const IconComponent = option.icon;
+                return (
+                  <div
+                    key={option.value}
+                    className={`relative border-2 rounded-lg p-4 cursor-pointer transition-all hover:shadow-md ${
+                      formData.featuredType === option.value
+                        ? 'border-letx-blue bg-blue-50 dark:bg-blue-900/20'
+                        : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
+                    }`}
+                    onClick={() => handleFeaturedTypeChange(option.value)}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        {IconComponent && (
+                          <IconComponent className={`w-5 h-5 mr-2 text-${option.color}-500`} />
+                        )}
+                        <span className="font-medium text-gray-900 dark:text-white">
+                          {option.label}
+                        </span>
+                      </div>
+                      {option.price > 0 && (
+                        <span className="text-lg font-bold text-letx-blue">R$ {option.price}</span>
+                      )}
+                    </div>
+                    {option.value !== 'none' && (
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                        {option.value === 'standard' && 'Aparece na seção de eventos em destaque'}
+                        {option.value === 'premium' &&
+                          'Aparece no topo da página e na seção de eventos'}
+                        {option.value === 'ultimate' &&
+                          'Aparece em todas as seções com prioridade máxima'}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            {formData.featuredType !== 'none' && (
+              <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg">
+                <div className="flex items-center">
+                  <FaCreditCard className="w-5 h-5 text-yellow-600 mr-2" />
+                  <span className="font-medium text-yellow-800 dark:text-yellow-200">
+                    Total a pagar: R$ {formData.featuredPrice}
+                  </span>
+                </div>
+                <p className="text-sm text-yellow-700 dark:text-yellow-300 mt-1">
+                  O pagamento será processado após a criação do evento.
+                </p>
+              </div>
+            )}
+          </div>
+
           {/* Upload de Imagem */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -266,6 +384,16 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
           </div>
         </form>
       </div>
+
+      {/* Payment Modal */}
+      <PaymentModal
+        isOpen={showPaymentModal}
+        onClose={() => setShowPaymentModal(false)}
+        onSuccess={handlePaymentSuccess}
+        eventTitle={formData.title}
+        featuredType={featuredOptions.find(opt => opt.value === formData.featuredType)?.label || ''}
+        price={formData.featuredPrice}
+      />
     </div>
   );
 };
