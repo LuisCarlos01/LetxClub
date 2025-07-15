@@ -128,13 +128,19 @@ const Tips: FC = () => {
       <Header />
       <main className="flex-1">
         {/* Hero Section para Dicas */}
-        <section className="bg-letx-green-water dark:bg-letx-blue py-20">
-          <div className="container mx-auto px-4">
+        <section 
+          className="relative bg-letx-green-water dark:bg-letx-blue py-20 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(/images/tips/pgdicas.png)',
+          }}
+        >
+          <div className="absolute inset-0 bg-black/70" />
+          <div className="container mx-auto px-4 relative z-10">
             <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-bold text-letx-green-dark dark:text-letx-neon mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold text-letx-neon mb-6 drop-shadow-2xl">
                 Dicas de Corrida
               </h1>
-              <p className="text-lg md:text-xl text-letx-green-dark dark:text-letx-green-water max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-white max-w-3xl mx-auto drop-shadow-xl">
                 Descubra técnicas, estratégias e conhecimentos essenciais para melhorar sua
                 performance e aproveitar ao máximo cada corrida
               </p>
