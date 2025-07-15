@@ -61,12 +61,18 @@ const Calendar: FC = () => {
       title: 'CORRIDA KIDS TURMA DO DINOSSAURO',
       date: '18/09/2025',
       image: 'https://placehold.co/400x400/2434BA/CFF350?text=Corrida+Kids',
+      featuredStandard: false,
+      featuredPremium: false,
+      featuredUltimate: false,
     },
     {
       id: 'static-2',
       title: 'I CORRIDA KIDS MINIMUNDO',
       date: '05/10/2025',
       image: 'https://placehold.co/400x400/2434BA/CFF350?text=Minimundo',
+      featuredStandard: false,
+      featuredPremium: false,
+      featuredUltimate: false,
     },
     {
       id: 'static-3',
@@ -74,12 +80,18 @@ const Calendar: FC = () => {
       date: '05/10/2025',
       time: '20:00',
       image: 'https://placehold.co/400x400/2434BA/CFF350?text=Corrida',
+      featuredStandard: false,
+      featuredPremium: false,
+      featuredUltimate: false,
     },
     {
       id: 'static-4',
       title: 'JANJAO',
       date: '17/07/2025',
       image: 'https://placehold.co/400x400/2434BA/CFF350?text=Janjao',
+      featuredStandard: false,
+      featuredPremium: false,
+      featuredUltimate: false,
     },
   ];
 
@@ -94,9 +106,9 @@ const Calendar: FC = () => {
     time: adminEvent.time || undefined,
     city: adminEvent.city,
     eventType: adminEvent.eventType,
-    featuredStandard: adminEvent.featuredStandard,
-    featuredPremium: adminEvent.featuredPremium,
-    featuredUltimate: adminEvent.featuredUltimate,
+    featuredStandard: adminEvent.featuredStandard === true,
+    featuredPremium: adminEvent.featuredPremium === true,
+    featuredUltimate: adminEvent.featuredUltimate === true,
   });
 
   // Combine admin events with static events

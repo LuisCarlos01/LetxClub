@@ -59,6 +59,9 @@ const FeaturedEvents: FC = () => {
       date: '2024-04-14',
       location: t('featuredEvents.events.saopaulo.location'),
       distance: t('featuredEvents.events.saopaulo.distance'),
+      featuredStandard: false,
+      featuredPremium: false,
+      featuredUltimate: false,
     },
     {
       id: 'rio',
@@ -66,6 +69,9 @@ const FeaturedEvents: FC = () => {
       date: '2024-05-21',
       location: t('featuredEvents.events.rio.location'),
       distance: t('featuredEvents.events.rio.distance'),
+      featuredStandard: false,
+      featuredPremium: false,
+      featuredUltimate: false,
     },
     {
       id: 'brasilia',
@@ -73,6 +79,9 @@ const FeaturedEvents: FC = () => {
       date: '2024-06-02',
       location: t('featuredEvents.events.brasilia.location'),
       distance: t('featuredEvents.events.brasilia.distance'),
+      featuredStandard: false,
+      featuredPremium: false,
+      featuredUltimate: false,
     },
     {
       id: 'salvador',
@@ -80,6 +89,9 @@ const FeaturedEvents: FC = () => {
       date: '2024-06-15',
       location: t('featuredEvents.events.salvador.location'),
       distance: t('featuredEvents.events.salvador.distance'),
+      featuredStandard: false,
+      featuredPremium: false,
+      featuredUltimate: false,
     },
   ];
 
@@ -91,9 +103,9 @@ const FeaturedEvents: FC = () => {
     location: adminEvent.city,
     distance: adminEvent.eventType, // Using eventType as distance for now
     imageUrl: adminEvent.imageUrl, // Use the saved image URL
-    featuredStandard: adminEvent.featuredStandard,
-    featuredPremium: adminEvent.featuredPremium,
-    featuredUltimate: adminEvent.featuredUltimate,
+    featuredStandard: adminEvent.featuredStandard === true,
+    featuredPremium: adminEvent.featuredPremium === true,
+    featuredUltimate: adminEvent.featuredUltimate === true,
   });
 
   // Combine admin events with static events

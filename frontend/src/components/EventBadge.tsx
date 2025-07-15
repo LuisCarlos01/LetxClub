@@ -14,16 +14,17 @@ const EventBadge: FC<EventBadgeProps> = ({
   featuredUltimate,
   className = '',
 }) => {
-  // Determinar o badge de maior prioridade
+  // Verificações mais rigorosas - apenas true explícito e definido
   const getBadgeType = () => {
-    if (featuredUltimate) return 'ultimate';
-    if (featuredPremium) return 'premium';
-    if (featuredStandard) return 'standard';
+    if (featuredUltimate === true) return 'ultimate';
+    if (featuredPremium === true) return 'premium';
+    if (featuredStandard === true) return 'standard';
     return null;
   };
 
   const badgeType = getBadgeType();
 
+  // Se não há tipo de badge, não renderiza nada
   if (!badgeType) return null;
 
   const getBadgeConfig = () => {
