@@ -1,4 +1,4 @@
-import { FC, useState, useRef } from 'react';
+import { FC, useState } from 'react';
 
 interface Video {
   id: string;
@@ -97,7 +97,7 @@ const YouTubeVideos: FC = () => {
 
   const [activeFilter, setActiveFilter] = useState<string>('Todos');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  // const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const categories = [
     'Todos',
@@ -129,17 +129,17 @@ const YouTubeVideos: FC = () => {
     }
   };
 
-  const scrollToIndex = (index: number) => {
-    if (scrollContainerRef.current) {
-      const cardWidth = 384; // w-96 = 384px
-      const gap = 32; // gap-8 = 32px
-      const scrollLeft = index * (cardWidth + gap);
-      scrollContainerRef.current.scrollTo({
-        left: scrollLeft,
-        behavior: 'smooth',
-      });
-    }
-  };
+  // const scrollToIndex = (index: number) => {
+  //   if (scrollContainerRef.current) {
+  //     const cardWidth = 384; // w-96 = 384px
+  //     const gap = 32; // gap-8 = 32px
+  //     const scrollLeft = index * (cardWidth + gap);
+  //     scrollContainerRef.current.scrollTo({
+  //       left: scrollLeft,
+  //       behavior: 'smooth',
+  //     });
+  //   }
+  // };
 
   const handleFilterChange = (category: string) => {
     setActiveFilter(category);

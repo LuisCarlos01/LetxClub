@@ -1,8 +1,8 @@
 import { Event } from './eventsService';
 
 // Supabase configuration - will be replaced with actual values
-const SUPABASE_URL = 'https://nkpphalvzhzdexcttsxw.supabase.co';
-const SUPABASE_ANON_KEY = 'your-anon-key-here';
+// const SUPABASE_URL = 'https://nkpphalvzhzdexcttsxw.supabase.co';
+// const SUPABASE_ANON_KEY = 'your-anon-key-here';
 
 // Mock implementation for development
 // This will be replaced with actual Supabase client calls
@@ -54,7 +54,7 @@ class SupabaseService {
   }
 
   // Future: Add authentication methods
-  async signIn(email: string, password: string) {
+  async signIn(_email: string, _password: string) {
     // TODO: Replace with actual Supabase auth
     // const { data, error } = await supabase.auth.signInWithPassword({ email, password })
     throw new Error('Authentication not implemented yet');
@@ -67,7 +67,7 @@ class SupabaseService {
   }
 
   // Future: Add real-time subscriptions
-  subscribeToEvents(callback: (events: Event[]) => void) {
+  subscribeToEvents(_callback: (events: Event[]) => void) {
     // TODO: Replace with actual Supabase real-time
     // const subscription = supabase.from('events').on('*', callback).subscribe()
     console.log('Real-time subscriptions not implemented yet');

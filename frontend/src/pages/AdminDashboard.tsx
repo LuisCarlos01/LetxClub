@@ -122,24 +122,24 @@ const AdminDashboard: FC = () => {
     }
   };
 
-  const mockEvents = [
-    {
-      id: '1',
-      title: 'Corrida de São Paulo',
-      city: 'São Paulo',
-      date: '2024-01-15',
-      eventType: 'Street',
-      sponsored: true,
-    },
-    {
-      id: '2',
-      title: 'Trail do Parque',
-      city: 'Rio de Janeiro',
-      date: '2024-01-20',
-      eventType: 'Trail',
-      sponsored: false,
-    },
-  ];
+  // const mockEvents = [
+  //   {
+  //     id: '1',
+  //     title: 'Corrida de São Paulo',
+  //     city: 'São Paulo',
+  //     date: '2024-01-15',
+  //     eventType: 'Street',
+  //     sponsored: true,
+  //   },
+  //   {
+  //     id: '2',
+  //     title: 'Trail do Parque',
+  //     city: 'Rio de Janeiro',
+  //     date: '2024-01-20',
+  //     eventType: 'Trail',
+  //     sponsored: false,
+  //   },
+  // ];
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
