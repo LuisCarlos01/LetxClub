@@ -5,7 +5,6 @@ import {
   FaPlus,
   FaCalendarAlt,
   FaUser,
-  FaCrown,
   FaSignOutAlt,
   FaBars,
   FaTimes,
@@ -14,6 +13,7 @@ import {
 } from 'react-icons/fa';
 import CreateEventModal from '../components/CreateEventModal';
 import EditEventModal from '../components/EditEventModal';
+import EventBadge from '../components/EventBadge';
 import { Toast } from '../components/ui/Toast';
 import { useToast } from '../hooks/useToast';
 import { eventsService, Event } from '../services/eventsService';
@@ -258,6 +258,9 @@ const AdminDashboard: FC = () => {
                             {t('admin.dashboard.table.date', 'Data')}
                           </th>
                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                            {t('admin.dashboard.table.highlight', 'Destaque')}
+                          </th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                             {t('admin.dashboard.table.status', 'Status')}
                           </th>
                           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
@@ -283,16 +286,16 @@ const AdminDashboard: FC = () => {
                               {new Date(event.date).toLocaleDateString('pt-BR')}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                              {event.sponsored ? (
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
-                                  <FaCrown className="w-3 h-3 mr-1" />
-                                  {t('admin.dashboard.sponsored', 'Patrocinado')}
-                                </span>
-                              ) : (
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                                  {t('admin.dashboard.active', 'Ativo')}
-                                </span>
-                              )}
+                              <EventBadge 
+                                featuredStandard={event.featuredStandard}
+                                featuredPremium={event.featuredPremium}
+                                featuredUltimate={event.featuredUltimate}
+                              />
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100">
+                                {t('admin.dashboard.table.active', 'Ativo')}
+                              </span>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                               <div className="flex items-center space-x-2">

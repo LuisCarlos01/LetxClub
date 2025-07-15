@@ -12,6 +12,15 @@ export interface Event {
   imageUrl?: string; // URL da imagem (base64 ou URL externa)
   createdAt?: string;
   updatedAt?: string;
+  // Campos de destaque para o sistema de pagamento
+  featuredStandard?: boolean;
+  featuredPremium?: boolean;
+  featuredUltimate?: boolean;
+  featuredPayment?: {
+    tier: 'standard' | 'premium' | 'ultimate';
+    price: number;
+    paidAt: string;
+  };
 }
 
 // Storage key for localStorage

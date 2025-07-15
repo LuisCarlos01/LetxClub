@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import EventBadge from './EventBadge';
 
 interface EventCardProps {
   title: string;
@@ -7,9 +8,21 @@ interface EventCardProps {
   location: string;
   distance: string;
   imageUrl?: string;
+  featuredStandard?: boolean;
+  featuredPremium?: boolean;
+  featuredUltimate?: boolean;
 }
 
-const EventCard: FC<EventCardProps> = ({ title, date, location, distance, imageUrl }) => {
+const EventCard: FC<EventCardProps> = ({ 
+  title, 
+  date, 
+  location, 
+  distance, 
+  imageUrl,
+  featuredStandard,
+  featuredPremium,
+  featuredUltimate,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -39,6 +52,16 @@ const EventCard: FC<EventCardProps> = ({ title, date, location, distance, imageU
             <span className="text-sm font-medium opacity-80">{t('eventCard.imageComingSoon')}</span>
           </div>
         )}
+        
+        {/* Badge de destaque no canto superior esquerdo */}
+        <div className="absolute top-3 left-3">
+          <EventBadge 
+            featuredStandard={featuredStandard}
+            featuredPremium={featuredPremium}
+            featuredUltimate={featuredUltimate}
+          />
+        </div>
+        
         <div className="absolute top-3 right-3 bg-letx-neon text-letx-green-dark dark:text-letx-blue-dark px-3 py-1 rounded-full text-sm font-semibold shadow-md">
           {distance}
         </div>

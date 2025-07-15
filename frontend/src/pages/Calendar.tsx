@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import EventBadge from '../components/EventBadge';
 import { FaSearch, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 import { eventsService, Event as AdminEvent } from '../services/eventsService';
 
@@ -13,6 +14,9 @@ interface Event {
   time?: string;
   city?: string;
   eventType?: string;
+  featuredStandard?: boolean;
+  featuredPremium?: boolean;
+  featuredUltimate?: boolean;
 }
 
 const Calendar: FC = () => {
@@ -90,6 +94,9 @@ const Calendar: FC = () => {
     time: adminEvent.time || undefined,
     city: adminEvent.city,
     eventType: adminEvent.eventType,
+    featuredStandard: adminEvent.featuredStandard,
+    featuredPremium: adminEvent.featuredPremium,
+    featuredUltimate: adminEvent.featuredUltimate,
   });
 
   // Combine admin events with static events
@@ -231,6 +238,15 @@ const Calendar: FC = () => {
                             </div>
                           )}
                         </div>
+                      </div>
+                      
+                      {/* Badge de destaque no canto superior esquerdo */}
+                      <div className="absolute top-3 left-3">
+                        <EventBadge 
+                          featuredStandard={event.featuredStandard}
+                          featuredPremium={event.featuredPremium}
+                          featuredUltimate={event.featuredUltimate}
+                        />
                       </div>
                     </div>
                   </div>

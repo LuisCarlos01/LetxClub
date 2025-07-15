@@ -15,6 +15,9 @@ interface Event {
   location: string;
   distance: string;
   imageUrl?: string;
+  featuredStandard?: boolean;
+  featuredPremium?: boolean;
+  featuredUltimate?: boolean;
 }
 
 const FeaturedEvents: FC = () => {
@@ -88,6 +91,9 @@ const FeaturedEvents: FC = () => {
     location: adminEvent.city,
     distance: adminEvent.eventType, // Using eventType as distance for now
     imageUrl: adminEvent.imageUrl, // Use the saved image URL
+    featuredStandard: adminEvent.featuredStandard,
+    featuredPremium: adminEvent.featuredPremium,
+    featuredUltimate: adminEvent.featuredUltimate,
   });
 
   // Combine admin events with static events
@@ -145,7 +151,12 @@ const FeaturedEvents: FC = () => {
           >
             {allEvents.map(event => (
               <SwiperSlide key={event.id}>
-                <EventCard {...event} />
+                <EventCard 
+                  {...event}
+                  featuredStandard={event.featuredStandard}
+                  featuredPremium={event.featuredPremium}
+                  featuredUltimate={event.featuredUltimate}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
