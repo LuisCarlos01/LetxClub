@@ -21,6 +21,17 @@
       "description": "Descubre tu verdadero potencial"
     }
   },
+  "calendar": {
+    "title": "ENCUENTRA TU PRÓXIMO EVENTO",
+    "subtitle": "Explora el Calendario Completo.",
+    "searchPlaceholder": "Buscar evento...",
+    "cityPlaceholder": "Ingresa la ciudad...",
+    "typePlaceholder": "Modalidad",
+    "distancePlaceholder": "Distancia",
+    "searchButton": "BUSCAR",
+    "bestEvents": "¡MEJORES EVENTOS!",
+    "noEvents": "No se encontraron eventos con los filtros seleccionados."
+  },
   "buttons": {
     "register": "REGÍSTRATE",
     "darkMode": "Alternar modo oscuro",
@@ -29,8 +40,9 @@
   "eventCard": {
     "date": "Fecha",
     "location": "Ubicación",
+    "time": "Hora",
     "distance": "Distancia",
-    "register": "Inscribirse"
+    "register": "REGÍSTRATE"
   },
   "shopAndTips": {
     "runningShoes": {

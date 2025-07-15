@@ -30,8 +30,9 @@
   "eventCard": {
     "date": "Date",
     "location": "Location",
+    "time": "Time",
     "distance": "Distance",
-    "register": "Register"
+    "register": "REGISTER"
   },
   "featuredEvents": {
     "title": "Featured Events",
@@ -129,11 +130,13 @@
   "calendar": {
     "title": "FIND YOUR NEXT EVENT",
     "subtitle": "Explore the Complete Calendar.",
-    "searchPlaceholder": "Search for a race...",
-    "cityPlaceholder": "City",
-    "typePlaceholder": "Type",
+    "searchPlaceholder": "Search event...",
+    "cityPlaceholder": "Enter city...",
+    "typePlaceholder": "Modality",
+    "distancePlaceholder": "Distance",
     "searchButton": "SEARCH",
-    "bestEvents": "BEST EVENTS!"
+    "bestEvents": "BEST EVENTS!",
+    "noEvents": "No events found with the selected filters."
   },
   "shopAndTips": {
     "title": "Shop and Tips",

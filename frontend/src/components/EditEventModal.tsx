@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaTimes, FaImage } from 'react-icons/fa';
+import { FaTimes, FaImage, FaRunning, FaRulerHorizontal } from 'react-icons/fa';
 import { Event } from '../services/eventsService';
 
 interface EditEventModalProps {
@@ -18,7 +18,8 @@ const EditEventModal: React.FC<EditEventModalProps> = ({ isOpen, onClose, onSubm
     city: '',
     date: '',
     time: '',
-    eventType: '',
+    eventType: 'corrida-rua' as Event['eventType'],
+    distance: undefined as Event['distance'],
     sponsored: false,
     image: null as File | null,
   });
@@ -35,6 +36,7 @@ const EditEventModal: React.FC<EditEventModalProps> = ({ isOpen, onClose, onSubm
         date: event.date,
         time: event.time,
         eventType: event.eventType,
+        distance: event.distance,
         sponsored: event.sponsored,
         image: null,
       });
@@ -181,7 +183,8 @@ const EditEventModal: React.FC<EditEventModalProps> = ({ isOpen, onClose, onSubm
 
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              {t('admin.createEvent.eventTypeField', 'Tipo de Evento')}
+              <FaRunning className="inline w-4 h-4 mr-1" />
+              {t('admin.createEvent.eventTypeField', 'Modalidade')}
             </label>
             <select
               name="eventType"
@@ -190,21 +193,31 @@ const EditEventModal: React.FC<EditEventModalProps> = ({ isOpen, onClose, onSubm
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-letx-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               required
             >
-              <option value="">Selecione o tipo</option>
-              <option value="street">
-                {t('admin.createEvent.eventTypeOptions.street', 'Corrida de Rua')}
-              </option>
-              <option value="trail">
-                {t('admin.createEvent.eventTypeOptions.trail', 'Trail')}
-              </option>
-              <option value="marathon">
-                {t('admin.createEvent.eventTypeOptions.marathon', 'Maratona')}
-              </option>
-              <option value="halfMarathon">
-                {t('admin.createEvent.eventTypeOptions.halfMarathon', 'Meia Maratona')}
-              </option>
-              <option value="5k">{t('admin.createEvent.eventTypeOptions.5k', '5K')}</option>
-              <option value="10k">{t('admin.createEvent.eventTypeOptions.10k', '10K')}</option>
+              <option value="beach-tennis">Beach Tennis</option>
+              <option value="caminhada">Caminhada</option>
+              <option value="ciclismo">Ciclismo</option>
+              <option value="corrida-rua">Corrida de Rua</option>
+              <option value="kids">Kids</option>
+              <option value="triathlon">Triathlon</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <FaRulerHorizontal className="inline w-4 h-4 mr-1" />
+              {t('admin.createEvent.fields.distance', 'Distância')}
+            </label>
+            <select
+              name="distance"
+              value={formData.distance || ''}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-letx-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+            >
+              <option value="">Selecione a distância</option>
+              <option value="5k">5km</option>
+              <option value="10k">10km</option>
+              <option value="21k">21km</option>
+              <option value="42k">42km</option>
             </select>
           </div>
 

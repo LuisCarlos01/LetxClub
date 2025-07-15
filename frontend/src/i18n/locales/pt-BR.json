@@ -29,12 +29,13 @@
   },
   "eventCard": {
     "date": "Data",
-    "location": "Local",
+    "location": "Localização",
+    "time": "Horário",
     "distance": "Distância",
-    "register": "Inscrever-se"
+    "register": "REGISTRE-SE"
   },
   "featuredEvents": {
-    "title": "Eventos Destacados",
+    "title": "Eventos em Destaque",
     "events": {
       "saopaulo": {
         "title": "Maratona de São Paulo",
@@ -61,11 +62,13 @@
   "calendar": {
     "title": "ENCONTRE SEU PRÓXIMO EVENTO",
     "subtitle": "Explore o Calendário Completo.",
-    "searchPlaceholder": "Procurar uma corrida...",
-    "cityPlaceholder": "Cidade",
-    "typePlaceholder": "Tipo",
-    "searchButton": "BUSCAR",
-    "bestEvents": "MELHORES EVENTOS!"
+    "searchPlaceholder": "Procurar evento...",
+    "cityPlaceholder": "Digite a cidade...",
+    "typePlaceholder": "Modalidade",
+    "distancePlaceholder": "Distância",
+    "searchButton": "PESQUISAR",
+    "bestEvents": "MELHORES EVENTOS!",
+    "noEvents": "Nenhum evento encontrado com os filtros selecionados."
   },
   "admin": {
     "title": "Administração",

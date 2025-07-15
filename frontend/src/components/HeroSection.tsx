@@ -12,14 +12,20 @@ const slides = [
   {
     image: '/images/hero/corrida1.png',
     translationKey: 'slide1',
+    position: 'object-[center_40%]',
+    textPosition: 'justify-end pb-20',
   },
   {
     image: '/images/hero/corrida2.png',
     translationKey: 'slide2',
+    position: 'object-[center_20%]',
+    textPosition: 'justify-end pb-20',
   },
   {
     image: '/images/hero/corrida3.png',
     translationKey: 'slide3',
+    position: 'object-[center_10%]',
+    textPosition: 'justify-center',
   },
 ];
 
@@ -27,7 +33,7 @@ const HeroSection: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="relative w-full h-[60vh] max-h-[600px] min-h-[400px]">
+    <section className="relative w-full h-screen bg-letx-blue-dark">
       <Swiper
         modules={[Autoplay, Navigation, Pagination, EffectFade]}
         effect="fade"
@@ -42,31 +48,34 @@ const HeroSection: FC = () => {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index} className="relative w-full h-full">
-            <div className="absolute inset-0 w-full h-full">
+            <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-letx-blue-dark/90">
               <img
                 src={slide.image}
                 alt={t(`hero.${slide.translationKey}.title`)}
-                className="w-full h-full object-cover object-center"
+                className={`w-full h-full object-cover ${slide.position}`}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/50" />
             </div>
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
-                {t(`hero.${slide.translationKey}.title`)}
-              </h2>
-              <p className="text-4xl md:text-5xl lg:text-6xl font-bold text-letx-neon mb-4">
-                {t(`hero.${slide.translationKey}.highlight`)}
-              </p>
-              <p className="text-lg md:text-xl mb-8">
-                {t(`hero.${slide.translationKey}.description`)}
-              </p>
-              <Link
-                to="/calendario"
-                className="bg-letx-neon text-letx-green-dark dark:text-letx-blue-dark px-8 py-3 rounded-full font-bold text-lg hover:bg-letx-orange transition-colors duration-300"
-              >
-                {t('buttons.register')}
-              </Link>
+            <div
+              className={`absolute inset-0 flex flex-col items-center ${slide.textPosition} text-center text-white p-4 z-10`}
+            >
+              <div className="max-w-4xl mx-auto backdrop-blur-sm bg-black/20 rounded-xl p-6">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 drop-shadow-[0_4px_3px_rgba(0,0,0,0.4)]">
+                  {t(`hero.${slide.translationKey}.title`)}
+                </h2>
+                <p className="text-4xl md:text-5xl lg:text-6xl font-bold text-letx-neon mb-4 drop-shadow-[0_4px_3px_rgba(0,0,0,0.4)]">
+                  {t(`hero.${slide.translationKey}.highlight`)}
+                </p>
+                <p className="text-lg md:text-xl mb-8 drop-shadow-[0_4px_3px_rgba(0,0,0,0.4)]">
+                  {t(`hero.${slide.translationKey}.description`)}
+                </p>
+                <Link
+                  to="/calendario"
+                  className="bg-letx-neon text-letx-green-dark dark:text-letx-blue-dark px-8 py-3 rounded-full font-bold text-lg hover:bg-letx-orange transition-colors duration-300 inline-block"
+                >
+                  {t('buttons.register')}
+                </Link>
+              </div>
             </div>
           </SwiperSlide>
         ))}

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import EventBadge from '../components/EventBadge';
-import { FaSearch, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
+import { FaSearch, FaMapMarkerAlt, FaCalendarAlt, FaRunning, FaRulerHorizontal } from 'react-icons/fa';
 import { eventsService, Event as AdminEvent } from '../services/eventsService';
 
 interface Event {
@@ -14,6 +14,7 @@ interface Event {
   time?: string;
   city?: string;
   eventType?: string;
+  distance?: string;
   featuredStandard?: boolean;
   featuredPremium?: boolean;
   featuredUltimate?: boolean;
@@ -24,6 +25,7 @@ const Calendar: FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedType, setSelectedType] = useState('');
+  const [selectedDistance, setSelectedDistance] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [adminEvents, setAdminEvents] = useState<AdminEvent[]>([]);
   const [loading, setLoading] = useState(true);
@@ -106,6 +108,7 @@ const Calendar: FC = () => {
     time: adminEvent.time || undefined,
     city: adminEvent.city,
     eventType: adminEvent.eventType,
+    distance: adminEvent.distance,
     featuredStandard: adminEvent.featuredStandard === true,
     featuredPremium: adminEvent.featuredPremium === true,
     featuredUltimate: adminEvent.featuredUltimate === true,
@@ -120,9 +123,11 @@ const Calendar: FC = () => {
     const matchesCity =
       !selectedCity || event.city?.toLowerCase().includes(selectedCity.toLowerCase());
     const matchesType =
-      !selectedType || event.eventType?.toLowerCase().includes(selectedType.toLowerCase());
+      !selectedType || event.eventType === selectedType;
+    const matchesDistance =
+      !selectedDistance || event.distance === selectedDistance;
 
-    return matchesSearch && matchesCity && matchesType;
+    return matchesSearch && matchesCity && matchesType && matchesDistance;
   });
 
   const handleSearch = () => {
@@ -146,66 +151,115 @@ const Calendar: FC = () => {
             backgroundPosition: 'right center',
           }}
         >
-          <div className="container mx-auto px-4 h-full flex flex-col items-center justify-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-letx-neon">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent" />
+          <div className="container mx-auto px-4 h-full flex flex-col items-center justify-center relative z-10">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-letx-neon drop-shadow-lg">
               {t('calendar.title', 'ENCONTRE SEU PRÓXIMO EVENTO')}
             </h1>
-            <p className="text-xl mb-8 text-white">
+            <p className="text-xl mb-12 text-white text-center max-w-2xl drop-shadow-lg">
               {t('calendar.subtitle', 'Explore o Calendário Completo.')}
             </p>
 
             {/* Search Bar */}
-            <div className="w-full max-w-4xl bg-letx-blue-dark/90 p-4 rounded-2xl flex flex-col md:flex-row gap-4">
-              <div className="flex-1 relative">
-                <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder={t('calendar.searchPlaceholder', 'Procurar corrida...')}
-                  className="w-full pl-10 pr-4 py-2 rounded-lg bg-white/10 text-white placeholder-gray-400 border border-white/20 focus:outline-none focus:border-letx-neon"
-                  value={searchQuery}
-                  onChange={e => setSearchQuery(e.target.value)}
-                />
-              </div>
-
-              <div className="flex flex-col md:flex-row gap-4 md:w-auto w-full">
-                <div className="relative">
-                  <FaMapMarkerAlt className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+            <div className="w-full max-w-6xl bg-letx-blue-dark/95 p-8 rounded-2xl backdrop-blur-sm shadow-2xl">
+              <div className="flex flex-col gap-6">
+                {/* Search Input - Full width on top */}
+                <div className="w-full relative">
+                  <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg z-10" />
                   <input
                     type="text"
-                    placeholder={t('calendar.cityPlaceholder', 'Digite a cidade...')}
-                    className="pl-10 pr-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 focus:outline-none focus:border-letx-neon focus:ring-2 focus:ring-letx-neon/20 min-w-[150px]"
-                    value={selectedCity}
-                    onChange={e => setSelectedCity(e.target.value)}
+                    placeholder={t('calendar.searchPlaceholder', 'Procurar corrida...')}
+                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 text-white placeholder-gray-400 border-2 border-white/20 focus:outline-none focus:border-letx-neon transition-all duration-300 text-lg"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                   />
                 </div>
 
-                <div className="relative">
-                  <FaCalendarAlt className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
-                  <select
-                    className="pl-10 pr-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 focus:outline-none focus:border-letx-neon focus:ring-2 focus:ring-letx-neon/20 min-w-[150px] appearance-none cursor-pointer"
-                    value={selectedType}
-                    onChange={e => setSelectedType(e.target.value)}
-                  >
-                    <option value="">{t('calendar.typePlaceholder', 'Tipo')}</option>
-                    <option value="5k">5K</option>
-                    <option value="10k">10K</option>
-                    <option value="21k">21K</option>
-                    <option value="42k">42K</option>
-                    <option value="street">Street</option>
-                    <option value="trail">Trail</option>
-                  </select>
+                {/* Filters Row */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {/* City Filter */}
+                  <div className="relative">
+                    <FaMapMarkerAlt className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg z-10" />
+                    <input
+                      type="text"
+                      placeholder={t('calendar.cityPlaceholder', 'Digite a cidade...')}
+                      className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 text-white placeholder-gray-400 border-2 border-white/20 focus:outline-none focus:border-letx-neon transition-all duration-300"
+                      value={selectedCity}
+                      onChange={(e) => setSelectedCity(e.target.value)}
+                    />
+                  </div>
+
+                  {/* Event Type Filter */}
+                  <div className="relative">
+                    <FaRunning className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg z-10" />
+                    <select
+                      className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 text-white border-2 border-white/20 focus:outline-none focus:border-letx-neon transition-all duration-300 appearance-none cursor-pointer"
+                      value={selectedType}
+                      onChange={(e) => setSelectedType(e.target.value)}
+                    >
+                      <option value="" className="bg-letx-blue-dark text-white">
+                        {t('calendar.typePlaceholder', 'Selecione...')}
+                      </option>
+                      <option value="beach-tennis" className="bg-letx-blue-dark text-white">
+                        Beach Tennis
+                      </option>
+                      <option value="caminhada" className="bg-letx-blue-dark text-white">
+                        Caminhada
+                      </option>
+                      <option value="ciclismo" className="bg-letx-blue-dark text-white">
+                        Ciclismo
+                      </option>
+                      <option value="corrida-rua" className="bg-letx-blue-dark text-white">
+                        Corrida de Rua
+                      </option>
+                      <option value="kids" className="bg-letx-blue-dark text-white">
+                        Kids
+                      </option>
+                      <option value="triathlon" className="bg-letx-blue-dark text-white">
+                        Triathlon
+                      </option>
+                    </select>
+                  </div>
+
+                  {/* Distance Filter */}
+                  <div className="relative">
+                    <FaRulerHorizontal className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg z-10" />
+                    <select
+                      className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 text-white border-2 border-white/20 focus:outline-none focus:border-letx-neon transition-all duration-300 appearance-none cursor-pointer"
+                      value={selectedDistance}
+                      onChange={(e) => setSelectedDistance(e.target.value)}
+                    >
+                      <option value="" className="bg-letx-blue-dark text-white">
+                        {t('calendar.distancePlaceholder', 'Selecione...')}
+                      </option>
+                      <option value="5k" className="bg-letx-blue-dark text-white">
+                        5km
+                      </option>
+                      <option value="10k" className="bg-letx-blue-dark text-white">
+                        10km
+                      </option>
+                      <option value="21k" className="bg-letx-blue-dark text-white">
+                        21km
+                      </option>
+                      <option value="42k" className="bg-letx-blue-dark text-white">
+                        42km
+                      </option>
+                    </select>
+                  </div>
                 </div>
 
-                <button
-                  className={`px-6 py-2 bg-letx-neon text-letx-blue-dark font-bold rounded-lg hover:bg-letx-green-water transition-all duration-300 flex items-center justify-center ${isLoading ? 'opacity-75 cursor-wait' : ''}`}
-                  onClick={handleSearch}
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <div className="w-5 h-5 border-2 border-letx-blue-dark border-t-transparent rounded-full animate-spin mr-2" />
-                  ) : null}
-                  {t('calendar.searchButton', 'PESQUISAR')}
-                </button>
+                {/* Search Button */}
+                <div className="flex justify-center">
+                  <button
+                    className="bg-letx-neon hover:bg-letx-neon/90 text-letx-blue-dark font-bold py-4 px-12 rounded-xl transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
+                    onClick={() => {
+                      // Button functionality can be added here if needed
+                      console.log('Search clicked');
+                    }}
+                  >
+                    {t('calendar.searchButton', 'PESQUISAR')}
+                  </button>
+                </div>
               </div>
             </div>
           </div>

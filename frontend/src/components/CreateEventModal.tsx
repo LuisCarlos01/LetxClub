@@ -10,6 +10,7 @@ import {
   FaCrown,
   FaFire,
   FaCreditCard,
+  FaRulerHorizontal,
 } from 'react-icons/fa';
 import PaymentModal from './PaymentModal';
 
@@ -19,7 +20,8 @@ interface EventData {
   city: string;
   date: string;
   time: string;
-  eventType: 'Street' | 'Trail' | 'Kids';
+  eventType: 'beach-tennis' | 'caminhada' | 'ciclismo' | 'corrida-rua' | 'kids' | 'triathlon';
+  distance?: '5k' | '10k' | '21k' | '42k';
   image: File | null;
   featuredType: 'none' | 'standard' | 'premium' | 'ultimate';
   featuredPrice: number;
@@ -39,7 +41,8 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
     city: '',
     date: '',
     time: '',
-    eventType: 'Street' as 'Street' | 'Trail' | 'Kids',
+    eventType: 'corrida-rua' as EventData['eventType'],
+    distance: undefined as EventData['distance'],
     image: null as File | null,
     featuredType: 'none' as 'none' | 'standard' | 'premium' | 'ultimate',
     featuredPrice: 0,
@@ -114,7 +117,8 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
       city: '',
       date: '',
       time: '',
-      eventType: 'Street',
+      eventType: 'corrida-rua',
+      distance: undefined,
       image: null,
       featuredType: 'none',
       featuredPrice: 0,
@@ -257,25 +261,38 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               <FaRunning className="inline w-4 h-4 mr-1" />
-              {t('admin.createEvent.fields.eventType', 'Tipo de Evento')} *
+              {t('admin.createEvent.fields.eventType', 'Modalidade')} *
             </label>
             <select
               value={formData.eventType}
-              onChange={e =>
-                setFormData(prev => ({
-                  ...prev,
-                  eventType: e.target.value as 'Street' | 'Trail' | 'Kids',
-                }))
-              }
+              onChange={e => setFormData(prev => ({ ...prev, eventType: e.target.value as EventData['eventType'] }))}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-letx-blue focus:border-letx-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             >
-              <option value="Street">
-                {t('admin.createEvent.eventTypes.street', 'Corrida de Rua')}
-              </option>
-              <option value="Trail">
-                {t('admin.createEvent.eventTypes.trail', 'Trail Running')}
-              </option>
-              <option value="Kids">{t('admin.createEvent.eventTypes.kids', 'Corrida Kids')}</option>
+              <option value="beach-tennis">Beach Tennis</option>
+              <option value="caminhada">Caminhada</option>
+              <option value="ciclismo">Ciclismo</option>
+              <option value="corrida-rua">Corrida de Rua</option>
+              <option value="kids">Kids</option>
+              <option value="triathlon">Triathlon</option>
+            </select>
+          </div>
+
+          {/* Distância */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <FaRulerHorizontal className="inline w-4 h-4 mr-1" />
+              {t('admin.createEvent.fields.distance', 'Distância')}
+            </label>
+            <select
+              value={formData.distance}
+              onChange={e => setFormData(prev => ({ ...prev, distance: e.target.value as EventData['distance'] }))}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-letx-blue focus:border-letx-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            >
+              <option value="">Selecione a distância</option>
+              <option value="5k">5km</option>
+              <option value="10k">10km</option>
+              <option value="21k">21km</option>
+              <option value="42k">42km</option>
             </select>
           </div>
 

@@ -6,7 +6,8 @@ export interface Event {
   city: string;
   date: string;
   time: string;
-  eventType: string;
+  eventType: 'beach-tennis' | 'caminhada' | 'ciclismo' | 'corrida-rua' | 'kids' | 'triathlon';
+  distance?: '5k' | '10k' | '21k' | '42k';
   sponsored: boolean;
   createdBy: string;
   imageUrl?: string; // URL da imagem (base64 ou URL externa)
