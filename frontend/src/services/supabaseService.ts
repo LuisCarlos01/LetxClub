@@ -22,9 +22,9 @@ class SupabaseService {
       ...event,
       id: Math.random().toString(36).substr(2, 9),
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      updatedAt: new Date().toISOString(),
     };
-    
+
     this.mockEvents.push(newEvent);
     return newEvent;
   }
@@ -34,13 +34,13 @@ class SupabaseService {
     // const { data, error } = await supabase.from('events').update(updates).eq('id', id)
     const index = this.mockEvents.findIndex(e => e.id === id);
     if (index === -1) throw new Error('Event not found');
-    
+
     this.mockEvents[index] = {
       ...this.mockEvents[index],
       ...updates,
-      updatedAt: new Date().toISOString()
+      updatedAt: new Date().toISOString(),
     };
-    
+
     return this.mockEvents[index];
   }
 
@@ -49,7 +49,7 @@ class SupabaseService {
     // const { error } = await supabase.from('events').delete().eq('id', id)
     const index = this.mockEvents.findIndex(e => e.id === id);
     if (index === -1) throw new Error('Event not found');
-    
+
     this.mockEvents.splice(index, 1);
   }
 
@@ -105,4 +105,4 @@ CREATE POLICY "Admin can manage events" ON events
 CREATE INDEX idx_events_date ON events(date);
 CREATE INDEX idx_events_city ON events(city);
 CREATE INDEX idx_events_event_type ON events(event_type);
-`; 
+`;

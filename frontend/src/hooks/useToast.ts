@@ -10,14 +10,14 @@ export const useToast = () => {
   const [toast, setToast] = useState<ToastState>({
     message: '',
     type: 'info',
-    isVisible: false
+    isVisible: false,
   });
 
   const showToast = useCallback((message: string, type: 'success' | 'error' | 'info' = 'info') => {
     setToast({
       message,
       type,
-      isVisible: true
+      isVisible: true,
     });
   }, []);
 
@@ -25,17 +25,26 @@ export const useToast = () => {
     setToast(prev => ({ ...prev, isVisible: false }));
   }, []);
 
-  const showSuccess = useCallback((message: string) => {
-    showToast(message, 'success');
-  }, [showToast]);
+  const showSuccess = useCallback(
+    (message: string) => {
+      showToast(message, 'success');
+    },
+    [showToast]
+  );
 
-  const showError = useCallback((message: string) => {
-    showToast(message, 'error');
-  }, [showToast]);
+  const showError = useCallback(
+    (message: string) => {
+      showToast(message, 'error');
+    },
+    [showToast]
+  );
 
-  const showInfo = useCallback((message: string) => {
-    showToast(message, 'info');
-  }, [showToast]);
+  const showInfo = useCallback(
+    (message: string) => {
+      showToast(message, 'info');
+    },
+    [showToast]
+  );
 
   return {
     toast,
@@ -43,6 +52,6 @@ export const useToast = () => {
     hideToast,
     showSuccess,
     showError,
-    showInfo
+    showInfo,
   };
-}; 
+};

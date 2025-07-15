@@ -12,18 +12,14 @@ const NewsletterCard: FC = () => {
   return (
     <div className="bg-letx-orange p-8 h-full flex flex-col justify-center min-h-[350px]">
       <div className="space-y-8">
-        <h2 className="text-3xl font-bold text-[#CFF350]">
-          Assine nossa newsletter
-        </h2>
-        <p className="text-white text-lg">
-          e receba dicas exclusivas sobre o universo do esporte!
-        </p>
-        
+        <h2 className="text-3xl font-bold text-[#CFF350]">Assine nossa newsletter</h2>
+        <p className="text-white text-lg">e receba dicas exclusivas sobre o universo do esporte!</p>
+
         <form onSubmit={handleSubmit} className="space-y-6">
           <input
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             placeholder="Digite seu e-mail"
             className="w-full px-4 py-3 rounded-lg text-letx-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#CFF350]"
           />
@@ -53,4 +49,4 @@ const NewsletterCard: FC = () => {
   );
 };
 
-export default NewsletterCard; 
+export default NewsletterCard;

@@ -55,10 +55,9 @@ const AdminLogin: FC = () => {
               <FaGoogle className="text-red-500 text-xl" />
             )}
             <span className="text-gray-900 dark:text-white font-medium">
-              {loading 
+              {loading
                 ? t('admin.login.loading', 'Autenticando...')
-                : t('admin.login.googleButton', 'Entrar com Google')
-              }
+                : t('admin.login.googleButton', 'Entrar com Google')}
             </span>
           </button>
 
@@ -74,4 +73,4 @@ const AdminLogin: FC = () => {
   );
 };
 
-export default AdminLogin; 
+export default AdminLogin;

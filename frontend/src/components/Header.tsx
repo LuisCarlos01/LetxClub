@@ -53,11 +53,7 @@ const Header: FC = () => {
           className="md:hidden p-2 text-letx-green-dark dark:text-white hover:text-letx-blue dark:hover:text-letx-neon transition-colors"
           aria-label="Toggle menu"
         >
-          {isMenuOpen ? (
-            <FaTimes className="w-6 h-6" />
-          ) : (
-            <FaBars className="w-6 h-6" />
-          )}
+          {isMenuOpen ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
         </button>
 
         {/* Navigation (Desktop) */}

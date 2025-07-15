@@ -22,7 +22,7 @@ const ShopAndTips: FC = () => {
       image: '/images/shop/tenis.png',
       category: 'Calçados',
       rating: 5,
-      badge: 'Bestseller'
+      badge: 'Bestseller',
     },
     {
       key: 'beginnersTips',
@@ -31,7 +31,7 @@ const ShopAndTips: FC = () => {
       image: '/images/tips/dicas.png',
       category: 'Iniciante',
       rating: 4,
-      badge: 'Grátis'
+      badge: 'Grátis',
     },
     {
       key: 'essentialAccessories',
@@ -40,7 +40,7 @@ const ShopAndTips: FC = () => {
       image: '/images/shop/acessorios.png',
       category: 'Acessórios',
       rating: 4,
-      badge: 'Novidade'
+      badge: 'Novidade',
     },
     {
       key: 'nutrition',
@@ -49,7 +49,7 @@ const ShopAndTips: FC = () => {
       image: '/images/tips/nutriçao.png',
       category: 'Nutrição',
       rating: 5,
-      badge: 'Popular'
+      badge: 'Popular',
     },
     {
       key: 'sportswear',
@@ -58,7 +58,7 @@ const ShopAndTips: FC = () => {
       image: '/images/shop/roupas.png',
       category: 'Roupas',
       rating: 4,
-      badge: 'Promoção'
+      badge: 'Promoção',
     },
     {
       key: 'trainingTips',
@@ -67,7 +67,7 @@ const ShopAndTips: FC = () => {
       image: '/images/tips/treinos.png',
       category: 'Treino',
       rating: 5,
-      badge: 'Essencial'
+      badge: 'Essencial',
     },
     {
       key: 'supplements',
@@ -76,7 +76,7 @@ const ShopAndTips: FC = () => {
       image: '/images/shop/suplementos.png',
       category: 'Suplementos',
       rating: 4,
-      badge: 'Recomendado'
+      badge: 'Recomendado',
     },
     {
       key: 'recoveryTips',
@@ -85,7 +85,7 @@ const ShopAndTips: FC = () => {
       image: '/images/tips/recuperacao.png',
       category: 'Recuperação',
       rating: 4,
-      badge: 'Importante'
+      badge: 'Importante',
     },
   ];
 
@@ -97,7 +97,10 @@ const ShopAndTips: FC = () => {
             {t('shopAndTips.title', 'Loja e Dicas')}
           </h2>
           <p className="text-gray-600 dark:text-letx-green-water text-lg max-w-2xl mx-auto">
-            {t('shopAndTips.subtitle', 'Descubra produtos essenciais para sua corrida e acesse dicas valiosas para melhorar sua performance')}
+            {t(
+              'shopAndTips.subtitle',
+              'Descubra produtos essenciais para sua corrida e acesse dicas valiosas para melhorar sua performance'
+            )}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -109,7 +112,11 @@ const ShopAndTips: FC = () => {
               <div className="relative">
                 <div
                   className={`h-48 bg-cover bg-center relative ${!card.image ? 'bg-gradient-to-br from-letx-green-water to-letx-blue dark:from-letx-blue dark:to-letx-green-water flex items-center justify-center' : ''}`}
-                  style={card.image ? { backgroundImage: `url(${card.image})`, backgroundPosition: 'center 25%' } : undefined}
+                  style={
+                    card.image
+                      ? { backgroundImage: `url(${card.image})`, backgroundPosition: 'center 25%' }
+                      : undefined
+                  }
                 >
                   {!card.image && (
                     <div className="text-letx-green-dark dark:text-letx-neon opacity-80">
@@ -146,34 +153,46 @@ const ShopAndTips: FC = () => {
                       )}
                     </div>
                   )}
-                  
+
                   {/* Badge de categoria */}
                   {card.badge && (
                     <div className="absolute top-3 left-3">
-                      <span className={`px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm ${
-                        card.type === 'shop' 
-                          ? 'bg-letx-blue/90 text-white' 
-                          : 'bg-letx-green-dark/90 text-letx-neon'
-                      }`}>
+                      <span
+                        className={`px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm ${
+                          card.type === 'shop'
+                            ? 'bg-letx-blue/90 text-white'
+                            : 'bg-letx-green-dark/90 text-letx-neon'
+                        }`}
+                      >
                         {card.badge}
                       </span>
                     </div>
                   )}
                 </div>
               </div>
-              
+
               <div className="p-6">
                 {/* Informações do card */}
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-gray-500 dark:text-letx-green-water mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                    <svg
+                      className="w-4 h-4 text-gray-500 dark:text-letx-green-water mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                      />
                     </svg>
                     <span className="text-sm text-gray-500 dark:text-letx-green-water/70">
                       {card.category}
                     </span>
                   </div>
-                  
+
                   {/* Rating com estrelas */}
                   {card.rating && (
                     <div className="flex items-center">
@@ -201,9 +220,7 @@ const ShopAndTips: FC = () => {
                   href={card.link}
                   className="inline-flex items-center justify-center w-full px-6 py-3 bg-letx-blue text-white rounded-xl hover:bg-letx-blue-dark transition-all duration-300 font-semibold gap-2 group-hover:scale-105"
                 >
-                  <span>
-                    {t('shopAndTips.buttons.readMore', 'Ler mais')}
-                  </span>
+                  <span>{t('shopAndTips.buttons.readMore', 'Ler mais')}</span>
                   <svg
                     className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                     fill="none"

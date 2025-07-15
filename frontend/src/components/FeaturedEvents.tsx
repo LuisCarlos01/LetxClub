@@ -38,7 +38,7 @@ const FeaturedEvents: FC = () => {
     loadAdminEvents();
 
     // Subscribe to events changes for real-time updates
-    const unsubscribe = eventsService.subscribeToEvents((events) => {
+    const unsubscribe = eventsService.subscribeToEvents(events => {
       setAdminEvents(events);
     });
 
@@ -87,14 +87,11 @@ const FeaturedEvents: FC = () => {
     date: adminEvent.date,
     location: adminEvent.city,
     distance: adminEvent.eventType, // Using eventType as distance for now
-    imageUrl: adminEvent.imageUrl // Use the saved image URL
+    imageUrl: adminEvent.imageUrl, // Use the saved image URL
   });
 
   // Combine admin events with static events
-  const allEvents = [
-    ...adminEvents.map(convertAdminEvent),
-    ...staticEvents
-  ];
+  const allEvents = [...adminEvents.map(convertAdminEvent), ...staticEvents];
 
   if (loading) {
     return (
@@ -103,9 +100,7 @@ const FeaturedEvents: FC = () => {
           <h2 className="text-4xl font-bold text-letx-neon mb-12 text-center">
             {t('featuredEvents.title')}
           </h2>
-          <div className="text-center text-letx-green-water">
-            Carregando eventos...
-          </div>
+          <div className="text-center text-letx-green-water">Carregando eventos...</div>
         </div>
       </section>
     );

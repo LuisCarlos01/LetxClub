@@ -1,7 +1,17 @@
 import { FC, useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useTranslation } from 'react-i18next';
-import { FaPlus, FaCalendarAlt, FaUser, FaCrown, FaSignOutAlt, FaBars, FaTimes, FaEdit, FaTrash } from 'react-icons/fa';
+import {
+  FaPlus,
+  FaCalendarAlt,
+  FaUser,
+  FaCrown,
+  FaSignOutAlt,
+  FaBars,
+  FaTimes,
+  FaEdit,
+  FaTrash,
+} from 'react-icons/fa';
 import CreateEventModal from '../components/CreateEventModal';
 import EditEventModal from '../components/EditEventModal';
 import { Toast } from '../components/ui/Toast';
@@ -46,9 +56,9 @@ const AdminDashboard: FC = () => {
       // Process image if present
       let imageUrl = '';
       if (eventData.image && eventData.image instanceof File) {
-        imageUrl = await new Promise<string>((resolve) => {
+        imageUrl = await new Promise<string>(resolve => {
           const reader = new FileReader();
-          reader.onload = (e) => resolve(e.target?.result as string);
+          reader.onload = e => resolve(e.target?.result as string);
           reader.readAsDataURL(eventData.image);
         });
       }
@@ -62,9 +72,9 @@ const AdminDashboard: FC = () => {
         eventType: eventData.eventType,
         sponsored: false, // Default value
         imageUrl: imageUrl, // Save processed image
-        createdBy: user?.email || 'admin'
+        createdBy: user?.email || 'admin',
       });
-      
+
       setEvents(prev => [...prev, newEvent]);
       setIsCreateModalOpen(false);
       showSuccess(t('admin.dashboard.eventCreated', 'Evento criado com sucesso!'));
@@ -84,12 +94,10 @@ const AdminDashboard: FC = () => {
   const handleUpdateEvent = async (eventData: Partial<Event>) => {
     try {
       if (!eventData.id) return;
-      
+
       const updatedEvent = await eventsService.updateEvent(eventData.id, eventData);
-      setEvents(prev => prev.map(event => 
-        event.id === eventData.id ? updatedEvent : event
-      ));
-      
+      setEvents(prev => prev.map(event => (event.id === eventData.id ? updatedEvent : event)));
+
       setIsEditModalOpen(false);
       setEditingEvent(null);
       showSuccess(t('admin.dashboard.eventUpdated', 'Evento atualizado com sucesso!'));
@@ -99,7 +107,11 @@ const AdminDashboard: FC = () => {
   };
 
   const handleDeleteEvent = async (eventId: string) => {
-    if (window.confirm(t('admin.dashboard.confirmDelete', 'Tem certeza que deseja excluir este evento?'))) {
+    if (
+      window.confirm(
+        t('admin.dashboard.confirmDelete', 'Tem certeza que deseja excluir este evento?')
+      )
+    ) {
       try {
         await eventsService.deleteEvent(eventId);
         setEvents(prev => prev.filter(event => event.id !== eventId));
@@ -117,7 +129,7 @@ const AdminDashboard: FC = () => {
       city: 'São Paulo',
       date: '2024-01-15',
       eventType: 'Street',
-      sponsored: true
+      sponsored: true,
     },
     {
       id: '2',
@@ -125,8 +137,8 @@ const AdminDashboard: FC = () => {
       city: 'Rio de Janeiro',
       date: '2024-01-20',
       eventType: 'Trail',
-      sponsored: false
-    }
+      sponsored: false,
+    },
   ];
 
   return (
@@ -154,7 +166,7 @@ const AdminDashboard: FC = () => {
                 {t('admin.dashboard.title', 'Painel Administrativo')}
               </h1>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <div className="hidden sm:flex items-center space-x-2 text-gray-600 dark:text-gray-300">
                 <FaUser className="w-4 h-4" />
@@ -174,7 +186,9 @@ const AdminDashboard: FC = () => {
 
       <div className="flex">
         {/* Sidebar */}
-        <aside className={`${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-transform duration-300 ease-in-out lg:transition-none`}>
+        <aside
+          className={`${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-transform duration-300 ease-in-out lg:transition-none`}
+        >
           <div className="p-6 pt-20 lg:pt-6">
             <nav className="space-y-2">
               <button
@@ -211,7 +225,7 @@ const AdminDashboard: FC = () => {
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                   {t('admin.dashboard.myEvents', 'Minhas Corridas')}
                 </h2>
-                <button 
+                <button
                   onClick={() => setIsCreateModalOpen(true)}
                   className="bg-letx-blue hover:bg-letx-blue-dark text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors"
                 >
@@ -252,7 +266,7 @@ const AdminDashboard: FC = () => {
                         </tr>
                       </thead>
                       <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                        {events.map((event) => (
+                        {events.map(event => (
                           <tr key={event.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
                             <td className="px-6 py-4 whitespace-nowrap">
                               <div className="text-sm font-medium text-gray-900 dark:text-white">
@@ -282,13 +296,13 @@ const AdminDashboard: FC = () => {
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                               <div className="flex items-center space-x-2">
-                                <button 
+                                <button
                                   onClick={() => handleEditEvent(event.id)}
                                   className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 p-1 rounded"
                                 >
                                   <FaEdit className="w-4 h-4" />
                                 </button>
-                                <button 
+                                <button
                                   onClick={() => handleDeleteEvent(event.id)}
                                   className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-1 rounded"
                                 >
@@ -325,7 +339,10 @@ const AdminDashboard: FC = () => {
                 </div>
                 <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {t('admin.dashboard.profileInfo', 'Informações do perfil serão expandidas em versões futuras.')}
+                    {t(
+                      'admin.dashboard.profileInfo',
+                      'Informações do perfil serão expandidas em versões futuras.'
+                    )}
                   </p>
                 </div>
               </div>
@@ -341,17 +358,17 @@ const AdminDashboard: FC = () => {
         onSubmit={handleCreateEvent}
       />
 
-              {/* Edit Event Modal */}
-        <EditEventModal
-          event={editingEvent}
-          isOpen={isEditModalOpen}
-          onClose={() => setIsEditModalOpen(false)}
-          onSubmit={handleUpdateEvent}
-        />
+      {/* Edit Event Modal */}
+      <EditEventModal
+        event={editingEvent}
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        onSubmit={handleUpdateEvent}
+      />
 
       {/* Sidebar Overlay */}
       {sidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
@@ -360,4 +377,4 @@ const AdminDashboard: FC = () => {
   );
 };
 
-export default AdminDashboard; 
+export default AdminDashboard;

@@ -17,7 +17,7 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
     date: '',
     time: '',
     eventType: 'Street' as 'Street' | 'Trail' | 'Kids',
-    image: null as File | null
+    image: null as File | null,
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -30,7 +30,10 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
       newErrors.title = t('admin.createEvent.errors.titleRequired', 'Nome do evento é obrigatório');
     }
     if (!formData.description.trim()) {
-      newErrors.description = t('admin.createEvent.errors.descriptionRequired', 'Descrição é obrigatória');
+      newErrors.description = t(
+        'admin.createEvent.errors.descriptionRequired',
+        'Descrição é obrigatória'
+      );
     }
     if (!formData.city.trim()) {
       newErrors.city = t('admin.createEvent.errors.cityRequired', 'Cidade é obrigatória');
@@ -65,7 +68,7 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
       date: '',
       time: '',
       eventType: 'Street',
-      image: null
+      image: null,
     });
     setErrors({});
     setImagePreview(null);
@@ -77,7 +80,7 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
     if (file) {
       setFormData(prev => ({ ...prev, image: file }));
       const reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = e => {
         setImagePreview(e.target?.result as string);
       };
       reader.readAsDataURL(file);
@@ -112,7 +115,7 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
             <input
               type="text"
               value={formData.title}
-              onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
+              onChange={e => setFormData(prev => ({ ...prev, title: e.target.value }))}
               className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-letx-blue focus:border-letx-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white ${
                 errors.title ? 'border-red-500' : 'border-gray-300'
               }`}
@@ -128,14 +131,16 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
             </label>
             <textarea
               value={formData.description}
-              onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+              onChange={e => setFormData(prev => ({ ...prev, description: e.target.value }))}
               rows={3}
               className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-letx-blue focus:border-letx-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white ${
                 errors.description ? 'border-red-500' : 'border-gray-300'
               }`}
               placeholder={t('admin.createEvent.placeholders.description', 'Descreva o evento')}
             />
-            {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description}</p>}
+            {errors.description && (
+              <p className="text-red-500 text-sm mt-1">{errors.description}</p>
+            )}
           </div>
 
           {/* Cidade */}
@@ -147,7 +152,7 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
             <input
               type="text"
               value={formData.city}
-              onChange={(e) => setFormData(prev => ({ ...prev, city: e.target.value }))}
+              onChange={e => setFormData(prev => ({ ...prev, city: e.target.value }))}
               className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-letx-blue focus:border-letx-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white ${
                 errors.city ? 'border-red-500' : 'border-gray-300'
               }`}
@@ -166,7 +171,7 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
               <input
                 type="date"
                 value={formData.date}
-                onChange={(e) => setFormData(prev => ({ ...prev, date: e.target.value }))}
+                onChange={e => setFormData(prev => ({ ...prev, date: e.target.value }))}
                 className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-letx-blue focus:border-letx-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white ${
                   errors.date ? 'border-red-500' : 'border-gray-300'
                 }`}
@@ -181,7 +186,7 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
               <input
                 type="time"
                 value={formData.time}
-                onChange={(e) => setFormData(prev => ({ ...prev, time: e.target.value }))}
+                onChange={e => setFormData(prev => ({ ...prev, time: e.target.value }))}
                 className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-letx-blue focus:border-letx-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white ${
                   errors.time ? 'border-red-500' : 'border-gray-300'
                 }`}
@@ -198,11 +203,20 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
             </label>
             <select
               value={formData.eventType}
-              onChange={(e) => setFormData(prev => ({ ...prev, eventType: e.target.value as 'Street' | 'Trail' | 'Kids' }))}
+              onChange={e =>
+                setFormData(prev => ({
+                  ...prev,
+                  eventType: e.target.value as 'Street' | 'Trail' | 'Kids',
+                }))
+              }
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-letx-blue focus:border-letx-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             >
-              <option value="Street">{t('admin.createEvent.eventTypes.street', 'Corrida de Rua')}</option>
-              <option value="Trail">{t('admin.createEvent.eventTypes.trail', 'Trail Running')}</option>
+              <option value="Street">
+                {t('admin.createEvent.eventTypes.street', 'Corrida de Rua')}
+              </option>
+              <option value="Trail">
+                {t('admin.createEvent.eventTypes.trail', 'Trail Running')}
+              </option>
               <option value="Kids">{t('admin.createEvent.eventTypes.kids', 'Corrida Kids')}</option>
             </select>
           </div>
@@ -222,7 +236,7 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
               }`}
             />
             {errors.image && <p className="text-red-500 text-sm mt-1">{errors.image}</p>}
-            
+
             {imagePreview && (
               <div className="mt-2">
                 <img
@@ -256,4 +270,4 @@ const CreateEventModal: FC<CreateEventModalProps> = ({ isOpen, onClose, onSubmit
   );
 };
 
-export default CreateEventModal; 
+export default CreateEventModal;

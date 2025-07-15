@@ -25,3 +25,4 @@ Crie a estrutura de pastas para um projeto chamado LETX.CLUB que terá:
 - Design inspirado na paleta: #CBF330, #314242, #0030CB, #002F9F, #BFFD01
 
 Siga boas práticas de modularização, escalabilidade e versionamento.
+```

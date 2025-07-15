@@ -25,4 +25,4 @@ export interface CreateEventRequest {
 
 export interface UpdateEventRequest extends Partial<CreateEventRequest> {
   id: string;
-} 
+}

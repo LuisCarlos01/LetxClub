@@ -24,7 +24,7 @@
 
 ```bash
 # Após criar evento com imagem:
-# 1. Ir para Home (/) 
+# 1. Ir para Home (/)
 # 2. Verificar seção "Eventos em Destaque"
 # 3. A imagem deve aparecer no card do evento
 # 4. Ir para Calendar (/calendar)
@@ -54,6 +54,7 @@
 ## 🔧 O que foi Implementado
 
 ### 1. Interface Event Atualizada
+
 ```typescript
 export interface Event {
   id: string;
@@ -72,28 +73,30 @@ export interface Event {
 ```
 
 ### 2. Processamento de Imagem (Base64)
+
 ```typescript
 // No AdminDashboard
 const handleCreateEvent = async (eventData: any) => {
   // Processa imagem para base64
   let imageUrl = '';
   if (eventData.image && eventData.image instanceof File) {
-    imageUrl = await new Promise<string>((resolve) => {
+    imageUrl = await new Promise<string>(resolve => {
       const reader = new FileReader();
-      reader.onload = (e) => resolve(e.target?.result as string);
+      reader.onload = e => resolve(e.target?.result as string);
       reader.readAsDataURL(eventData.image);
     });
   }
-  
+
   // Salva evento com imageUrl
   const newEvent = await eventsService.createEvent({
     ...eventData,
-    imageUrl: imageUrl
+    imageUrl: imageUrl,
   });
-}
+};
 ```
 
 ### 3. Exibição no Frontend
+
 ```typescript
 // FeaturedEvents
 const convertAdminEvent = (adminEvent: AdminEvent): Event => ({
@@ -102,7 +105,7 @@ const convertAdminEvent = (adminEvent: AdminEvent): Event => ({
   date: adminEvent.date,
   location: adminEvent.city,
   distance: adminEvent.eventType,
-  imageUrl: adminEvent.imageUrl // ✅ Usa a imagem salva
+  imageUrl: adminEvent.imageUrl, // ✅ Usa a imagem salva
 });
 
 // Calendar
@@ -113,27 +116,28 @@ const convertAdminEvent = (adminEvent: AdminEvent): Event => ({
   image: adminEvent.imageUrl || `placeholder`, // ✅ Usa imagem ou placeholder
   time: adminEvent.time || undefined,
   city: adminEvent.city,
-  eventType: adminEvent.eventType
+  eventType: adminEvent.eventType,
 });
 ```
 
 ### 4. Suporte a Edição de Imagem
+
 ```typescript
 // EditEventModal
 const handleSubmit = async (e: React.FormEvent) => {
   // Mantém imagem atual ou processa nova
   let imageUrl = event.imageUrl;
   if (formData.image instanceof File) {
-    imageUrl = await new Promise<string>((resolve) => {
+    imageUrl = await new Promise<string>(resolve => {
       const reader = new FileReader();
-      reader.onload = (e) => resolve(e.target?.result as string);
+      reader.onload = e => resolve(e.target?.result as string);
       reader.readAsDataURL(formData.image!);
     });
   }
-  
+
   onSubmit({
     ...formData,
-    imageUrl: imageUrl
+    imageUrl: imageUrl,
   });
 };
 ```
@@ -141,23 +145,27 @@ const handleSubmit = async (e: React.FormEvent) => {
 ## 🎯 Funcionalidades Implementadas
 
 ### ✅ Upload de Imagem
+
 - [x] Campo de upload no formulário de criação
 - [x] Campo de upload no formulário de edição
 - [x] Preview da imagem antes de salvar
 - [x] Validação de tipo de arquivo (apenas imagens)
 
 ### ✅ Processamento
+
 - [x] Conversão de File para base64
 - [x] Armazenamento no localStorage
 - [x] Persistência entre sessões
 
 ### ✅ Exibição
+
 - [x] Imagem aparece no FeaturedEvents (Home)
 - [x] Imagem aparece no Calendar
 - [x] Fallback para placeholder quando sem imagem
 - [x] Responsividade mantida
 
 ### ✅ Edição
+
 - [x] Preview da imagem atual no modal de edição
 - [x] Opção de alterar imagem
 - [x] Manter imagem atual se não alterar
@@ -180,7 +188,7 @@ graph TD
     E --> F[Notificar listeners]
     F --> G[Atualizar FeaturedEvents]
     F --> H[Atualizar Calendar]
-    
+
     I[Page reload] --> J[Carregar do localStorage]
     J --> K[Exibir imagem nos cards]
 ```
@@ -207,4 +215,4 @@ graph TD
 - [ ] Testar com diferentes tipos de imagem (JPG, PNG)
 - [ ] Testar eventos sem imagem (deve mostrar placeholder)
 
-**Teste concluído com sucesso!** 🎉 
+**Teste concluído com sucesso!** 🎉

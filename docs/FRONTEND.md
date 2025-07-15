@@ -1,6 +1,7 @@
 Crie a base do frontend com React + Vite + TailwindCSS, modo escuro por padrão.
 
 Telas:
+
 - `Home`: destaque com corridas em alta
 - `Calendário`: lista de corridas com filtros por cidade/estado/data/modalidade
 

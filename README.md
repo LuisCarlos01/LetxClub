@@ -30,6 +30,7 @@ Plataforma digital para corredores e entusiastas do running, oferecendo informa�
 ## 🛠️ Tecnologias
 
 ### Frontend
+
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
@@ -39,6 +40,7 @@ Plataforma digital para corredores e entusiastas do running, oferecendo informa�
 ![Swiper](https://img.shields.io/badge/Swiper-6332F6?style=for-the-badge&logo=swiper&logoColor=white)
 
 ### Backend (Em desenvolvimento)
+
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
@@ -47,11 +49,13 @@ Plataforma digital para corredores e entusiastas do running, oferecendo informa�
 ## 🔧 Configuração
 
 ### Pré-requisitos
+
 - Node.js >= 18
 - Python >= 3.10 (para o backend)
 - PostgreSQL >= 14 (para o backend)
 
 ### Instalação Frontend
+
 ```bash
 # Clone o repositório
 git clone https://github.com/LuisCarlos01/LetxClub.git
@@ -69,6 +73,7 @@ npm run dev
 ## 📦 Atualizações Recentes
 
 ### v1.0.0 (Março 2024)
+
 - ✨ Implementação do carrossel de eventos em destaque
 - 🌐 Suporte completo para internacionalização (i18n)
 - 🎨 Tema escuro/claro com persistência
@@ -77,6 +82,7 @@ npm run dev
 - 📱 Aprimoramentos na responsividade
 
 ### v0.1.0 (Março 2024)
+
 - 🎉 Lançamento inicial do frontend
 - 🏗️ Estrutura base do projeto
 - 🎨 Implementação do design system
@@ -106,4 +112,4 @@ Este projeto está sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para d
 
 [![Instagram](https://img.shields.io/badge/@lext.run-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://instagram.com/lext.run)
 [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/luiscarlos01)
-[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/LuisCarlos01) 
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/LuisCarlos01)

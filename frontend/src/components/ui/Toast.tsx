@@ -9,12 +9,12 @@ interface ToastProps {
   duration?: number;
 }
 
-export const Toast: React.FC<ToastProps> = ({ 
-  message, 
-  type, 
-  isVisible, 
-  onClose, 
-  duration = 5000 
+export const Toast: React.FC<ToastProps> = ({
+  message,
+  type,
+  isVisible,
+  onClose,
+  duration = 5000,
 }) => {
   useEffect(() => {
     if (isVisible && duration > 0) {
@@ -54,7 +54,9 @@ export const Toast: React.FC<ToastProps> = ({
   };
 
   return (
-    <div className={`fixed top-4 right-4 z-50 flex items-center gap-3 px-4 py-3 rounded-lg border shadow-lg ${getBgColor()}`}>
+    <div
+      className={`fixed top-4 right-4 z-50 flex items-center gap-3 px-4 py-3 rounded-lg border shadow-lg ${getBgColor()}`}
+    >
       {getIcon()}
       <span className="font-medium">{message}</span>
       <button
@@ -65,4 +67,4 @@ export const Toast: React.FC<ToastProps> = ({
       </button>
     </div>
   );
-}; 
+};

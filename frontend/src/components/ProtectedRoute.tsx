@@ -23,4 +23,4 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
   return isAuthenticated ? <>{children}</> : <Navigate to="/admin/login" replace />;
 };
 
-export default ProtectedRoute; 
+export default ProtectedRoute;

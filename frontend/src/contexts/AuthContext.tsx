@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         id: '1',
         email: 'admin@letxclub.com',
         name: 'Admin User',
-        picture: undefined
+        picture: undefined,
       });
     }
     setIsLoading(false);
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         id: '1',
         email: 'admin@letxclub.com',
         name: 'Admin User',
-        picture: undefined
+        picture: undefined,
       });
     } catch (error) {
       console.error('Erro no login:', error);
@@ -61,13 +61,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{
-      user,
-      isLoading,
-      login,
-      logout,
-      isAuthenticated: !!user
-    }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        isLoading,
+        login,
+        logout,
+        isAuthenticated: !!user,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -79,4 +81,4 @@ export const useAuth = () => {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
-}; 
+};

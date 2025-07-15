@@ -10,12 +10,7 @@ interface EditEventModalProps {
   event: Event | null;
 }
 
-const EditEventModal: React.FC<EditEventModalProps> = ({ 
-  isOpen, 
-  onClose, 
-  onSubmit, 
-  event 
-}) => {
+const EditEventModal: React.FC<EditEventModalProps> = ({ isOpen, onClose, onSubmit, event }) => {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
     title: '',
@@ -25,7 +20,7 @@ const EditEventModal: React.FC<EditEventModalProps> = ({
     time: '',
     eventType: '',
     sponsored: false,
-    image: null as File | null
+    image: null as File | null,
   });
 
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -41,9 +36,9 @@ const EditEventModal: React.FC<EditEventModalProps> = ({
         time: event.time,
         eventType: event.eventType,
         sponsored: event.sponsored,
-        image: null
+        image: null,
       });
-      
+
       // Set current image as preview
       setImagePreview(event.imageUrl || null);
     }
@@ -54,7 +49,7 @@ const EditEventModal: React.FC<EditEventModalProps> = ({
     if (file) {
       setFormData(prev => ({ ...prev, image: file }));
       const reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = e => {
         setImagePreview(e.target?.result as string);
       };
       reader.readAsDataURL(file);
@@ -64,29 +59,31 @@ const EditEventModal: React.FC<EditEventModalProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!event) return;
-    
+
     // Process image if changed
     let imageUrl = event.imageUrl; // Keep current image by default
     if (formData.image instanceof File) {
-      imageUrl = await new Promise<string>((resolve) => {
+      imageUrl = await new Promise<string>(resolve => {
         const reader = new FileReader();
-        reader.onload = (e) => resolve(e.target?.result as string);
+        reader.onload = e => resolve(e.target?.result as string);
         reader.readAsDataURL(formData.image!);
       });
     }
-    
+
     onSubmit({
       id: event.id,
       ...formData,
-      imageUrl: imageUrl
+      imageUrl: imageUrl,
     });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value, type } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
     }));
   };
 
@@ -194,10 +191,18 @@ const EditEventModal: React.FC<EditEventModalProps> = ({
               required
             >
               <option value="">Selecione o tipo</option>
-              <option value="street">{t('admin.createEvent.eventTypeOptions.street', 'Corrida de Rua')}</option>
-              <option value="trail">{t('admin.createEvent.eventTypeOptions.trail', 'Trail')}</option>
-              <option value="marathon">{t('admin.createEvent.eventTypeOptions.marathon', 'Maratona')}</option>
-              <option value="halfMarathon">{t('admin.createEvent.eventTypeOptions.halfMarathon', 'Meia Maratona')}</option>
+              <option value="street">
+                {t('admin.createEvent.eventTypeOptions.street', 'Corrida de Rua')}
+              </option>
+              <option value="trail">
+                {t('admin.createEvent.eventTypeOptions.trail', 'Trail')}
+              </option>
+              <option value="marathon">
+                {t('admin.createEvent.eventTypeOptions.marathon', 'Maratona')}
+              </option>
+              <option value="halfMarathon">
+                {t('admin.createEvent.eventTypeOptions.halfMarathon', 'Meia Maratona')}
+              </option>
               <option value="5k">{t('admin.createEvent.eventTypeOptions.5k', '5K')}</option>
               <option value="10k">{t('admin.createEvent.eventTypeOptions.10k', '10K')}</option>
             </select>
@@ -259,4 +264,4 @@ const EditEventModal: React.FC<EditEventModalProps> = ({
   );
 };
 
-export default EditEventModal; 
+export default EditEventModal;

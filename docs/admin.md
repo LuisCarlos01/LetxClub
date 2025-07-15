@@ -1,11 +1,13 @@
 # 📄 Documentação — Integração da Seção Administrador — LetxClub
 
 ## 1️⃣ Descrição Geral
+
 Nova seção "Administrador" no LetxClub, com fluxo de autenticação e painel dedicado para gerenciamento de corridas e patrocínios.
 
 ---
 
 ## 2️⃣ Fluxo de acesso
+
 - **Login/Registro:**
   - Autenticação via OAuth 2.0 (Google)
   - Registro automático caso o administrador acesse pela primeira vez
@@ -19,6 +21,7 @@ Nova seção "Administrador" no LetxClub, com fluxo de autenticação e painel d
 ## 3️⃣ Funcionalidades da Seção Administrador
 
 ### 🔹 Gerenciamento de Corridas
+
 - **Tela "Minhas Corridas":** listagem de eventos cadastrados pelo administrador
 - **Ação "Nova Corrida":** formulário com os seguintes campos:
   - Nome do evento
@@ -42,6 +45,7 @@ Nova seção "Administrador" no LetxClub, com fluxo de autenticação e painel d
   - Eventos criados no Painel Administrador aparecem automaticamente na seção "Calendário" do LetxClub, após persistência bem-sucedida.
 
 ### 🔹 Destaque / Patrocínio de Corrida
+
 - **Opção "Tornar Corrida Patrocinada":**
   - Disponível no painel de edição de evento
   - Pagamento necessário para ativação
@@ -56,6 +60,7 @@ Nova seção "Administrador" no LetxClub, com fluxo de autenticação e painel d
 ---
 
 ## 4️⃣ Regras de Negócio
+
 - Apenas usuários autenticados (OAuth 2.0) têm acesso ao Painel Administrador
 - Cada administrador gerencia **apenas as corridas que cadastrou**
 - Corridas patrocinadas têm status diferenciado e aparecem em seções destacadas
@@ -64,6 +69,7 @@ Nova seção "Administrador" no LetxClub, com fluxo de autenticação e painel d
 ---
 
 ## 5️⃣ Requisitos técnicos
+
 - **Frontend:**
   - Nova rota protegida `/admin`
   - Proteção de rota (auth guard)
@@ -81,6 +87,7 @@ Nova seção "Administrador" no LetxClub, com fluxo de autenticação e painel d
   - Flag "sponsored" no modelo `Event`
 
 - **Banco de dados:**
+
   ```sql
   ALTER TABLE events ADD COLUMN sponsored BOOLEAN DEFAULT FALSE;
   ALTER TABLE events ADD COLUMN created_by TEXT;
@@ -94,6 +101,7 @@ Nova seção "Administrador" no LetxClub, com fluxo de autenticação e painel d
 ---
 
 ## 6️⃣ UX/UI Considerações
+
 - Interface amigável e responsiva
 - Feedback visual após cada operação (sucesso, erro)
 - Upload de imagem com pré-visualização
@@ -102,6 +110,7 @@ Nova seção "Administrador" no LetxClub, com fluxo de autenticação e painel d
 ---
 
 ## 7️⃣ Dependências
+
 - OAuth 2.0 (Google)
 - FastAPI Auth Middleware
 - Supabase Storage (opcional)
@@ -111,6 +120,7 @@ Nova seção "Administrador" no LetxClub, com fluxo de autenticação e painel d
 ---
 
 ## 8️⃣ Próximos passos
+
 - Implementar roteamento protegido
 - Desenvolver API backend para CRUD de eventos com autenticação
 - Criar UI/UX da área administrativa

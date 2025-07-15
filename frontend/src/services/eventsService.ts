@@ -49,7 +49,7 @@ const eventListeners: ((events: Event[]) => void)[] = [];
 // Subscribe to events changes
 const subscribeToEvents = (callback: (events: Event[]) => void): (() => void) => {
   eventListeners.push(callback);
-  
+
   // Return unsubscribe function
   return () => {
     const index = eventListeners.indexOf(callback);
@@ -75,51 +75,51 @@ export const eventsService = {
   // Create new event
   async createEvent(eventData: Omit<Event, 'id' | 'createdAt' | 'updatedAt'>): Promise<Event> {
     await new Promise(resolve => setTimeout(resolve, 300));
-    
+
     const newEvent: Event = {
       ...eventData,
       id: generateId(),
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      updatedAt: new Date().toISOString(),
     };
-    
+
     mockEvents.push(newEvent);
     saveEventsToStorage(mockEvents);
     notifyListeners();
-    
+
     return newEvent;
   },
 
   // Update event
   async updateEvent(id: string, eventData: Partial<Event>): Promise<Event> {
     await new Promise(resolve => setTimeout(resolve, 300));
-    
+
     const index = mockEvents.findIndex(event => event.id === id);
     if (index === -1) {
       throw new Error('Event not found');
     }
-    
+
     mockEvents[index] = {
       ...mockEvents[index],
       ...eventData,
-      updatedAt: new Date().toISOString()
+      updatedAt: new Date().toISOString(),
     };
-    
+
     saveEventsToStorage(mockEvents);
     notifyListeners();
-    
+
     return mockEvents[index];
   },
 
   // Delete event
   async deleteEvent(id: string): Promise<void> {
     await new Promise(resolve => setTimeout(resolve, 300));
-    
+
     const index = mockEvents.findIndex(event => event.id === id);
     if (index === -1) {
       throw new Error('Event not found');
     }
-    
+
     mockEvents.splice(index, 1);
     saveEventsToStorage(mockEvents);
     notifyListeners();
@@ -128,7 +128,7 @@ export const eventsService = {
   // Get event by ID
   async getEventById(id: string): Promise<Event | null> {
     await new Promise(resolve => setTimeout(resolve, 200));
-    
+
     return mockEvents.find(event => event.id === id) || null;
   },
 
@@ -140,5 +140,5 @@ export const eventsService = {
     mockEvents = [];
     saveEventsToStorage(mockEvents);
     notifyListeners();
-  }
-}; 
+  },
+};

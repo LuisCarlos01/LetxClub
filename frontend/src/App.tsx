@@ -22,13 +22,13 @@ const App: FC = () => {
               <Route path="/calendario" element={<Calendar />} />
               <Route path="/dicas" element={<Tips />} />
               <Route path="/admin/login" element={<AdminLogin />} />
-              <Route 
-                path="/admin/dashboard" 
+              <Route
+                path="/admin/dashboard"
                 element={
                   <ProtectedRoute>
                     <AdminDashboard />
                   </ProtectedRoute>
-                } 
+                }
               />
             </Routes>
           </Router>

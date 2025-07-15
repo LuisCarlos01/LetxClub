@@ -4,7 +4,8 @@
 
 **Descrição**: Quando uma nova corrida era criada na seção de admin, ela não aparecia no frontend (Home e Calendar).
 
-**Causa Raiz**: 
+**Causa Raiz**:
+
 - Os componentes `FeaturedEvents` (Home) e `Calendar` utilizavam dados estáticos (hardcoded)
 - Não havia comunicação entre o `eventsService` usado no admin e os componentes do frontend
 - Falta de persistência de dados entre sessões
@@ -12,24 +13,29 @@
 ## Soluções Implementadas
 
 ### 1. Conectividade de Dados
+
 - **Antes**: Componentes frontend com arrays estáticos
 - **Depois**: Integração com `eventsService` para buscar dados do admin
 
 ### 2. Persistência no localStorage
+
 - **Implementado**: Sistema de persistência automática no localStorage
 - **Benefício**: Eventos criados persistem entre sessões do navegador
 
 ### 3. Sistema de Subscription (Tempo Real)
+
 - **Implementado**: Sistema de listeners para atualizações em tempo real
 - **Benefício**: Eventos aparecem imediatamente no frontend após criação no admin
 
 ### 4. Fallback com Dados Estáticos
+
 - **Mantido**: Eventos estáticos como fallback
 - **Benefício**: Garantia de conteúdo mesmo sem eventos do admin
 
 ## Arquivos Modificados
 
 ### `frontend/src/services/eventsService.ts`
+
 ```typescript
 // Adicionado
 - Sistema de persistência no localStorage
@@ -38,6 +44,7 @@
 ```
 
 ### `frontend/src/components/FeaturedEvents.tsx`
+
 ```typescript
 // Modificado
 - Integração com eventsService
@@ -46,6 +53,7 @@
 ```
 
 ### `frontend/src/pages/Calendar.tsx`
+
 ```typescript
 // Modificado
 - Integração com eventsService
@@ -57,6 +65,7 @@
 ## Como Testar
 
 ### 1. Teste Básico de Conectividade
+
 ```bash
 # 1. Iniciar aplicação
 cd frontend && npm start
@@ -69,6 +78,7 @@ cd frontend && npm start
 ```
 
 ### 2. Teste de Persistência
+
 ```bash
 # 1. Criar evento no admin
 # 2. Fechar navegador
@@ -77,6 +87,7 @@ cd frontend && npm start
 ```
 
 ### 3. Teste de Tempo Real
+
 ```bash
 # 1. Abrir duas abas: Admin Dashboard e Home
 # 2. Criar evento no admin
@@ -84,6 +95,7 @@ cd frontend && npm start
 ```
 
 ### 4. Teste de Filtros (Calendar)
+
 ```bash
 # 1. Criar evento com cidade "São Paulo" e tipo "Street"
 # 2. Ir para Calendar
@@ -95,6 +107,7 @@ cd frontend && npm start
 ## Estrutura de Dados
 
 ### Evento Admin vs Frontend
+
 ```typescript
 // Admin Event (eventsService)
 {
@@ -140,7 +153,7 @@ graph TD
     B --> D[notifyListeners()]
     D --> E[FeaturedEvents Update]
     D --> F[Calendar Update]
-    
+
     G[Page Load] --> H[loadEventsFromStorage()]
     H --> I[setAdminEvents()]
     I --> J[Component Re-render]
@@ -149,6 +162,7 @@ graph TD
 ## Verificação de Funcionalidade
 
 ### ✅ Testes Realizados
+
 - [x] Criação de evento no admin
 - [x] Visualização no Home/FeaturedEvents
 - [x] Visualização no Calendar
@@ -159,6 +173,7 @@ graph TD
 - [x] Loading states e error handling
 
 ### 🔄 Melhorias Futuras
+
 - [ ] Implementar upload de imagens para eventos
 - [ ] Adicionar mais campos para eventos
 - [ ] Integrar com Supabase para persistência real
@@ -177,4 +192,4 @@ graph TD
 
 **Status**: ✅ **RESOLVIDO**
 **Commit**: `98da8b0 - fix: connect admin events to frontend display`
-**Data**: Janeiro 2025 
+**Data**: Janeiro 2025

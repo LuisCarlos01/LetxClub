@@ -1,9 +1,11 @@
 # Configuração do Supabase - LetxClub Admin
 
 ## 🎯 Objetivo
+
 Este documento descreve os passos necessários para conectar o sistema admin do LetxClub com o Supabase para persistência de dados.
 
 ## 📋 Pré-requisitos
+
 - Projeto Supabase configurado
 - Chaves de API do Supabase
 - Permissões de administrador no projeto
@@ -11,6 +13,7 @@ Este documento descreve os passos necessários para conectar o sistema admin do 
 ## 🔧 Configuração
 
 ### 1. Variáveis de Ambiente
+
 Crie um arquivo `.env` na raiz do projeto com:
 
 ```env
@@ -21,6 +24,7 @@ VITE_SUPABASE_SERVICE_KEY=your-service-key-here
 ```
 
 ### 2. Criar Tabela de Eventos
+
 Execute o seguinte SQL no editor SQL do Supabase:
 
 ```sql
@@ -55,26 +59,30 @@ CREATE INDEX idx_events_event_type ON events(event_type);
 ```
 
 ### 3. Instalar Dependências
+
 ```bash
 npm install @supabase/supabase-js
 ```
 
 ### 4. Configurar Cliente Supabase
+
 Crie o arquivo `src/lib/supabase.ts`:
 
 ```typescript
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 ```
 
 ### 5. Atualizar eventsService.ts
+
 Substitua o mock no `eventsService.ts` pelas chamadas reais do Supabase.
 
 ## 🔐 Autenticação
+
 O sistema atual usa mock authentication. Para integrar com Supabase Auth:
 
 1. Configurar provedores de autenticação no Supabase
@@ -82,6 +90,7 @@ O sistema atual usa mock authentication. Para integrar com Supabase Auth:
 3. Implementar redirecionamentos e callbacks
 
 ## 📊 Status Atual
+
 - ✅ Interface do Admin Dashboard implementada
 - ✅ CRUD completo com mock data
 - ✅ Sistema de toast notifications
@@ -93,6 +102,7 @@ O sistema atual usa mock authentication. Para integrar com Supabase Auth:
 - ⏳ Upload de imagens (pendente)
 
 ## 🚀 Próximos Passos
+
 1. Configurar projeto Supabase
 2. Aplicar as migrações SQL
 3. Configurar as variáveis de ambiente
