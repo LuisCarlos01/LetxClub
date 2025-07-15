@@ -40,7 +40,7 @@ const Calendar: FC = () => {
     loadAdminEvents();
 
     // Subscribe to events changes for real-time updates
-    const unsubscribe = eventsService.subscribeToEvents((events) => {
+    const unsubscribe = eventsService.subscribeToEvents(events => {
       setAdminEvents(events);
     });
 
@@ -84,24 +84,25 @@ const Calendar: FC = () => {
     id: adminEvent.id,
     title: adminEvent.title,
     date: new Date(adminEvent.date).toLocaleDateString('pt-BR'),
-    image: adminEvent.imageUrl || `https://placehold.co/400x400/2434BA/CFF350?text=${encodeURIComponent(adminEvent.title)}`,
+    image:
+      adminEvent.imageUrl ||
+      `https://placehold.co/400x400/2434BA/CFF350?text=${encodeURIComponent(adminEvent.title)}`,
     time: adminEvent.time || undefined,
     city: adminEvent.city,
-    eventType: adminEvent.eventType
+    eventType: adminEvent.eventType,
   });
 
   // Combine admin events with static events
-  const allEvents = [
-    ...adminEvents.map(convertAdminEvent),
-    ...staticEvents
-  ];
+  const allEvents = [...adminEvents.map(convertAdminEvent), ...staticEvents];
 
   // Filter events based on search criteria
   const filteredEvents = allEvents.filter(event => {
     const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCity = !selectedCity || event.city?.toLowerCase() === selectedCity.toLowerCase();
-    const matchesType = !selectedType || event.eventType?.toLowerCase().includes(selectedType.toLowerCase());
-    
+    const matchesCity =
+      !selectedCity || event.city?.toLowerCase().includes(selectedCity.toLowerCase());
+    const matchesType =
+      !selectedType || event.eventType?.toLowerCase().includes(selectedType.toLowerCase());
+
     return matchesSearch && matchesCity && matchesType;
   });
 
@@ -150,24 +151,19 @@ const Calendar: FC = () => {
               <div className="flex flex-col md:flex-row gap-4 md:w-auto w-full">
                 <div className="relative">
                   <FaMapMarkerAlt className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
-                  <select
-                    className="pl-10 pr-4 py-2 rounded-lg bg-white/10 text-white border border-white/20 focus:outline-none focus:border-letx-neon min-w-[150px] appearance-none cursor-pointer"
+                  <input
+                    type="text"
+                    placeholder={t('calendar.cityPlaceholder', 'Digite a cidade...')}
+                    className="pl-10 pr-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 focus:outline-none focus:border-letx-neon focus:ring-2 focus:ring-letx-neon/20 min-w-[150px]"
                     value={selectedCity}
                     onChange={e => setSelectedCity(e.target.value)}
-                  >
-                    <option value="">{t('calendar.cityPlaceholder', 'Cidade')}</option>
-                    <option value="porto-alegre">Porto Alegre</option>
-                    <option value="canoas">Canoas</option>
-                    <option value="gramado">Gramado</option>
-                    <option value="são paulo">São Paulo</option>
-                    <option value="rio de janeiro">Rio de Janeiro</option>
-                  </select>
+                  />
                 </div>
 
                 <div className="relative">
                   <FaCalendarAlt className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
                   <select
-                    className="pl-10 pr-4 py-2 rounded-lg bg-white/10 text-white border border-white/20 focus:outline-none focus:border-letx-neon min-w-[150px] appearance-none cursor-pointer"
+                    className="pl-10 pr-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 focus:outline-none focus:border-letx-neon focus:ring-2 focus:ring-letx-neon/20 min-w-[150px] appearance-none cursor-pointer"
                     value={selectedType}
                     onChange={e => setSelectedType(e.target.value)}
                   >
@@ -215,7 +211,11 @@ const Calendar: FC = () => {
                     className="bg-letx-blue-dark rounded-xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300 shadow-lg"
                   >
                     <div className="relative aspect-square">
-                      <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-full object-cover"
+                      />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
                         <div>
                           <h3 className="text-xl font-bold text-white mb-2">{event.title}</h3>
