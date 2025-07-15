@@ -140,35 +140,35 @@ const Calendar: FC = () => {
                 {/* Search Input - Full width on top */}
                 <div className="w-full relative">
                   <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg z-10" />
-                  <input
-                    type="text"
-                    placeholder={t('calendar.searchPlaceholder', 'Procurar corrida...')}
+                <input
+                  type="text"
+                  placeholder={t('calendar.searchPlaceholder', 'Procurar corrida...')}
                     className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 text-white placeholder-gray-400 border-2 border-white/20 focus:outline-none focus:border-letx-neon transition-all duration-300 text-lg"
-                    value={searchQuery}
+                  value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                </div>
+                />
+              </div>
 
                 {/* Filters Row */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {/* City Filter */}
-                  <div className="relative">
+                <div className="relative">
                     <FaMapMarkerAlt className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg z-10" />
-                    <input
-                      type="text"
-                      placeholder={t('calendar.cityPlaceholder', 'Digite a cidade...')}
+                  <input
+                    type="text"
+                    placeholder={t('calendar.cityPlaceholder', 'Digite a cidade...')}
                       className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 text-white placeholder-gray-400 border-2 border-white/20 focus:outline-none focus:border-letx-neon transition-all duration-300"
-                      value={selectedCity}
+                    value={selectedCity}
                       onChange={(e) => setSelectedCity(e.target.value)}
-                    />
-                  </div>
+                  />
+                </div>
 
                   {/* Event Type Filter */}
-                  <div className="relative">
+                <div className="relative">
                     <FaRunning className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg z-10" />
-                    <select
+                  <select
                       className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 text-white border-2 border-white/20 focus:outline-none focus:border-letx-neon transition-all duration-300 appearance-none cursor-pointer"
-                      value={selectedType}
+                    value={selectedType}
                       onChange={(e) => setSelectedType(e.target.value)}
                     >
                       <option value="" className="bg-letx-blue-dark text-white">
@@ -218,21 +218,21 @@ const Calendar: FC = () => {
                       <option value="42k" className="bg-letx-blue-dark text-white">
                         42km
                       </option>
-                    </select>
+                  </select>
                   </div>
                 </div>
 
                 {/* Search Button */}
                 <div className="flex justify-center">
-                  <button
+                <button
                     className="bg-letx-neon hover:bg-letx-neon/90 text-letx-blue-dark font-bold py-4 px-12 rounded-xl transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
                     onClick={() => {
                       // Button functionality can be added here if needed
                       console.log('Search clicked');
                     }}
                   >
-                    {t('calendar.searchButton', 'PESQUISAR')}
-                  </button>
+                  {t('calendar.searchButton', 'PESQUISAR')}
+                </button>
                 </div>
               </div>
             </div>
@@ -254,26 +254,26 @@ const Calendar: FC = () => {
             
             {/* Events List */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredEvents.map(event => (
-                <div
-                  key={event.id}
+                {filteredEvents.map(event => (
+                  <div
+                    key={event.id}
                   className="bg-white dark:bg-letx-blue-dark rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                >
+                  >
                   {/* Event Image */}
                   <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={event.image}
-                      alt={event.title}
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Badge de destaque no canto superior esquerdo */}
-                    <div className="absolute top-3 left-3">
-                      <EventBadge 
-                        featuredStandard={event.featuredStandard}
-                        featuredPremium={event.featuredPremium}
-                        featuredUltimate={event.featuredUltimate}
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-full object-cover"
                       />
-                    </div>
+                      {/* Badge de destaque no canto superior esquerdo */}
+                      <div className="absolute top-3 left-3">
+                        <EventBadge 
+                          featuredStandard={event.featuredStandard}
+                          featuredPremium={event.featuredPremium}
+                          featuredUltimate={event.featuredUltimate}
+                        />
+                      </div>
                     
                     {/* Event Info Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
@@ -318,10 +318,10 @@ const Calendar: FC = () => {
                         </button>
                       </div>
                     </div>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
           </div>
         </section>
       </main>

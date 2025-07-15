@@ -12,19 +12,19 @@ const slides = [
   {
     image: '/images/hero/corrida1.png',
     translationKey: 'slide1',
-    position: 'object-[center_40%]',
+    position: 'object-[center_25%]',
     textPosition: 'justify-end pb-20',
   },
   {
     image: '/images/hero/corrida2.png',
     translationKey: 'slide2',
-    position: 'object-[center_20%]',
+    position: 'object-[center_18%]',
     textPosition: 'justify-end pb-20',
   },
   {
     image: '/images/hero/corrida3.png',
     translationKey: 'slide3',
-    position: 'object-[center_10%]',
+    position: 'object-[center_8%]',
     textPosition: 'justify-center',
   },
 ];
@@ -33,7 +33,7 @@ const HeroSection: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="relative w-full h-screen bg-letx-blue-dark">
+    <section className="relative w-full h-[60vh] bg-letx-blue-dark">
       <Swiper
         modules={[Autoplay, Navigation, Pagination, EffectFade]}
         effect="fade"
