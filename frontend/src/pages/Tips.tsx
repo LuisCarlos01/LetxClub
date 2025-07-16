@@ -84,7 +84,7 @@ const Tips: FC = () => {
       readTime: '20 min',
       gradientFrom: 'from-letx-green-dark',
       gradientTo: 'to-letx-blue',
-      image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65',
+      image: 'https://images.unsplash.com/photo-1502904550040-7534597429ae',
     },
     {
       id: '6',
