@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="grad8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#065F46;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#grad8)"/>
+  <g transform="translate(200,150)">
+    <circle cx="0" cy="0" r="60" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+    <path d="M-20,-10 L-10,-20 L0,-10 L10,-20 L20,-10 L10,0 L20,10 L10,20 L0,10 L-10,20 L-20,10 L-10,0 Z" fill="white" opacity="0.9"/>
+    <circle cx="0" cy="0" r="6" fill="rgba(243,244,246,0.9)"/>
+    <text x="0" y="90" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Técnica</text>
+  </g>
+</svg> 

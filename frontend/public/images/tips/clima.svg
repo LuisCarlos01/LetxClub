@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E3A8A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06FFA5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#grad6)"/>
+  <g transform="translate(200,150)">
+    <circle cx="0" cy="0" r="60" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+    <path d="M-20,-15 Q-10,-25 0,-15 Q10,-25 20,-15 Q15,-5 10,0 Q5,5 0,0 Q-5,5 -10,0 Q-15,-5 -20,-15 Z" fill="white" opacity="0.9"/>
+    <circle cx="-10" cy="10" r="3" fill="white" opacity="0.7"/>
+    <circle cx="0" cy="15" r="2" fill="white" opacity="0.7"/>
+    <circle cx="10" cy="12" r="2.5" fill="white" opacity="0.7"/>
+    <text x="0" y="90" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Clima</text>
+  </g>
+</svg> 

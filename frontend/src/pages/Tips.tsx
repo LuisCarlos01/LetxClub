@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import YouTubeVideos from '../components/YouTubeVideos';
 import AceBanner from '../components/AceBanner';
 import NewsletterCard from '../components/NewsletterCard';
 import TipsCard from '../components/TipsCard';
@@ -16,7 +15,7 @@ interface TipData {
   readTime: string;
   gradientFrom: string;
   gradientTo: string;
-  // Removido image?: string; para otimização
+  image: string; // Adicionado para imagens otimizadas
 }
 
 const Tips: FC = () => {
@@ -32,6 +31,7 @@ const Tips: FC = () => {
       readTime: '10 min',
       gradientFrom: 'from-letx-green-water',
       gradientTo: 'to-letx-blue',
+      image: '/images/tips/iniciantes.svg',
     },
     {
       id: '2',
@@ -44,6 +44,7 @@ const Tips: FC = () => {
       readTime: '15 min',
       gradientFrom: 'from-letx-blue',
       gradientTo: 'to-letx-green-water',
+      image: '/images/tips/equipamentos.svg',
     },
     {
       id: '3',
@@ -56,6 +57,7 @@ const Tips: FC = () => {
       readTime: '8 min',
       gradientFrom: 'from-letx-orange',
       gradientTo: 'to-letx-green-water',
+      image: '/images/tips/psicologia.svg',
     },
     {
       id: '4',
@@ -68,6 +70,7 @@ const Tips: FC = () => {
       readTime: '12 min',
       gradientFrom: 'from-letx-neon',
       gradientTo: 'to-letx-blue',
+      image: '/images/tips/recuperacao.svg',
     },
     {
       id: '5',
@@ -80,6 +83,7 @@ const Tips: FC = () => {
       readTime: '20 min',
       gradientFrom: 'from-letx-green-dark',
       gradientTo: 'to-letx-blue',
+      image: '/images/tips/maratona.svg',
     },
     {
       id: '6',
@@ -92,6 +96,7 @@ const Tips: FC = () => {
       readTime: '6 min',
       gradientFrom: 'from-letx-blue-dark',
       gradientTo: 'to-letx-neon',
+      image: '/images/tips/clima.svg',
     },
     {
       id: '7',
@@ -104,6 +109,7 @@ const Tips: FC = () => {
       readTime: '14 min',
       gradientFrom: 'from-letx-orange/80',
       gradientTo: 'to-letx-blue',
+      image: '/images/tips/nutricao.svg',
     },
     {
       id: '8',
@@ -116,6 +122,7 @@ const Tips: FC = () => {
       readTime: '18 min',
       gradientFrom: 'from-letx-green-water/80',
       gradientTo: 'to-letx-green-dark',
+      image: '/images/tips/tecnica.svg',
     },
   ];
 
@@ -172,6 +179,7 @@ const Tips: FC = () => {
                   readTime={tip.readTime}
                   gradientFrom={tip.gradientFrom}
                   gradientTo={tip.gradientTo}
+                  image={tip.image}
                   onClick={() => handleCardClick(tip.id)}
                 />
               ))}
@@ -179,33 +187,18 @@ const Tips: FC = () => {
           </div>
         </section>
 
-        {/* Seção de Vídeos */}
-        <section className="py-20 bg-letx-gray-50 dark:bg-letx-green-dark/50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-letx-green-dark dark:text-letx-white mb-4">
-                Vídeos Educativos
-              </h2>
-              <p className="text-lg text-letx-gray-600 dark:text-letx-gray-300 max-w-2xl mx-auto">
-                Assista aos nossos vídeos com dicas práticas e demonstrações
-              </p>
-            </div>
-            <YouTubeVideos />
-            </div>
-        </section>
-
         {/* Seção ACE Banner */}
-        <section className="py-20 bg-letx-white dark:bg-letx-green-dark">
+        <section className="py-20 bg-letx-gray-50 dark:bg-letx-green-dark/50">
           <div className="container mx-auto px-4">
             <AceBanner />
           </div>
         </section>
 
         {/* Newsletter */}
-        <section className="py-20 bg-letx-gray-50 dark:bg-letx-green-dark/50">
+        <section className="py-20 bg-letx-white dark:bg-letx-green-dark">
           <div className="container mx-auto px-4">
             <NewsletterCard />
-        </div>
+          </div>
         </section>
       </main>
       <Footer />

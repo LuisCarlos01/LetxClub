@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 interface TipsCardProps {
   title: string;
@@ -9,6 +9,7 @@ interface TipsCardProps {
   readTime: string;
   gradientFrom: string;
   gradientTo: string;
+  image?: string; // Adicionado suporte a imagens
   onClick?: () => void;
 }
 
@@ -21,8 +22,15 @@ const TipsCard: FC<TipsCardProps> = ({
   readTime,
   gradientFrom,
   gradientTo,
+  image,
   onClick,
 }) => {
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   const renderStars = (rating: number) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -125,27 +133,41 @@ const TipsCard: FC<TipsCardProps> = ({
         }
       }}
     >
-      {/* Header com gradiente e ícone */}
-      <div className={`relative h-32 bg-gradient-to-br ${gradientFrom} ${gradientTo} flex items-center justify-center`}>
-        <div className="absolute top-3 left-3">
-          <span className="inline-block px-3 py-1 text-xs font-semibold text-white bg-black/20 backdrop-blur-sm rounded-full">
+      {/* Header com imagem ou gradiente */}
+      <div className={`relative h-48 ${!image || imageError ? `bg-gradient-to-br ${gradientFrom} ${gradientTo}` : ''} flex items-center justify-center overflow-hidden`}>
+        {/* Imagem otimizada */}
+        {image && !imageError && (
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            onError={handleImageError}
+            loading="lazy"
+          />
+        )}
+        
+        {/* Overlay escuro para melhor legibilidade */}
+        <div className="absolute inset-0 bg-black/20" />
+        
+        <div className="absolute top-3 left-3 z-20">
+          <span className="inline-block px-3 py-1 text-xs font-semibold text-white bg-black/30 backdrop-blur-sm rounded-full">
             {badge}
           </span>
         </div>
         
-        {/* Ícone principal */}
-        <div className="relative z-10">
+        {/* Ícone principal - sempre visível */}
+        <div className="absolute inset-0 flex items-center justify-center z-10">
           <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-        <svg
+            <svg
               className="w-8 h-8 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
               aria-hidden="true"
-        >
-          {getIcon(icon)}
-        </svg>
-      </div>
+            >
+              {getIcon(icon)}
+            </svg>
+          </div>
         </div>
 
         {/* Efeito de overlay no hover */}
@@ -156,7 +178,7 @@ const TipsCard: FC<TipsCardProps> = ({
       <div className="p-6">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center" aria-label={`Avaliação: ${rating} de 5 estrelas`}>
-          {renderStars(rating)}
+            {renderStars(rating)}
           </div>
           <span className="text-sm text-gray-500 dark:text-gray-400 flex items-center">
             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -184,7 +206,7 @@ const TipsCard: FC<TipsCardProps> = ({
             stroke="currentColor"
             viewBox="0 0 24 24"
             aria-hidden="true"
-        >
+          >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </div>
