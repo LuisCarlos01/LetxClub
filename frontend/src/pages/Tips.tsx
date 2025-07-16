@@ -16,7 +16,7 @@ interface TipData {
   readTime: string;
   gradientFrom: string;
   gradientTo: string;
-  image?: string;
+  // Removido image?: string; para otimização
 }
 
 const Tips: FC = () => {
@@ -32,7 +32,6 @@ const Tips: FC = () => {
       readTime: '10 min',
       gradientFrom: 'from-letx-green-water',
       gradientTo: 'to-letx-blue',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b',
     },
     {
       id: '2',
@@ -45,7 +44,6 @@ const Tips: FC = () => {
       readTime: '15 min',
       gradientFrom: 'from-letx-blue',
       gradientTo: 'to-letx-green-water',
-      image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5',
     },
     {
       id: '3',
@@ -58,7 +56,6 @@ const Tips: FC = () => {
       readTime: '8 min',
       gradientFrom: 'from-letx-orange',
       gradientTo: 'to-letx-green-water',
-      image: 'https://images.unsplash.com/photo-1506629905607-45e5d73d7b7a',
     },
     {
       id: '4',
@@ -71,7 +68,6 @@ const Tips: FC = () => {
       readTime: '12 min',
       gradientFrom: 'from-letx-neon',
       gradientTo: 'to-letx-blue',
-      image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b',
     },
     {
       id: '5',
@@ -84,7 +80,6 @@ const Tips: FC = () => {
       readTime: '20 min',
       gradientFrom: 'from-letx-green-dark',
       gradientTo: 'to-letx-blue',
-      image: 'https://images.unsplash.com/photo-1502904550040-7534597429ae',
     },
     {
       id: '6',
@@ -97,7 +92,6 @@ const Tips: FC = () => {
       readTime: '6 min',
       gradientFrom: 'from-letx-blue-dark',
       gradientTo: 'to-letx-neon',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4',
     },
     {
       id: '7',
@@ -110,7 +104,6 @@ const Tips: FC = () => {
       readTime: '14 min',
       gradientFrom: 'from-letx-orange/80',
       gradientTo: 'to-letx-blue',
-      image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061',
     },
     {
       id: '8',
@@ -123,7 +116,6 @@ const Tips: FC = () => {
       readTime: '18 min',
       gradientFrom: 'from-letx-green-water/80',
       gradientTo: 'to-letx-green-dark',
-      image: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5',
     },
   ];
 
@@ -149,25 +141,27 @@ const Tips: FC = () => {
               <h1 className="text-4xl md:text-6xl font-bold text-letx-neon mb-6 drop-shadow-2xl">
                 Dicas de Corrida
               </h1>
-              <p className="text-lg md:text-xl text-white max-w-3xl mx-auto drop-shadow-xl">
-                Descubra técnicas, estratégias e conhecimentos essenciais para melhorar sua
-                performance e aproveitar ao máximo cada corrida
+              <p className="text-xl md:text-2xl text-letx-white/90 max-w-3xl mx-auto drop-shadow-lg">
+                Aprenda técnicas, dicas e estratégias para melhorar sua performance e aproveitar ao máximo cada corrida
               </p>
             </div>
           </div>
         </section>
 
-        {/* Seção de Dicas em Cards */}
-        <section className="py-16 bg-[#CFF350] dark:bg-letx-green-dark transition-colors duration-300">
+        {/* Seção de Guias e Artigos */}
+        <section className="py-20 bg-letx-white dark:bg-letx-green-dark">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-letx-green-dark dark:text-letx-neon mb-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-letx-green-dark dark:text-letx-white mb-4">
                 Guias e Artigos
               </h2>
+              <p className="text-lg text-letx-gray-600 dark:text-letx-gray-300 max-w-2xl mx-auto">
+                Conteúdo especializado para corredores de todos os níveis
+              </p>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {tipsData.map(tip => (
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {tipsData.map((tip) => (
                 <TipsCard
                   key={tip.id}
                   title={tip.title}
@@ -178,7 +172,6 @@ const Tips: FC = () => {
                   readTime={tip.readTime}
                   gradientFrom={tip.gradientFrom}
                   gradientTo={tip.gradientTo}
-                  image={tip.image}
                   onClick={() => handleCardClick(tip.id)}
                 />
               ))}
@@ -186,20 +179,34 @@ const Tips: FC = () => {
           </div>
         </section>
 
-        {/* Vídeos do YouTube */}
-        <YouTubeVideos />
-
-        {/* ACE Banner e Newsletter lado a lado */}
-        <div className="bg-white dark:bg-letx-green-dark transition-colors duration-300">
-          <div className="flex flex-col lg:flex-row">
-            <div className="flex-1">
-              <AceBanner />
+        {/* Seção de Vídeos */}
+        <section className="py-20 bg-letx-gray-50 dark:bg-letx-green-dark/50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-letx-green-dark dark:text-letx-white mb-4">
+                Vídeos Educativos
+              </h2>
+              <p className="text-lg text-letx-gray-600 dark:text-letx-gray-300 max-w-2xl mx-auto">
+                Assista aos nossos vídeos com dicas práticas e demonstrações
+              </p>
             </div>
-            <div className="flex-1">
-              <NewsletterCard />
-            </div>
+            <YouTubeVideos />
           </div>
-        </div>
+        </section>
+
+        {/* Seção ACE Banner */}
+        <section className="py-20 bg-letx-white dark:bg-letx-green-dark">
+          <div className="container mx-auto px-4">
+            <AceBanner />
+          </div>
+        </section>
+
+        {/* Newsletter */}
+        <section className="py-20 bg-letx-gray-50 dark:bg-letx-green-dark/50">
+          <div className="container mx-auto px-4">
+            <NewsletterCard />
+          </div>
+        </section>
       </main>
       <Footer />
     </div>

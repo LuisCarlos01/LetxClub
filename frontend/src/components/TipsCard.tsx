@@ -9,7 +9,6 @@ interface TipsCardProps {
   readTime: string;
   gradientFrom: string;
   gradientTo: string;
-  image?: string;
   onClick?: () => void;
 }
 
@@ -22,7 +21,6 @@ const TipsCard: FC<TipsCardProps> = ({
   readTime,
   gradientFrom,
   gradientTo,
-  image,
   onClick,
 }) => {
   const renderStars = (rating: number) => {
@@ -34,6 +32,7 @@ const TipsCard: FC<TipsCardProps> = ({
           className={`w-4 h-4 mr-1 ${i <= rating ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-600'}`}
           fill="currentColor"
           viewBox="0 0 20 20"
+          aria-hidden="true"
         >
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </svg>
@@ -57,7 +56,7 @@ const TipsCard: FC<TipsCardProps> = ({
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 12H6L5 9z"
+          d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v4a2 2 0 01-2 2H9a2 2 0 01-2-2v-4m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"
         />
       ),
       lightbulb: (
@@ -114,47 +113,85 @@ const TipsCard: FC<TipsCardProps> = ({
   };
 
   return (
-    <article className="bg-letx-white dark:bg-letx-blue-dark rounded-2xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 border border-letx-green-water/20">
-      <div
-        className={`bg-gradient-to-br ${gradientFrom} ${gradientTo} h-48 flex items-center justify-center relative overflow-hidden`}
-      >
-        <div className="absolute top-4 left-4 z-10">
-          <span className="bg-white/20 backdrop-blur-sm text-letx-green-dark dark:text-letx-neon px-3 py-1 rounded-full text-sm font-medium">
+    <article
+      className="group relative bg-white dark:bg-letx-green-dark rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden border border-gray-100 dark:border-letx-green-dark/50"
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      aria-label={`Leia mais sobre ${title}`}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          onClick?.();
+        }
+      }}
+    >
+      {/* Header com gradiente e ícone */}
+      <div className={`relative h-32 bg-gradient-to-br ${gradientFrom} ${gradientTo} flex items-center justify-center`}>
+        <div className="absolute top-3 left-3">
+          <span className="inline-block px-3 py-1 text-xs font-semibold text-white bg-black/20 backdrop-blur-sm rounded-full">
             {badge}
           </span>
         </div>
         
-        {image ? (
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover"
-          />
-        ) : (
+        {/* Ícone principal */}
+        <div className="relative z-10">
+          <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <svg
+              className="w-8 h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              {getIcon(icon)}
+            </svg>
+          </div>
+        </div>
+
+        {/* Efeito de overlay no hover */}
+        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+
+      {/* Conteúdo do card */}
+      <div className="p-6">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center" aria-label={`Avaliação: ${rating} de 5 estrelas`}>
+            {renderStars(rating)}
+          </div>
+          <span className="text-sm text-gray-500 dark:text-gray-400 flex items-center">
+            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            {readTime}
+          </span>
+        </div>
+
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-letx-green-water transition-colors duration-300">
+          {title}
+        </h3>
+
+        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3">
+          {description}
+        </p>
+
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-medium text-letx-green-water group-hover:text-letx-neon transition-colors duration-300">
+            Ler mais
+          </span>
           <svg
-            className="w-20 h-20 text-letx-green-dark dark:text-letx-neon drop-shadow-lg"
+            className="w-5 h-5 text-letx-green-water group-hover:text-letx-neon group-hover:translate-x-1 transition-all duration-300"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
-            {getIcon(icon)}
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-        )}
-      </div>
-      <div className="p-6">
-        <div className="flex items-center mb-2">
-          {renderStars(rating)}
-          <span className="text-sm text-gray-600 dark:text-letx-green-water ml-2">{readTime}</span>
         </div>
-        <h3 className="text-xl font-bold text-letx-green-dark dark:text-letx-neon mb-3">{title}</h3>
-        <p className="text-gray-600 dark:text-letx-green-water mb-4 line-clamp-3">{description}</p>
-        <button
-          onClick={onClick}
-          className="w-full bg-letx-blue text-white py-3 rounded-lg hover:bg-letx-blue-dark transition-colors duration-300 font-semibold"
-        >
-          Ler mais
-        </button>
       </div>
+
+      {/* Indicador de hover */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-letx-green-water to-letx-neon transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
     </article>
   );
 };
