@@ -159,7 +159,7 @@ const Tips: FC = () => {
                 Conteúdo especializado para corredores de todos os níveis
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {tipsData.map((tip) => (
                 <TipsCard
@@ -191,7 +191,7 @@ const Tips: FC = () => {
               </p>
             </div>
             <YouTubeVideos />
-          </div>
+            </div>
         </section>
 
         {/* Seção ACE Banner */}
@@ -205,7 +205,7 @@ const Tips: FC = () => {
         <section className="py-20 bg-letx-gray-50 dark:bg-letx-green-dark/50">
           <div className="container mx-auto px-4">
             <NewsletterCard />
-          </div>
+        </div>
         </section>
       </main>
       <Footer />

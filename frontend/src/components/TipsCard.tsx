@@ -136,16 +136,16 @@ const TipsCard: FC<TipsCardProps> = ({
         {/* Ícone principal */}
         <div className="relative z-10">
           <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <svg
+        <svg
               className="w-8 h-8 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
               aria-hidden="true"
-            >
-              {getIcon(icon)}
-            </svg>
-          </div>
+        >
+          {getIcon(icon)}
+        </svg>
+      </div>
         </div>
 
         {/* Efeito de overlay no hover */}
@@ -156,7 +156,7 @@ const TipsCard: FC<TipsCardProps> = ({
       <div className="p-6">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center" aria-label={`Avaliação: ${rating} de 5 estrelas`}>
-            {renderStars(rating)}
+          {renderStars(rating)}
           </div>
           <span className="text-sm text-gray-500 dark:text-gray-400 flex items-center">
             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -184,7 +184,7 @@ const TipsCard: FC<TipsCardProps> = ({
             stroke="currentColor"
             viewBox="0 0 24 24"
             aria-hidden="true"
-          >
+        >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </div>

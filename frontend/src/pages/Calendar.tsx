@@ -132,7 +132,7 @@ const Calendar: FC = () => {
                       className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 text-white border-2 border-white/20 focus:outline-none focus:border-letx-neon transition-all duration-300 appearance-none cursor-pointer"
                     value={selectedType}
                       onChange={(e) => setSelectedType(e.target.value)}
-                    >
+                  >
                       <option value="" className="bg-letx-blue-dark text-white">
                         {t('calendar.typePlaceholder', 'Selecione...')}
                       </option>
@@ -279,7 +279,7 @@ const Calendar: FC = () => {
                           {t('events.register', 'INSCREVER-SE')}
                         </button>
                       </div>
-                    </div>
+                      </div>
                     </div>
                   </div>
                 ))}
