@@ -297,7 +297,7 @@ const YouTubeVideos: FC = () => {
                 transform: `translateX(-${currentIndex * (100 / Math.min(3, filteredVideos.length))}%)`,
               }}
             >
-              {filteredVideos.map((video, index) => (
+              {filteredVideos.map((video) => (
                 <article
                   key={video.id}
                   className="min-w-0 flex-shrink-0 w-full md:w-1/2 lg:w-1/3"
