@@ -16,6 +16,7 @@ interface TipData {
   readTime: string;
   gradientFrom: string;
   gradientTo: string;
+  image?: string;
 }
 
 const Tips: FC = () => {
@@ -31,6 +32,7 @@ const Tips: FC = () => {
       readTime: '10 min',
       gradientFrom: 'from-letx-green-water',
       gradientTo: 'to-letx-blue',
+      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
     {
       id: '2',
@@ -43,6 +45,7 @@ const Tips: FC = () => {
       readTime: '15 min',
       gradientFrom: 'from-letx-blue',
       gradientTo: 'to-letx-green-water',
+      image: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
     {
       id: '3',
@@ -55,6 +58,7 @@ const Tips: FC = () => {
       readTime: '8 min',
       gradientFrom: 'from-letx-orange',
       gradientTo: 'to-letx-green-water',
+      image: 'https://images.unsplash.com/photo-1506629905607-45e5d73d7b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
     {
       id: '4',
@@ -67,6 +71,7 @@ const Tips: FC = () => {
       readTime: '12 min',
       gradientFrom: 'from-letx-neon',
       gradientTo: 'to-letx-blue',
+      image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
     {
       id: '5',
@@ -79,6 +84,7 @@ const Tips: FC = () => {
       readTime: '20 min',
       gradientFrom: 'from-letx-green-dark',
       gradientTo: 'to-letx-blue',
+      image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
     {
       id: '6',
@@ -91,6 +97,7 @@ const Tips: FC = () => {
       readTime: '6 min',
       gradientFrom: 'from-letx-blue-dark',
       gradientTo: 'to-letx-neon',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
     {
       id: '7',
@@ -103,6 +110,7 @@ const Tips: FC = () => {
       readTime: '14 min',
       gradientFrom: 'from-letx-orange/80',
       gradientTo: 'to-letx-blue',
+      image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
     {
       id: '8',
@@ -115,6 +123,7 @@ const Tips: FC = () => {
       readTime: '18 min',
       gradientFrom: 'from-letx-green-water/80',
       gradientTo: 'to-letx-green-dark',
+      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
   ];
 
@@ -169,6 +178,7 @@ const Tips: FC = () => {
                   readTime={tip.readTime}
                   gradientFrom={tip.gradientFrom}
                   gradientTo={tip.gradientTo}
+                  image={tip.image}
                   onClick={() => handleCardClick(tip.id)}
                 />
               ))}

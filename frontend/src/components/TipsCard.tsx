@@ -9,6 +9,7 @@ interface TipsCardProps {
   readTime: string;
   gradientFrom: string;
   gradientTo: string;
+  image?: string;
   onClick?: () => void;
 }
 
@@ -21,6 +22,7 @@ const TipsCard: FC<TipsCardProps> = ({
   readTime,
   gradientFrom,
   gradientTo,
+  image,
   onClick,
 }) => {
   const renderStars = (rating: number) => {
@@ -55,7 +57,7 @@ const TipsCard: FC<TipsCardProps> = ({
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 12H6L5 9z"
         />
       ),
       lightbulb: (
@@ -114,21 +116,30 @@ const TipsCard: FC<TipsCardProps> = ({
   return (
     <article className="bg-letx-white dark:bg-letx-blue-dark rounded-2xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 border border-letx-green-water/20">
       <div
-        className={`bg-gradient-to-br ${gradientFrom} ${gradientTo} h-48 flex items-center justify-center relative`}
+        className={`bg-gradient-to-br ${gradientFrom} ${gradientTo} h-48 flex items-center justify-center relative overflow-hidden`}
       >
-        <div className="absolute top-4 left-4">
+        <div className="absolute top-4 left-4 z-10">
           <span className="bg-white/20 backdrop-blur-sm text-letx-green-dark dark:text-letx-neon px-3 py-1 rounded-full text-sm font-medium">
             {badge}
           </span>
         </div>
-        <svg
-          className="w-20 h-20 text-letx-green-dark dark:text-letx-neon drop-shadow-lg"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          {getIcon(icon)}
-        </svg>
+        
+        {image ? (
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <svg
+            className="w-20 h-20 text-letx-green-dark dark:text-letx-neon drop-shadow-lg"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            {getIcon(icon)}
+          </svg>
+        )}
       </div>
       <div className="p-6">
         <div className="flex items-center mb-2">
