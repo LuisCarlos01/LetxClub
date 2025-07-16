@@ -45,7 +45,7 @@ const Tips: FC = () => {
       readTime: '15 min',
       gradientFrom: 'from-letx-blue',
       gradientTo: 'to-letx-green-water',
-      image: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
     {
       id: '3',
@@ -58,7 +58,7 @@ const Tips: FC = () => {
       readTime: '8 min',
       gradientFrom: 'from-letx-orange',
       gradientTo: 'to-letx-green-water',
-      image: 'https://images.unsplash.com/photo-1506629905607-45e5d73d7b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
     {
       id: '4',
@@ -84,7 +84,7 @@ const Tips: FC = () => {
       readTime: '20 min',
       gradientFrom: 'from-letx-green-dark',
       gradientTo: 'to-letx-blue',
-      image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     },
     {
       id: '6',
