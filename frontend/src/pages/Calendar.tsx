@@ -56,45 +56,7 @@ const Calendar: FC = () => {
   }, []);
 
   // Mock events data as fallback
-  const staticEvents: Event[] = [
-    {
-      id: 'static-1',
-      title: 'CORRIDA KIDS TURMA DO DINOSSAURO',
-      date: '18/09/2025',
-      image: 'https://placehold.co/400x400/2434BA/CFF350?text=Corrida+Kids',
-      featuredStandard: false,
-      featuredPremium: false,
-      featuredUltimate: false,
-    },
-    {
-      id: 'static-2',
-      title: 'I CORRIDA KIDS MINIMUNDO',
-      date: '05/10/2025',
-      image: 'https://placehold.co/400x400/2434BA/CFF350?text=Minimundo',
-      featuredStandard: false,
-      featuredPremium: false,
-      featuredUltimate: false,
-    },
-    {
-      id: 'static-3',
-      title: 'CORRIDA',
-      date: '05/10/2025',
-      time: '20:00',
-      image: 'https://placehold.co/400x400/2434BA/CFF350?text=Corrida',
-      featuredStandard: false,
-      featuredPremium: false,
-      featuredUltimate: false,
-    },
-    {
-      id: 'static-4',
-      title: 'JANJAO',
-      date: '17/07/2025',
-      image: 'https://placehold.co/400x400/2434BA/CFF350?text=Janjao',
-      featuredStandard: false,
-      featuredPremium: false,
-      featuredUltimate: false,
-    },
-  ];
+  const staticEvents: Event[] = [];
 
   // Combine admin events with static events
   const allEventsCombined = [...allEvents, ...staticEvents];

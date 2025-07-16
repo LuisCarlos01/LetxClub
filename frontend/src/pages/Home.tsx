@@ -14,7 +14,7 @@ const Home: FC = () => {
       <main className="flex-1">
         <HeroSection />
         <FeaturedEvents />
-        <div className="py-16 bg-white dark:bg-letx-green-dark transition-colors duration-300">
+        <div className="py-16 bg-letx-neon dark:bg-letx-green-dark transition-colors duration-300">
           <div className="container mx-auto px-4">
             <ShopAndTips />
           </div>
