@@ -160,7 +160,7 @@ const YouTubeVideos: FC = () => {
       aria-labelledby="videos-section-title"
     >
       <div className="container mx-auto px-4">
-        <header className="text-center mb-12">
+        <div className="text-center mb-12">
           <h2 
             id="videos-section-title"
             className="text-3xl md:text-4xl font-bold text-letx-green-dark dark:text-letx-neon mb-4"
@@ -172,8 +172,9 @@ const YouTubeVideos: FC = () => {
           </p>
 
           {/* Filtros de Categoria */}
-          <nav 
+          <div 
             className="flex flex-wrap justify-center gap-3 mb-8"
+            role="group"
             aria-label="Filtros de categoria de vídeos"
           >
             {categories.map(category => (
@@ -197,8 +198,8 @@ const YouTubeVideos: FC = () => {
                 {category}
               </button>
             ))}
-          </nav>
-        </header>
+          </div>
+        </div>
 
         {/* Contador de resultados */}
         <div className="text-center mb-8">
@@ -282,14 +283,14 @@ const YouTubeVideos: FC = () => {
               {filteredVideos.map((video) => {
                 const videoId = extractYouTubeId(video.embedUrl);
                 return (
-                  <article 
+                  <div 
                     key={video.id} 
                     className="min-w-0 flex-shrink-0 w-full md:w-1/2 lg:w-1/3"
                     itemScope
                     itemType="https://schema.org/VideoObject"
                   >
                     <div
-                      className="bg-letx-white dark:bg-letx-blue-dark rounded-2xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer border border-letx-green-water/20 h-full group focus-within:ring-2 focus-within:ring-letx-blue focus-within:ring-offset-2"
+                      className="bg-letx-white dark:bg-letx-blue-dark rounded-2xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer border border-letx-green-water/20 h-full"
                       onClick={() => handleVideoClick(video.embedUrl)}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ') {
@@ -326,20 +327,17 @@ const YouTubeVideos: FC = () => {
                         />
                         
                         {/* Fallback placeholder */}
-                        <div className="hidden bg-gradient-to-br from-letx-green-water to-letx-blue h-48 flex items-center justify-center">
-                          <div className="text-center">
-                            <svg className="w-16 h-16 mx-auto mb-2 text-letx-green-dark dark:text-letx-neon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <div className="hidden bg-letx-green-water dark:bg-letx-blue h-48 flex items-center justify-center">
+                          <div className="text-letx-green-dark dark:text-letx-neon">
+                            <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                               <path d="M8 5v14l11-7z" />
                             </svg>
-                            <p className="text-sm text-letx-green-dark dark:text-letx-neon font-medium">
-                              Vídeo do YouTube
-                            </p>
                           </div>
                         </div>
                         
                         {/* Overlay com Play Button */}
-                        <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-opacity duration-300 flex items-center justify-center">
-                          <div className="text-white drop-shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                        <div className="absolute inset-0 bg-black bg-opacity-20 hover:bg-opacity-10 transition-opacity duration-300 flex items-center justify-center">
+                          <div className="text-white drop-shadow-2xl">
                             <svg className="w-20 h-20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                               <path d="M8 5v14l11-7z" />
                             </svg>
@@ -383,23 +381,16 @@ const YouTubeVideos: FC = () => {
                         </div>
                         
                         <h3 
-                          className="text-lg font-bold text-letx-green-dark dark:text-letx-neon mb-2 line-clamp-2"
+                          className="text-lg font-bold text-letx-green-dark dark:text-letx-neon mb-3 line-clamp-2"
                           itemProp="name"
                         >
                           {video.title}
                         </h3>
                         
-                        <p 
-                          className="text-sm text-gray-600 dark:text-letx-green-water/80 mb-4 line-clamp-2"
-                          itemProp="description"
-                        >
-                          {video.description}
-                        </p>
-                        
-                        <div className="inline-flex items-center text-letx-blue dark:text-letx-neon hover:underline font-medium transition-colors group-hover:translate-x-1">
+                        <button className="inline-flex items-center text-letx-blue dark:text-letx-neon hover:underline font-medium transition-colors">
                           <span>Assistir agora</span>
                           <svg
-                            className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"
+                            className="w-4 h-4 ml-2"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -412,15 +403,16 @@ const YouTubeVideos: FC = () => {
                               d="M14 5l7 7m0 0l-7 7m7-7H3"
                             />
                           </svg>
-                        </div>
+                        </button>
                       </div>
                       
                       {/* Schema.org structured data */}
                       <meta itemProp="embedUrl" content={video.embedUrl} />
                       <meta itemProp="duration" content={video.duration} />
+                      <meta itemProp="description" content={video.description} />
                       <meta itemProp="uploadDate" content="2024-01-01" />
                     </div>
-                  </article>
+                  </div>
                 );
               })}
             </div>
