@@ -103,26 +103,10 @@ const ShopAndTips: FC = () => {
 
       <div className="container mx-auto px-4 relative">
         {/* Enhanced Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-letx-neon/20 to-letx-blue/20 rounded-full mb-8 shadow-lg">
-            <svg
-              className="w-10 h-10 text-letx-blue dark:text-letx-neon"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 10V3L4 14h7v7l9-11h-7z"
-              />
-            </svg>
-          </div>
-          
+        <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-black text-letx-blue-dark dark:text-white mb-8 drop-shadow-lg">
             <span className="bg-gradient-to-r from-letx-blue-dark via-letx-blue to-letx-green-dark bg-clip-text text-transparent dark:from-white dark:via-letx-neon dark:to-letx-green-water">
-              {t('shopAndTips.title', 'Loja e Dicas')}
+              {t('shopAndTips.title', 'Materias e Dicas')}
             </span>
           </h2>
           
