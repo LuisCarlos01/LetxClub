@@ -84,7 +84,7 @@ const Tips: FC = () => {
       readTime: '20 min',
       gradientFrom: 'from-letx-green-dark',
       gradientTo: 'to-letx-blue',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop',
+      image: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=800&h=600&fit=crop',
     },
     {
       id: '6',
@@ -123,7 +123,7 @@ const Tips: FC = () => {
       readTime: '18 min',
       gradientFrom: 'from-letx-green-water/80',
       gradientTo: 'to-letx-green-dark',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop',
+      image: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5c?w=800&h=600&fit=crop',
     },
   ];
 
